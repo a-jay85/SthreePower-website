@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SthreePower — Build skills employers hire for. Take the seat.</title>
+<meta name="description" content="SthreePower is a global community where women build the certifications employers are hiring for right now — Salesforce, Scrum, SQL, data — grow a real network, and earn their way to financial independence. Free to join." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --iv-1:#FBF8F1; --iv-2:#F3ECDD; --iv-3:#E7DBC6;
+    --dk-1:#1E1830; --dk-2:#2B2340; --dk-3:#3E3357; --dk-4:#5A4C74; --dk-5:#8E7CA3; --dk-6:#B6A6C2;
+    --glow:#E3AB8C; --glow-2:#C98AA0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--dk-1);color:var(--iv-1);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  :focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px}
+
+  .stage{padding-top:0}
+  .concept{display:none}
+  .concept.is-active{display:block;animation:fadeup .5s ease both}
+  @keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.shown{opacity:1;transform:none;transition:none}
+
+  /* DIRECTION 1 — TWILIGHT EDITORIAL */
+  .editorial{background:var(--dk-1);color:var(--iv-1);font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden}
+  .editorial .wrap{max-width:1180px;margin:0 auto;padding:0 36px}
+  .editorial .nav{display:flex;align-items:center;justify-content:space-between;padding:30px 0;position:relative;z-index:5}
+  .editorial .logo{font-family:'Newsreader',serif;font-weight:700;font-size:23px;letter-spacing:.01em}
+  .editorial .logo sup{font-size:.5em;font-weight:400;top:-.9em}
+  .editorial .navlinks{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--dk-6)}
+  .editorial .navlinks a:hover{color:var(--iv-1)}
+  .editorial .nav-cta{border:1px solid var(--dk-4);padding:10px 20px;border-radius:999px;font-size:13.5px;font-weight:600;transition:all .25s}
+  .editorial .nav-cta:hover{background:var(--iv-1);color:var(--dk-1);border-color:var(--iv-1)}
+
+  .editorial .hero{position:relative;padding:70px 0 110px;text-align:center}
+  .editorial .sky{position:absolute;inset:-200px -40% auto -40%;height:760px;z-index:0;
+    background:radial-gradient(120% 100% at 50% 0%, var(--glow) 0%, var(--glow-2) 16%, var(--dk-3) 42%, var(--dk-1) 70%);
+    filter:blur(2px);opacity:.85;animation:sky 14s ease-in-out infinite alternate}
+  @keyframes sky{from{transform:translateY(-12px) scale(1.02)}to{transform:translateY(8px) scale(1.05)}}
+  .editorial .horizon{position:absolute;left:0;right:0;top:auto;bottom:40px;height:1px;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;z-index:1}
+  .editorial .hero .inner{position:relative;z-index:2}
+  .editorial .eyebrow{font-size:12.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--dk-6);margin-bottom:30px;font-weight:600}
+  .editorial h1{font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,8.2vw,108px);line-height:.96;letter-spacing:-.01em;margin:0 auto;max-width:13ch}
+  .editorial h1 em{font-style:italic;color:var(--glow)}
+  .editorial .lede{max-width:52ch;margin:34px auto 0;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#D8CEDE}
+  .editorial .hero-cta{display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap}
+  .editorial .btn-pri{background:var(--iv-1);color:var(--dk-1);padding:16px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s}
+  .editorial .btn-pri:hover{transform:translateY(-2px);box-shadow:0 14px 40px -12px rgba(227,171,140,.5)}
+  .editorial .btn-sec{padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;color:var(--iv-1);border:1px solid var(--dk-4);transition:border-color .2s}
+  .editorial .btn-sec:hover{border-color:var(--dk-6)}
+
+  .editorial .stamp{position:relative;z-index:2;margin-top:78px;display:flex;justify-content:center;gap:46px;flex-wrap:wrap;color:var(--dk-6);font-size:13px;letter-spacing:.04em}
+  .editorial .stamp b{display:block;font-family:'Newsreader',serif;font-size:30px;color:var(--iv-1);font-weight:500;letter-spacing:0}
+
+  .editorial .manifesto{padding:30px 0 110px;text-align:center}
+  .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,4vw,48px);line-height:1.28;max-width:22ch;margin:0 auto;color:var(--iv-1)}
+  .editorial .manifesto p span{color:var(--dk-5)}
+
+  .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--dk-3)}
+  .editorial .pillar{padding:48px 30px 56px;border-right:1px solid var(--dk-3)}
+  .editorial .pillar:last-child{border-right:none}
+  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.1em}
+  .editorial .pillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px}
+  .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
+
+  /* DEMAND — built for jobs that are hiring */
+  .editorial .demand{padding:96px 0 30px}
+  .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:46px;gap:24px;flex-wrap:wrap}
+  .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
+  .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
+  .editorial .sec-head p{color:var(--dk-6);font-size:15px;max-width:38ch;line-height:1.6}
+  .editorial .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
+  .editorial .dcard{background:var(--dk-1);padding:40px 36px;display:flex;flex-direction:column}
+  .editorial .dcard .dk{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);letter-spacing:.08em}
+  .editorial .dcard h3{font-family:'Newsreader',serif;font-weight:500;font-size:27px;margin:14px 0 16px}
+  .editorial .dcard .stat{font-size:16px;line-height:1.55;color:#D8CEDE;margin-bottom:22px}
+  .editorial .dcard .stat b{color:var(--iv-1);font-weight:700}
+  .editorial .dcard .lab{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:700;margin-bottom:12px}
+  .editorial .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .editorial .chip{font-size:13px;font-weight:600;color:#E7DEEF;border:1px solid var(--dk-4);border-radius:999px;padding:6px 13px;white-space:nowrap}
+  .editorial .dcard .offer{margin-top:22px;padding-top:22px;border-top:1px solid var(--dk-3);font-size:13.5px;line-height:1.55;color:#B7AAC6}
+  .editorial .dcard .offer b{color:var(--iv-2);font-weight:600}
+  .editorial .srcnote{font-size:12px;color:var(--dk-5);line-height:1.6;margin-top:22px;max-width:80ch}
+
+  /* CATALOG — two ways in */
+  .editorial .catalog{padding:80px 0 30px}
+  .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}
+  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:38px 34px}
+  .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03))}
+  .editorial .track .tk{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.08em}
+  .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:12px 0 10px}
+  .editorial .track .sub{font-size:14.5px;line-height:1.6;color:#C2B8CC;margin-bottom:24px}
+
+  .editorial .services{padding:96px 0}
+  .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
+  .editorial .srv .cell{background:var(--dk-1);padding:38px 34px;transition:background .3s}
+  .editorial .srv .cell:hover{background:var(--dk-2)}
+  .editorial .srv .ci{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5)}
+  .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:14px 0 10px}
+  .editorial .srv p{color:#C2B8CC;font-size:14.5px;line-height:1.6}
+
+  .editorial .voices{padding:30px 0 110px}
+  .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px}
+  .editorial .vcard{border:1px solid var(--dk-3);border-radius:4px;padding:32px}
+  .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:19px;line-height:1.45;color:var(--iv-1)}
+  .editorial .vcard .who{display:flex;align-items:center;gap:12px;margin-top:24px}
+  .editorial .vcard .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--glow),var(--glow-2));display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--dk-1)}
+  .editorial .vcard .who div b{display:block;font-size:14px}
+  .editorial .vcard .who div span{font-size:12.5px;color:var(--dk-6)}
+
+  .editorial .belong{padding:18px 0 104px;text-align:center}
+  .editorial .belong p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.25;max-width:22ch;margin:0 auto}
+  .editorial .belong p span{color:var(--glow)}
+
+  .editorial .joincta{position:relative;text-align:center;padding:96px 0 120px;border-top:1px solid var(--dk-3)}
+  .editorial .joincta h2{font-family:'Newsreader',serif;font-weight:600;font-size:clamp(32px,5.5vw,68px);line-height:1.02;max-width:16ch;margin:0 auto}
+  .editorial .joincta h2 em{color:var(--glow);font-style:italic}
+  .editorial .joincta p{color:#CDC3D6;margin:24px auto 36px;max-width:42ch;font-size:16px}
+  .editorial .footer{border-top:1px solid var(--dk-3);padding:48px 0;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:13.5px;color:var(--dk-6)}
+  .editorial .footer .logo{font-family:'Newsreader',serif;font-size:18px;color:var(--iv-1)}
+
+  @media(max-width:860px){
+    .editorial .navlinks{display:none}
+    .editorial .pillars{grid-template-columns:1fr}
+    .editorial .pillar{border-right:none;border-bottom:1px solid var(--dk-3)}
+    .editorial .srv,.editorial .vgrid,.editorial .dgrid,.editorial .tracks{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+<!-- DIRECTION 1 — TWILIGHT EDITORIAL -->
+<div class="concept editorial is-active" data-concept="editorial">
+  <div class="wrap">
+    <nav class="nav">
+      <div class="logo">SthreePower<sup>®</sup></div>
+      <div class="navlinks">
+        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Community</a><a href="#voices">Voices</a>
+      </div>
+      <a href="#join" class="nav-cta">Join the community</a>
+    </nav>
+  </div>
+
+  <section class="hero">
+    <div class="sky" aria-hidden="true"></div>
+    <div class="horizon" aria-hidden="true"></div>
+    <div class="wrap inner">
+      <div class="eyebrow reveal">A global community for women</div>
+      <h1 class="reveal">Build the skills employers <em>are hiring for.</em></h1>
+      <p class="lede reveal">Not courses that sound good — courses the U.S. job market is actively recruiting for, from Salesforce and Scrum to SQL and data. Learn them alongside a community of women, grow a real network, and earn your way to financial independence.</p>
+      <div class="hero-cta reveal">
+        <a href="#join" class="btn-pri">Join free on WhatsApp</a>
+        <a href="#demand" class="btn-sec">See what's in demand</a>
+      </div>
+      <div class="stamp reveal">
+        <div><b>Free</b>to join</div>
+        <div><b>Live</b>weekly workshops</div>
+        <div><b>Global</b>member network</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="manifesto reveal">
+      <p>Ambition was never in short supply, access was –<br>
+        <em>until now.</em></p>
+      <p><span>SthreePower closes the gap: in-demand skills,
+        <br>a real network,
+        <br>and the income to match.</span></p>
+    </section>
+
+    <section class="pillars">
+      <div class="pillar reveal"><div class="pn">/ 01</div><h3>Skills with a market</h3><p>We don't teach trends. We teach the certifications employers screen for — Salesforce, Scrum, Tableau, SQL — chosen against current U.S. hiring data, not guesswork.</p></div>
+      <div class="pillar reveal"><div class="pn">/ 02</div><h3>A network that opens doors</h3><p>Peers, mentors, and referrals from women already inside the field you're aiming for — the connections that turn a certificate into an interview.</p></div>
+      <div class="pillar reveal"><div class="pn">/ 03</div><h3>Financial independence</h3><p>Resume reviews, interview prep, and real roles shared by members — the shortest honest path to a paycheck of your own.</p></div>
+    </section>
+
+    <section class="demand" id="demand">
+      <div class="sec-head reveal">
+        <h2>Built for the jobs<br>that are <em>actually hiring.</em></h2>
+        <p>Every course we offer maps to a role employers are recruiting for right now.<br>
+        Here's the demand — and a sample of the companies hiring for it.</p>
+      </div>
+      <div class="dgrid">
+
+        <div class="dcard reveal">
+          <div class="dk">01 / CRM &amp; Salesforce</div>
+          <h3>Salesforce</h3>
+          <div class="stat"><b>150,000+</b> companies run on Salesforce, and U.S. Salesforce Administrators earn an average of <b>~$90,000</b> a year.<br>
+          One of the clearest on-ramps into a tech career.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="chips"><span class="chip">Accenture</span><span class="chip">Deloitte</span><span class="chip">Cognizant</span><span class="chip">IBM</span><span class="chip">Salesforce</span></div>
+          <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">02 / Data &amp; Analytics</div>
+          <h3>SQL &amp; data</h3>
+          <div class="stat"><b>430,000+</b> open data-analysis roles in the U.S. — and SQL is the single most-requested technical skill across them.<br>
+          Tableau shows up in thousands more.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="chips"><span class="chip">Amazon</span><span class="chip">Google</span><span class="chip">JPMorgan Chase</span><span class="chip">UnitedHealth Group</span></div>
+          <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, and <b>Databricks Fundamentals</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">03 / Agile delivery</div>
+          <h3>Scrum &amp; Agile</h3>
+          <div class="stat"><b>72,000+</b> Scrum Master openings posted in the U.S.<br>
+          Agile is how modern teams ship — and certified women are leading them.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="chips"><span class="chip">Capital One</span><span class="chip">Lockheed Martin</span><span class="chip">Boeing</span><span class="chip">Raytheon</span></div>
+          <div class="offer">We teach: <b>Scrum Master Certified</b>, <b>Product Owner Certified</b>, and <b>Scrum Fundamentals</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">04 / Business &amp; AI</div>
+          <h3>Business analysis &amp; AI</h3>
+          <div class="stat">Business analysis is a <b>top hiring category</b> in tech consulting — and AI fluency now appears in the same job posts.<br>
+          Two skills, one fast-growing lane.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="chips"><span class="chip">Deloitte</span><span class="chip">EY</span><span class="chip">Accenture</span><span class="chip">Microsoft</span></div>
+          <div class="offer">We teach: <b>Business Analysis with AI</b>, <b>AI Basics &amp; ChatGPT</b>, <b>Jira</b>, and <b>Confluence</b>.</div>
+        </div>
+
+      </div>
+      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles — a signal of demand, not a statement of partnership.</p>
+    </section>
+
+    <section class="catalog" id="courses">
+      <div class="sec-head reveal">
+        <h2>Two ways in.</h2>
+        <p>Start from zero for free, or go straight for the credential. Most members do both.</p>
+      </div>
+      <div class="tracks">
+        <div class="track cert reveal">
+          <div class="tk">Certification track</div>
+          <h3>The credentials that get you screened in</h3>
+          <p class="sub">Instructor-led paths to the certifications named in real job posts. Pricing is being finalized — join the community to be first in line when enrollment opens.</p>
+          <div class="chips">
+            <span class="chip">Salesforce Administrator</span>
+            <span class="chip">Salesforce Business Analyst</span>
+            <span class="chip">Salesforce Platform Foundations</span>
+            <span class="chip">Salesforce Agentforce Specialist</span>
+            <span class="chip">Scrum Master Certified</span>
+            <span class="chip">Scrum Product Owner Certified</span>
+            <span class="chip">Tableau Certified Desktop Specialist</span>
+          </div>
+        </div>
+        <div class="track reveal">
+          <div class="tk">Free foundation library</div>
+          <h3>Start where you are, at no cost</h3>
+          <p class="sub">Build the basics before you commit to anything. Free to community members — no payment, no pressure.</p>
+          <div class="chips">
+            <span class="chip">SQL Basics</span>
+            <span class="chip">AI Basics &amp; ChatGPT</span>
+            <span class="chip">Business Analysis with AI</span>
+            <span class="chip">Scrum Fundamentals</span>
+            <span class="chip">Scrum for DevOps</span>
+            <span class="chip">Jira Fundamentals</span>
+            <span class="chip">Confluence Essentials</span>
+            <span class="chip">Kanban Essentials</span>
+            <span class="chip">OKR Fundamentals</span>
+            <span class="chip">Six Sigma Yellow Belt</span>
+            <span class="chip">Databricks Fundamentals</span>
+            <span class="chip">Informatica MDM Foundations</span>
+            <span class="chip">HIPAA Compliance</span>
+            <span class="chip">Digital Marketing</span>
+            <span class="chip">Marketing Strategy</span>
+            <span class="chip">Corporate Sales</span>
+            <span class="chip">Negotiation</span>
+            <span class="chip">Basic Website Building</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="inside">
+      <div class="sec-head reveal">
+        <h2>What you get inside.</h2>
+        <p>The course is the start.<br>
+        The community is what gets you hired.</p>
+      </div>
+      <div class="srv">
+        <div class="cell reveal"><div class="ci">01 / Services</div><h4>Resume Review</h4><p>Direct, honest feedback on your resume from women already working in the field you're aiming for.</p></div>
+        <div class="cell reveal"><div class="ci">02 / Services</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
+        <div class="cell reveal"><div class="ci">03 / Services</div><h4>Recruitments</h4><p>Openings and referrals shared by members, for members — the hidden job market, opened up.</p></div>
+        <div class="cell reveal"><div class="ci">04 / Initiatives</div><h4>Vinodha &amp; Banumathi</h4><p>Flagship initiatives created to support women through specific transitions. Programs announced as they launch.</p></div>
+      </div>
+    </section>
+
+    <section class="voices" id="voices">
+      <div class="sec-head reveal"><h2>Voices of impact</h2><p>What changes when the door finally opens.</p></div>
+      <div class="vgrid">
+        <div class="vcard reveal"><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
+        <div class="vcard reveal"><blockquote>“The resume review was brutal in the best way. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
+        <div class="vcard reveal"><blockquote>“One intro from this community did more than a year of cold applications.”</blockquote><div class="who"><div class="av">D</div><div><b>Daniela M.</b><span>Career returner</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="belong reveal">
+      <p>Centered on women.<br>
+        <span>Open to everyone the old rooms kept out.</span></p>
+    </section>
+  </div>
+
+  <section class="joincta" id="join">
+    <div class="wrap">
+      <h2>The next version of your career <em>starts<br>
+      in the group.</em></h2>
+      <p>Joining is free and takes a minute.<br>
+        Bring your questions — the community brings<br>
+        the skills, the network, and the roles.</p>
+      <a href="#" class="btn-pri">Join free on WhatsApp</a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer class="footer">
+      <div><div class="logo">SthreePower®</div><div style="margin-top:8px">Empowering women to grow as people and professionals.</div></div>
+      <div>105 Oak Park Dr, Suite C<br>Irmo, SC 29063<br>(586) 214-9934</div>
+      <div>© SthreePower. All rights reserved.</div>
+    </footer>
+  </div>
+</div>
+
+</div><!-- /stage -->
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  // Animate only what's already on-screen at first load.
+  // Everything below the fold is shown instantly when scrolled to — no repeat animation.
+  items.forEach(function(el){
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      el.classList.add('shown');
+    }
+  });
+})();
+</script>
+</body>
+</html>
