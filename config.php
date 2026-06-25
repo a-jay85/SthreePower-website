@@ -48,8 +48,10 @@ define('GOOGLE_REDIRECT_URI',  sp_env('GOOGLE_REDIRECT_URI'));
 define('SHEET_WEBHOOK_URL',    sp_env('SHEET_WEBHOOK_URL'));
 define('SHEET_SHARED_SECRET',  sp_env('SHEET_SHARED_SECRET'));
 
-// Where to send the user after the flow (success or handled error).
-define('JOIN_PAGE', '/PostFeedbackGoogleButton.html');
+// Where to send the user after the flow (success or handled error). Relative (no leading
+// slash) so it resolves against the directory the flow runs from — works whether the site
+// is served from the web root or a subfolder like /new-twilight-site/.
+define('JOIN_PAGE', 'PostFeedbackGoogleButton.html');
 
 // Bump this string whenever the consent wording on the page changes — it is stored
 // alongside each opt-in so you can prove exactly what the user agreed to (GDPR Art. 7).

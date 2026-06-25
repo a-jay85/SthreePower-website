@@ -458,10 +458,12 @@
   var banner = document.getElementById('joinBanner');
   if (banner) {
     var qp = new URLSearchParams(window.location.search);
+    var shown = false;
     if (qp.get('joined') === '1') {
       banner.className = 'joined-banner ok';
       banner.textContent = "You're in — thanks for joining SthreePower. We'll be in touch soon.";
       banner.hidden = false;
+      shown = true;
     } else if (qp.get('error')) {
       var err = qp.get('error');
       banner.className = 'joined-banner err';
@@ -469,7 +471,14 @@
         ? 'Please tick the consent box so we can email you, then sign in again.'
         : "Something went wrong signing you in. Please try again. (" + err + ")";
       banner.hidden = false;
-      banner.scrollIntoView({behavior:'smooth', block:'center'});
+      shown = true;
+    }
+    // Scroll to the banner for either outcome — it sits below the fold after the redirect.
+    // rAF lets layout settle first so smooth-scroll lands on the right position.
+    if (shown) {
+      requestAnimationFrame(function () {
+        banner.scrollIntoView({behavior:'smooth', block:'center'});
+      });
     }
   }
 })();

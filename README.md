@@ -91,6 +91,32 @@ secret that must never reach the browser). Target host: **Plesk on Windows/IIS, 
   from Google and breaks state validation.
 - Finalise `privacy.html` (replace every highlighted placeholder) with legal review.
 
+### Host gotchas (Plesk / Windows-IIS) — learned the hard way
+- **Redirect URI must match the live host exactly, including subpath and www.** The site is
+  served from `/new-twilight-site/` on the **www** host, so the Authorized redirect URI (Google
+  Console) and `GOOGLE_REDIRECT_URI` are both
+  `https://www.sthreepower.org/new-twilight-site/google-callback.php`. A non-www/www difference,
+  a missing subpath, or a trailing slash all produce `Error 400: redirect_uri_mismatch`. Keep
+  the whole flow on one canonical host or the session cookie won't survive the round-trip.
+- **`JOIN_PAGE` is relative** (no leading slash) so post-flow redirects resolve inside the
+  subfolder. A root-relative `/PostFeedbackGoogleButton.html` 404s when the site isn't at the
+  web root.
+- **ModSecurity WAF blocks the callback by default.** Google's `scope`/`iss` params contain
+  `https://…` URLs and `.profile`, which trip OWASP CRS rules **931130** (RFI, off-domain
+  reference) and **930120** (LFI, `.profile`) → HTTP **403** before PHP runs. Disable those two
+  rule IDs for this domain (Plesk → site → Web Application Firewall → *Switch off security
+  rules*). If you have Plesk **server admin**, prefer a path-scoped custom directive instead, so
+  the rules stay active elsewhere:
+  ```apache
+  SecRule REQUEST_URI "@beginsWith /new-twilight-site/google-callback.php" \
+    "id:1000100,phase:1,pass,nolog,\
+     ctl:ruleRemoveTargetById=931130;ARGS:scope,\
+     ctl:ruleRemoveTargetById=931130;ARGS:iss,\
+     ctl:ruleRemoveTargetById=930120;ARGS:scope"
+  ```
+- IIS request filtering returns **404.x**, not 403 — so a 403 on the callback is the WAF, not
+  request filtering (`allowDoubleEscaping` is a red herring here).
+
 ## Still to do before launch
 
 - **Replace placeholder content.** All testimonials, member names, and figures are placeholder copy for layout. Swap in real quotes and numbers.
