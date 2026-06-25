@@ -471,10 +471,24 @@
 
   // Gate both join buttons (Google + email) on the marketing-consent checkbox.
   var cb = document.getElementById('consent');
-  var gateBtns = [document.getElementById('googleBtn'), document.getElementById('emailBtn')];
+  var emailBtn = document.getElementById('emailBtn');
+  var gateBtns = [document.getElementById('googleBtn'), emailBtn];
   if (cb) {
     cb.addEventListener('change', function(){
       gateBtns.forEach(function(b){ if (b) b.disabled = !cb.checked; });
+    });
+  }
+
+  // Pressing Enter in the email field would otherwise submit via the form's first
+  // submit button (the Google one, with formaction=google-login.php). Route Enter
+  // through the email button instead so it signs up by email, not Google.
+  var emailInput = document.getElementById('emailInput');
+  if (emailInput && emailBtn) {
+    emailInput.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        emailBtn.click();
+      }
     });
   }
 
