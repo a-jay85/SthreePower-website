@@ -1,0 +1,26 @@
+<?php
+/**
+ * Secret values for the Google sign-in join flow.
+ *
+ * Copy this file to `config.local.php` and fill in real values. NEVER commit config.local.php.
+ *
+ * Placement (config.php checks both, in this order):
+ *   1. One level ABOVE the document root (preferred).
+ *   2. NEXT TO config.php in the webroot (fallback). If you use this, keep the web.config
+ *      deny rule in place so IIS never serves the file.
+ */
+
+return [
+    // From Google Cloud Console → APIs & Services → Credentials → OAuth client ID (Web application).
+    'GOOGLE_CLIENT_ID'     => 'REPLACE_WITH_CLIENT_ID.apps.googleusercontent.com',
+    'GOOGLE_CLIENT_SECRET' => 'GOCSPX-REPLACE_WITH_CLIENT_SECRET',
+
+    // Must match the Authorized redirect URI on the OAuth client, character-for-character.
+    'GOOGLE_REDIRECT_URI'  => 'https://sthreepower.org/google-callback.php',
+
+    // Apps Script Web app deployment URL (README → Google Sheet capture).
+    'SHEET_WEBHOOK_URL'    => 'https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec',
+
+    // Any long random string. Must equal the SECRET constant in the Apps Script doPost().
+    'SHEET_SHARED_SECRET'  => 'REPLACE_WITH_A_LONG_RANDOM_STRING',
+];

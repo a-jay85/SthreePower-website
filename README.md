@@ -41,6 +41,56 @@ Because it's static, almost any host works. A few options while you finalize hos
 - **Netlify / Vercel / Cloudflare Pages** — drag the folder in, or connect the repo. No build command needed; the publish directory is the root.
 - **Any web host / S3 / nginx** — upload `index.html` to the web root.
 
+## Google sign-in join flow (`PostFeedbackGoogleButton.html`)
+
+A variant of the post-feedback page replaces the WhatsApp CTA with **Sign in with Google**
+(OAuth/OIDC) to capture verified name + email onto a consent-based marketing list. Unlike the
+rest of the site, this flow needs **server-side PHP** (the OAuth token exchange uses a client
+secret that must never reach the browser). Target host: **Plesk on Windows/IIS, PHP 8.3**.
+
+**Files:** `PostFeedbackGoogleButton.html` (page + consent checkbox), `google-login.php`
+(starts the flow), `google-callback.php` (token exchange → Google Sheet), `config.php`
+(reads env vars), `privacy.html` (policy scaffold — needs counsel review), `.env.example`.
+
+### Setup
+
+1. **Google OAuth client** — Google Cloud Console → *APIs & Services*:
+   - *OAuth consent screen*: User type **External**; app name "SthreePower"; support email;
+     scopes `openid`, `email`, `profile` (all non-sensitive — no verification review needed);
+     publish to Production.
+   - *Credentials* → **Create OAuth client ID** → **Web application** → Authorized redirect
+     URI `https://sthreepower.org/google-callback.php`. Copy the Client ID + Secret.
+2. **Google Sheet capture** — create a Sheet with header row
+   `email | name | google_sub | consent | consent_text_version | ip | user_agent | source | created_at`.
+   Add an Apps Script (Extensions → Apps Script) and deploy as a **Web app** (Deploy → New
+   deployment → Web app; *Execute as* = you, *Who has access* = Anyone):
+   ```js
+   const SECRET = 'CHANGE_ME'; // must match SHEET_SHARED_SECRET
+   function doPost(e) {
+     const d = JSON.parse(e.postData.contents);
+     if (d.secret !== SECRET) return ContentService.createTextOutput('forbidden');
+     SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().appendRow([
+       d.email, d.name, d.google_sub, d.consent, d.consent_text_version,
+       d.ip, d.user_agent, d.source, d.created_at,
+     ]);
+     return ContentService.createTextOutput('ok');
+   }
+   ```
+   Copy the deployment URL into `SHEET_WEBHOOK_URL`.
+3. **Environment variables** — set on the host (Plesk → PHP Settings). See `.env.example`:
+   `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI`, `SHEET_WEBHOOK_URL`,
+   `SHEET_SHARED_SECRET`. `config.php` holds no secrets itself — it only reads these.
+4. **Sending** — a Google Sheet stores leads but **cannot send compliant email**. Connect an
+   ESP (Brevo/Mailchimp/etc.) for unsubscribe, `List-Unsubscribe`, and the required physical
+   address before the first send. First email should be a welcome/confirmation.
+
+### Notes
+- Consent is captured on the page, persisted in the PHP session by `google-login.php`, then
+  written with the lead by `google-callback.php` (the callback can't see the original form).
+- The session cookie is `SameSite=Lax` on purpose — `Strict` drops it on the redirect back
+  from Google and breaks state validation.
+- Finalise `privacy.html` (replace every highlighted placeholder) with legal review.
+
 ## Still to do before launch
 
 - **Replace placeholder content.** All testimonials, member names, and figures are placeholder copy for layout. Swap in real quotes and numbers.
