@@ -23,4 +23,9 @@ return [
 
     // Any long random string. Must equal the SECRET constant in the Apps Script doPost().
     'SHEET_SHARED_SECRET'  => 'REPLACE_WITH_A_LONG_RANDOM_STRING',
+
+    // Signing key for email double-opt-in confirmation links (HMAC). Any long random
+    // string; keep it secret and stable (rotating it invalidates pending links).
+    // Generate e.g.: php -r "echo bin2hex(random_bytes(32));"
+    'CONFIRM_SECRET'       => 'REPLACE_WITH_A_LONG_RANDOM_STRING',
 ];

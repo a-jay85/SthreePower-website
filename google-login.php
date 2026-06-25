@@ -18,8 +18,9 @@ session_start();
 require __DIR__ . '/config.php';
 
 // Marketing consent is mandatory. The page disables the button until it's ticked, but
-// re-check server-side so the endpoint can't be hit without it.
-if (($_GET['consent'] ?? '') !== 'yes') {
+// re-check server-side so the endpoint can't be hit without it. The join form POSTs
+// (so the email path keeps the address out of the URL); read consent from the body.
+if (($_POST['consent'] ?? '') !== 'yes') {
     header('Location: ' . JOIN_PAGE . '?error=consent');
     exit;
 }

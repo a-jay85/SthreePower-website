@@ -67,6 +67,16 @@
   .editorial .consent{display:flex;gap:11px;align-items:flex-start;text-align:left;font-size:13.5px;line-height:1.5;color:#C9BFD0}
   .editorial .consent input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--glow);cursor:pointer}
   .editorial .consent a{color:var(--glow);text-decoration:underline}
+  .editorial .join-or{display:flex;align-items:center;gap:14px;width:100%;color:var(--dk-6);font-size:12.5px;letter-spacing:.04em}
+  .editorial .join-or::before,.editorial .join-or::after{content:"";flex:1;height:1px;background:var(--dk-3)}
+  .editorial .email-row{display:flex;gap:10px;width:100%;flex-wrap:wrap}
+  .editorial .email-field{flex:1;min-width:0;padding:15px 18px;border-radius:999px;border:1px solid var(--dk-4);background:rgba(0,0,0,.16);color:var(--iv-1);font-size:15px}
+  .editorial .email-field::placeholder{color:var(--dk-5)}
+  .editorial .email-field:focus{outline:none;border-color:var(--dk-6)}
+  .editorial .email-btn{padding:15px 26px;white-space:nowrap}
+  .editorial .email-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+  /* Honeypot — visually gone but still in the DOM for bots to fill. */
+  .editorial .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
   .editorial .joined-banner{max-width:560px;margin:0 auto 30px;padding:16px 22px;border-radius:10px;font-size:14.5px;line-height:1.5}
   .editorial .joined-banner.ok{background:rgba(227,171,140,.12);border:1px solid var(--dk-4);color:var(--iv-1)}
   .editorial .joined-banner.err{background:rgba(201,138,160,.14);border:1px solid var(--glow-2);color:var(--iv-1)}
@@ -405,15 +415,28 @@
         the redirect to Google (the callback can't see this form). The button stays
         disabled until the consent box is ticked.
       -->
-      <form class="join-form" method="get" action="google-login.php">
+      <!--
+        One POST form, two ways in. The Google button overrides the action to the OIDC
+        endpoint (formnovalidate so it isn't blocked by the email field's required attr);
+        the email button posts to email-signup.php. POST keeps the typed address out of
+        the URL. Both buttons stay disabled until the consent box is ticked (see JS).
+      -->
+      <form class="join-form" method="post" action="email-signup.php">
         <label class="consent">
           <input type="checkbox" id="consent" name="consent" value="yes" required>
           <span>I agree to receive marketing emails from SthreePower about courses, events, and opportunities. I understand I can unsubscribe at any time. See our <a href="privacy.html">Privacy&nbsp;Policy</a>.</span>
         </label>
-        <button type="submit" id="googleBtn" class="btn-pri btn-google" disabled>
+        <button type="submit" id="googleBtn" class="btn-pri btn-google" formaction="google-login.php" formnovalidate disabled>
           <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
           Sign up with Google
         </button>
+        <div class="join-or"><span>or sign up with email</span></div>
+        <!-- Honeypot: hidden from people, tempting to bots. Real submissions leave it empty. -->
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="email-row">
+          <input type="email" id="emailInput" name="email" class="email-field" placeholder="you@example.com" required autocomplete="email">
+          <button type="submit" id="emailBtn" class="btn-pri email-btn" disabled>Join free</button>
+        </div>
       </form>
     </div>
   </section>
@@ -446,35 +469,52 @@
     });
   }
 
-  // Gate the Google sign-in button on the marketing-consent checkbox.
+  // Gate both join buttons (Google + email) on the marketing-consent checkbox.
   var cb = document.getElementById('consent');
-  var gbtn = document.getElementById('googleBtn');
-  if (cb && gbtn) {
-    cb.addEventListener('change', function(){ gbtn.disabled = !cb.checked; });
+  var gateBtns = [document.getElementById('googleBtn'), document.getElementById('emailBtn')];
+  if (cb) {
+    cb.addEventListener('change', function(){
+      gateBtns.forEach(function(b){ if (b) b.disabled = !cb.checked; });
+    });
   }
 
-  // Show the outcome banner after the OAuth round-trip (?joined=1 or ?error=...).
+  // Show the outcome banner after a redirect:
+  //   ?joined=1     Google sign-in succeeded (verified, no confirm step)
+  //   ?check=1      email submitted — confirmation link sent, awaiting the click
+  //   ?confirmed=1  email confirmation link clicked — lead is now live
+  //   ?error=...    something went wrong (see branches below)
   var banner = document.getElementById('joinBanner');
   if (banner) {
     var qp = new URLSearchParams(window.location.search);
-    var shown = false;
+    var shown = true;
     if (qp.get('joined') === '1') {
       banner.className = 'joined-banner ok';
       banner.textContent = "You're in — thanks for joining SthreePower. We'll be in touch soon.";
-      banner.hidden = false;
-      shown = true;
+    } else if (qp.get('confirmed') === '1') {
+      banner.className = 'joined-banner ok';
+      banner.textContent = "Email confirmed — you're in. Welcome to SthreePower. We'll be in touch soon.";
+    } else if (qp.get('check') === '1') {
+      banner.className = 'joined-banner ok';
+      banner.textContent = "Almost there — we've emailed you a confirmation link. Click it to finish joining (check spam too).";
     } else if (qp.get('error')) {
       var err = qp.get('error');
       banner.className = 'joined-banner err';
       banner.textContent = err === 'consent'
-        ? 'Please tick the consent box so we can email you, then sign in again.'
-        : "Something went wrong signing you in. Please try again. (" + err + ")";
-      banner.hidden = false;
-      shown = true;
+        ? 'Please tick the consent box so we can email you, then sign up again.'
+        : err === 'email'
+        ? 'Please enter a valid email address and try again.'
+        : err === 'token'
+        ? 'That confirmation link is invalid or has expired. Please sign up again.'
+        : err === 'send'
+        ? "We couldn't send your confirmation email. Please try again in a moment."
+        : "Something went wrong signing you up. Please try again. (" + err + ")";
+    } else {
+      shown = false;
     }
-    // Scroll to the banner for either outcome — it sits below the fold after the redirect.
+    // Scroll to the banner for any outcome — it sits below the fold after the redirect.
     // rAF lets layout settle first so smooth-scroll lands on the right position.
     if (shown) {
+      banner.hidden = false;
       requestAnimationFrame(function () {
         banner.scrollIntoView({behavior:'smooth', block:'center'});
       });
