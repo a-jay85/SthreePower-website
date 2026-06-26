@@ -6,7 +6,7 @@ This is the **Twilight Editorial** design direction: a dusk-dominant, editorial 
 
 ## Tech
 
-Plain, static HTML/CSS/JS. No build step, no dependencies, no framework. Fonts (Newsreader, Hanken Grotesk, Space Mono) load from Google Fonts over CDN. Everything else — the dusk gradient, the horizon line, the icons — is hand-authored CSS and SVG, so there are no image assets to manage.
+Plain, static HTML/CSS/JS. No build step, no dependencies, no framework. Fonts (Newsreader, Hanken Grotesk, Space Mono) load from Google Fonts over CDN. The dusk gradient, the horizon line, and the icons are hand-authored CSS and SVG. The only bundled image assets are the official company wordmarks in `assets/logos/` (local SVGs, recoloured to a uniform grey via CSS), shown on `PostFeedbackGoogleButton.html` as hiring-demand signals.
 
 ## Project structure
 

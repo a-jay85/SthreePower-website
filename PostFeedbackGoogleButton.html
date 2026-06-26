@@ -140,19 +140,36 @@
   .editorial .track .freeval .fv-text{font-size:13px;line-height:1.5;color:#C9BFD0}
   .editorial .track .freeval .fv-text b{color:var(--iv-1);font-weight:700}
 
-  /* COMPANY WORDMARKS — muted type "press strip", brightening on hover */
-  .editorial .logos{display:flex;flex-wrap:wrap;gap:9px 20px;align-items:center}
-  .editorial .wordmark{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.01em;color:#A99BB8;white-space:nowrap;transition:color .2s}
-  .editorial .wordmark:hover{color:var(--iv-1)}
+  /* COMPANY WORDMARKS — official brand wordmarks (local SVGs), flattened to a
+     uniform grey "press strip"; full brand colour on hover. */
+  .editorial .logos{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+  .editorial img.wordmark{width:auto;filter:brightness(0) invert(.62);opacity:.92;transition:filter .25s,opacity .25s}
+  .editorial img.wordmark:hover{filter:none;opacity:1}
+  /* Per-logo heights normalise every wordmark to ~14px cap-height (different
+     SVGs carry different internal padding, so equal height ≠ equal weight). */
+  .editorial img.wm-microsoft{height:37px}
+  .editorial img.wm-servicenow{height:36px}
+  .editorial img.wm-boeing{height:33px}
+  .editorial img.wm-accenture{height:32px}
+  .editorial img.wm-amazon{height:28px}
+  .editorial img.wm-ibm{height:26px}
+  .editorial img.wm-google{height:24px}
+  .editorial img.wm-unitedhealth{height:23px}
+  .editorial img.wm-cisco{height:18px}
+  .editorial img.wm-deloitte{height:16px}
+  .editorial img.wm-salesforce{height:16px}
+  .editorial img.wm-capitalone{height:14px}
+  .editorial img.wm-cognizant{height:14px}
+  .editorial img.wm-jpmorgan{height:14px}
 
   /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
   .editorial .freelist{margin-top:2px}
-  .editorial .fl-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--dk-3)}
-  .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:18px;line-height:1.2;color:var(--iv-1)}
+  .editorial .fl-legend{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-5);margin-bottom:4px}
+  .editorial .fl-row{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--dk-3)}
+  .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:19px;line-height:1.2;color:var(--iv-1)}
+  .editorial .fl-row.hot .fl-name{color:var(--glow)}
   .editorial .fl-row.sm{padding:8px 0}
   .editorial .fl-row.sm .fl-name{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#D8CEDE}
-  .editorial .fl-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--dk-6);white-space:nowrap;flex:none}
-  .editorial .fl-tag.hot{color:var(--glow)}
   .editorial .fl-more{margin-top:14px;font-size:13px;line-height:1.6;color:#9C8FAC}
   .editorial .fl-more b{color:#C2B8CC;font-weight:700}
   .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
@@ -337,10 +354,10 @@
           Fluency with AI tools is becoming the new baseline, and an edge for whoever gets there first.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="wordmark">Microsoft</span>
-            <span class="wordmark">Google</span>
-            <span class="wordmark">Accenture</span>
-            <span class="wordmark">Deloitte</span>
+            <img class="wordmark wm-microsoft" src="assets/logos/microsoft.svg" alt="Microsoft" height="19" loading="lazy">
+            <img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" height="19" loading="lazy">
+            <img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" height="19" loading="lazy">
+            <img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" height="19" loading="lazy">
           </div>
           <div class="offer">We teach: <b>AI Basics &amp; ChatGPT</b>, <b>Prompt Engineering</b>, <b>Business Analysis with AI</b>, and <b>Working with AI Agents</b>.</div>
         </div>
@@ -352,11 +369,11 @@
           One of the clearest on-ramps into a tech career.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="wordmark">Accenture</span>
-            <span class="wordmark">Deloitte</span>
-            <span class="wordmark">Cognizant</span>
-            <span class="wordmark">IBM</span>
-            <span class="wordmark">Salesforce</span>
+            <img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" height="19" loading="lazy">
+            <img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" height="19" loading="lazy">
+            <img class="wordmark wm-cognizant" src="assets/logos/cognizant.svg" alt="Cognizant" height="19" loading="lazy">
+            <img class="wordmark wm-ibm" src="assets/logos/ibm.svg" alt="IBM" height="19" loading="lazy">
+            <img class="wordmark wm-salesforce" src="assets/logos/salesforce.svg" alt="Salesforce" height="19" loading="lazy">
           </div>
           <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
         </div>
@@ -368,10 +385,10 @@
           Data fluency plus ML is the combination employers pay up for.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="wordmark">Amazon</span>
-            <span class="wordmark">Google</span>
-            <span class="wordmark">JPMorgan Chase</span>
-            <span class="wordmark">UnitedHealth Group</span>
+            <img class="wordmark wm-amazon" src="assets/logos/amazon.svg" alt="Amazon" height="19" loading="lazy">
+            <img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" height="19" loading="lazy">
+            <img class="wordmark wm-jpmorgan" src="assets/logos/jpmorgan.svg" alt="JPMorgan Chase" height="19" loading="lazy">
+            <img class="wordmark wm-unitedhealth" src="assets/logos/unitedhealth.svg" alt="UnitedHealth Group" height="19" loading="lazy">
           </div>
           <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Machine Learning Foundations</b>, <b>Model Evals &amp; Quality</b>, <b>Informatica MDM SaaS &amp; CDGC Foundations</b>, and <b>Databricks Fundamentals</b>.</div>
         </div>
@@ -383,10 +400,10 @@
           Agile is how modern teams ship, and certified women are leading them.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="wordmark">Capital One</span>
-            <span class="wordmark">Lockheed Martin</span>
-            <span class="wordmark">Boeing</span>
-            <span class="wordmark">Raytheon</span>
+            <img class="wordmark wm-capitalone" src="assets/logos/capitalone.svg" alt="Capital One" height="19" loading="lazy">
+            <img class="wordmark wm-cisco" src="assets/logos/cisco.svg" alt="Cisco" height="19" loading="lazy">
+            <img class="wordmark wm-boeing" src="assets/logos/boeing.svg" alt="Boeing" height="19" loading="lazy">
+            <img class="wordmark wm-servicenow" src="assets/logos/servicenow.svg" alt="ServiceNow" height="19" loading="lazy">
           </div>
           <div class="offer">We teach: <b>Certified Scrum Master</b>, <b>Certified Scrum Product Owner</b>, <b>Kanban</b>, and <b>Scrum Fundamentals</b>.</div>
         </div>
@@ -418,19 +435,19 @@
           <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
           <div class="freeval">
             <div class="fv-big">$0</div>
-            <div class="fv-text">Comparable courses typically run <b>$200 to $2,000</b> each elsewhere, a median of about <b>$675</b> across the ones we benchmarked. Every course here is free with membership.</div>
+            <div class="fv-text">Courses like these run <b>$200–$2,000</b> elsewhere.<br>Here, every one is free.</div>
           </div>
           <div class="freelist">
-            <div class="fl-row"><span class="fl-name">SQL Basics</span><span class="fl-tag hot">Very high demand</span></div>
-            <div class="fl-row"><span class="fl-name">AI Basics &amp; ChatGPT</span><span class="fl-tag hot">Very high demand</span></div>
-            <div class="fl-row"><span class="fl-name">Databricks Fundamentals</span><span class="fl-tag hot">Very high demand</span></div>
-            <div class="fl-row"><span class="fl-name">Business Analysis with AI</span><span class="fl-tag">High demand</span></div>
-            <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span><span class="fl-tag">High demand</span></div>
-            <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span><span class="fl-tag">High demand</span></div>
-            <div class="fl-row sm"><span class="fl-name">Digital Marketing</span><span class="fl-tag">High demand</span></div>
-            <div class="fl-row sm"><span class="fl-name">Corporate Sales</span><span class="fl-tag">High demand</span></div>
-            <div class="fl-row sm"><span class="fl-name">Scrum Fundamentals</span><span class="fl-tag">In demand</span></div>
-            <p class="fl-more"><b>Also free with membership:</b> Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Basic Website Building.</p>
+            <div class="fl-legend">Ranked by current U.S. hiring demand</div>
+            <div class="fl-row hot"><span class="fl-name">SQL Basics</span></div>
+            <div class="fl-row hot"><span class="fl-name">AI Basics &amp; ChatGPT</span></div>
+            <div class="fl-row hot"><span class="fl-name">Databricks Fundamentals</span></div>
+            <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
+            <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
+            <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
+            <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
+            <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
+            <p class="fl-more"><b>Also free with membership:</b> Scrum Fundamentals, Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Basic Website Building.</p>
           </div>
         </div>
         <div class="track cert reveal" data-panel role="tabpanel">
