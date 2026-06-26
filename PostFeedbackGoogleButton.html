@@ -140,27 +140,41 @@
   .editorial .track .freeval .fv-text{font-size:13px;line-height:1.5;color:#C9BFD0}
   .editorial .track .freeval .fv-text b{color:var(--iv-1);font-weight:700}
 
-  /* COMPANY WORDMARKS — official brand wordmarks (local SVGs), flattened to a
-     uniform grey "press strip"; full brand colour on hover. */
-  .editorial .logos{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
-  .editorial img.wordmark{width:auto;filter:brightness(0) invert(.62);opacity:.92;transition:filter .25s,opacity .25s}
-  .editorial img.wordmark:hover{filter:none;opacity:1}
-  /* Per-logo heights normalise every wordmark to ~14px cap-height (different
-     SVGs carry different internal padding, so equal height ≠ equal weight). */
-  .editorial img.wm-microsoft{height:37px}
-  .editorial img.wm-servicenow{height:36px}
-  .editorial img.wm-boeing{height:33px}
-  .editorial img.wm-accenture{height:32px}
-  .editorial img.wm-amazon{height:28px}
-  .editorial img.wm-ibm{height:26px}
-  .editorial img.wm-google{height:24px}
-  .editorial img.wm-unitedhealth{height:23px}
-  .editorial img.wm-cisco{height:18px}
-  .editorial img.wm-deloitte{height:16px}
-  .editorial img.wm-salesforce{height:16px}
-  .editorial img.wm-capitalone{height:14px}
-  .editorial img.wm-cognizant{height:14px}
-  .editorial img.wm-jpmorgan{height:14px}
+  /* COMPANY WORDMARKS — official brand wordmarks (local SVGs) on individual
+     "plates". Default: flat grey on a subtle dark plate (reads on the dark
+     card). Hover: the plate flips to ivory + full brand colour, so dark/navy
+     marks (UnitedHealth, JPMorgan, IBM) stay legible — no single static
+     background can satisfy both the grey and the full-colour state. */
+  .editorial .logos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:2px}
+  .editorial .logo-plate{display:grid;place-items:center;min-height:58px;padding:10px 14px;
+    border:1px solid var(--dk-3);border-radius:9px;background:rgba(255,255,255,.022);
+    transition:background .25s,border-color .25s}
+  .editorial .logo-plate:hover{background:var(--iv-1);border-color:var(--iv-2)}
+  .editorial img.wordmark{width:auto;max-width:100%;filter:brightness(0) invert(.66);opacity:.9;transition:filter .25s,opacity .25s}
+  .editorial .logo-plate:hover img.wordmark{filter:none;opacity:1}
+  /* Per-logo heights normalise every wordmark to a uniform ink cap-height
+     (each SVG carries different internal padding, so equal box height ≠ equal
+     weight); bumped up ~25% over the old press-strip for recognisability. */
+  .editorial img.wm-microsoft{height:46px}
+  .editorial img.wm-servicenow{height:45px}
+  .editorial img.wm-boeing{height:41px}
+  .editorial img.wm-accenture{height:40px}
+  .editorial img.wm-amazon{height:35px}
+  .editorial img.wm-unitedhealth{height:41px}
+  .editorial img.wm-ibm{height:32px}
+  .editorial img.wm-google{height:30px}
+  .editorial img.wm-cisco{height:22px}
+  .editorial img.wm-deloitte{height:20px}
+  .editorial img.wm-capitalone{height:18px}
+  .editorial img.wm-cognizant{height:18px}
+  .editorial img.wm-jpmorgan{height:18px}
+
+  /* Salesforce wordmark sits beside the card title instead of in the plate grid:
+     its cloud mark is recognisable and the heading supplies the word, and its
+     white "salesforce" text would vanish on the ivory hover plate. */
+  .editorial .dcard h3.brand-h3{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+  .editorial img.brandmark{height:34px;width:auto;filter:brightness(0) invert(.66);opacity:.85;transition:filter .25s,opacity .25s}
+  .editorial h3.brand-h3:hover img.brandmark{filter:none;opacity:1}
 
   /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
   .editorial .freelist{margin-top:2px}
@@ -168,6 +182,9 @@
   .editorial .fl-row{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--dk-3)}
   .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:19px;line-height:1.2;color:var(--iv-1)}
   .editorial .fl-row.hot .fl-name{color:var(--glow)}
+  /* The long tail of solid-but-secondary picks sits two-up to save vertical
+     space; the three hot picks above stay full-width to hold the hierarchy. */
+  .editorial .fl-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
   .editorial .fl-row.sm{padding:8px 0}
   .editorial .fl-row.sm .fl-name{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#D8CEDE}
   .editorial .fl-more{margin-top:14px;font-size:13px;line-height:1.6;color:#9C8FAC}
@@ -176,6 +193,20 @@
 
   /* PREMIUM tag on the paid track */
   .editorial .premium-tag{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px}
+
+  /* PREMIUM CERT LIST — replaces the flat pills on the paid track. Grouped by
+     credential family, serif names, gold diamond markers + hairline gold rules
+     so it reads a clear notch above the free library's list. */
+  .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:26px}
+  .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:6px;display:flex;align-items:center;gap:12px}
+  .editorial .cf-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
+  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0 10px 24px;border-bottom:1px solid rgba(227,171,140,.13);position:relative}
+  .editorial .cert-fam .cf-item:last-child{border-bottom:none}
+  .editorial .cf-item::before{content:"";position:absolute;left:3px;top:0;bottom:0;margin:auto;width:7px;height:7px;transform:rotate(45deg);background:linear-gradient(135deg,var(--glow),var(--glow-2))}
+
+  /* Closing "flagship initiatives" card that fills the odd 8th services slot. */
+  .editorial .srv .cell.flagship{background:linear-gradient(180deg,rgba(227,171,140,.07),transparent)}
+  .editorial .srv .cell.flagship p b{color:var(--glow);font-weight:700}
 
   .editorial .voices{padding:30px 0 96px}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
@@ -265,6 +296,11 @@
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
+    /* Phones are too narrow to fit a wordmark in a half-width plate, so stack
+       them one-up where each mark gets the full card width and stays legible. */
+    .editorial .logos{grid-template-columns:1fr;gap:7px}
+    .editorial .logo-plate{min-height:50px}
+
     .editorial .caroctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
     .editorial .caro-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--dk-4);display:grid;place-items:center;color:var(--iv-1);transition:border-color .2s,background .2s,transform .15s}
     .editorial .caro-arrow:hover{border-color:var(--dk-6)}
@@ -327,22 +363,20 @@
 
     <section class="pillars-wrap" data-tabs>
       <div class="tablist" role="tablist" aria-label="Skill, network, income">
-        <button class="tabbtn" type="button" role="tab" aria-selected="true">Skill</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Skills</button>
         <button class="tabbtn" type="button" role="tab" aria-selected="false">Network</button>
         <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
       </div>
       <div class="pillars">
-        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skill</div><h3>Skills with a market</h3><p>Learn the certifications employers actually screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
-        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>A network that opens doors</h3><p>Peers, mentors, and referrals from women already inside the field you want. The connections that turn a certificate into an interview.</p></div>
-        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you found, plus resume reviews, interview prep, and real roles shared by members. The shortest honest path to a paycheck of your own.</p></div>
+        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skill</div><h3>Learn in-demand skills</h3><p>Earn the certifications employers screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Peers, mentors, and referrals from women inside the field you want. The connections that turn a certificate into an interview.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a paycheck of your own.</p></div>
       </div>
     </section>
 
     <section class="demand" id="demand">
       <div class="sec-head reveal">
         <h2>Built for the jobs <br>that are <em>actually hiring.</em></h2>
-        <p>Every course maps to a role employers are recruiting for in 2026.<br>
-        Here's the demand, and a sample of the companies hiring for it.</p>
       </div>
       <div class="caro" data-caro>
       <div class="dgrid">
@@ -354,26 +388,25 @@
           Fluency with AI tools is becoming the new baseline, and an edge for whoever gets there first.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <img class="wordmark wm-microsoft" src="assets/logos/microsoft.svg" alt="Microsoft" height="19" loading="lazy">
-            <img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" height="19" loading="lazy">
-            <img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" height="19" loading="lazy">
-            <img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" height="19" loading="lazy">
+            <span class="logo-plate"><img class="wordmark wm-microsoft" src="assets/logos/microsoft.svg" alt="Microsoft" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" loading="lazy"></span>
           </div>
           <div class="offer">We teach: <b>AI Basics &amp; ChatGPT</b>, <b>Prompt Engineering</b>, <b>Business Analysis with AI</b>, and <b>Working with AI Agents</b>.</div>
         </div>
 
         <div class="dcard reveal">
           <div class="dk">02 / CRM &amp; Salesforce</div>
-          <h3>Salesforce</h3>
+          <h3 class="brand-h3">Salesforce <img class="brandmark" src="assets/logos/salesforce.svg" alt="Salesforce" loading="lazy"></h3>
           <div class="stat"><b>150,000+</b> companies run on Salesforce, and U.S. Salesforce Administrators earn an average of <b>~$90,000</b> a year.<br>
           One of the clearest on-ramps into a tech career.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" height="19" loading="lazy">
-            <img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" height="19" loading="lazy">
-            <img class="wordmark wm-cognizant" src="assets/logos/cognizant.svg" alt="Cognizant" height="19" loading="lazy">
-            <img class="wordmark wm-ibm" src="assets/logos/ibm.svg" alt="IBM" height="19" loading="lazy">
-            <img class="wordmark wm-salesforce" src="assets/logos/salesforce.svg" alt="Salesforce" height="19" loading="lazy">
+            <span class="logo-plate"><img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-cognizant" src="assets/logos/cognizant.svg" alt="Cognizant" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-ibm" src="assets/logos/ibm.svg" alt="IBM" loading="lazy"></span>
           </div>
           <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
         </div>
@@ -385,10 +418,10 @@
           Data fluency plus ML is the combination employers pay up for.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <img class="wordmark wm-amazon" src="assets/logos/amazon.svg" alt="Amazon" height="19" loading="lazy">
-            <img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" height="19" loading="lazy">
-            <img class="wordmark wm-jpmorgan" src="assets/logos/jpmorgan.svg" alt="JPMorgan Chase" height="19" loading="lazy">
-            <img class="wordmark wm-unitedhealth" src="assets/logos/unitedhealth.svg" alt="UnitedHealth Group" height="19" loading="lazy">
+            <span class="logo-plate"><img class="wordmark wm-amazon" src="assets/logos/amazon.svg" alt="Amazon" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-jpmorgan" src="assets/logos/jpmorgan.svg" alt="JPMorgan Chase" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-unitedhealth" src="assets/logos/unitedhealth.svg" alt="UnitedHealth Group" loading="lazy"></span>
           </div>
           <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Machine Learning Foundations</b>, <b>Model Evals &amp; Quality</b>, <b>Informatica MDM SaaS &amp; CDGC Foundations</b>, and <b>Databricks Fundamentals</b>.</div>
         </div>
@@ -400,10 +433,10 @@
           Agile is how modern teams ship, and certified women are leading them.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <img class="wordmark wm-capitalone" src="assets/logos/capitalone.svg" alt="Capital One" height="19" loading="lazy">
-            <img class="wordmark wm-cisco" src="assets/logos/cisco.svg" alt="Cisco" height="19" loading="lazy">
-            <img class="wordmark wm-boeing" src="assets/logos/boeing.svg" alt="Boeing" height="19" loading="lazy">
-            <img class="wordmark wm-servicenow" src="assets/logos/servicenow.svg" alt="ServiceNow" height="19" loading="lazy">
+            <span class="logo-plate"><img class="wordmark wm-capitalone" src="assets/logos/capitalone.svg" alt="Capital One" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-cisco" src="assets/logos/cisco.svg" alt="Cisco" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-boeing" src="assets/logos/boeing.svg" alt="Boeing" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-servicenow" src="assets/logos/servicenow.svg" alt="ServiceNow" loading="lazy"></span>
           </div>
           <div class="offer">We teach: <b>Certified Scrum Master</b>, <b>Certified Scrum Product Owner</b>, <b>Kanban</b>, and <b>Scrum Fundamentals</b>.</div>
         </div>
@@ -421,7 +454,6 @@
     <section class="catalog" id="courses">
       <div class="sec-head reveal">
         <h2>Two ways in.</h2>
-        <p>Start from zero for free, or go straight for the credential. Most members do both.</p>
       </div>
       <div class="tracks-wrap" data-tabs>
       <div class="tablist" role="tablist" aria-label="Free or paid">
@@ -442,11 +474,13 @@
             <div class="fl-row hot"><span class="fl-name">SQL Basics</span></div>
             <div class="fl-row hot"><span class="fl-name">AI Basics &amp; ChatGPT</span></div>
             <div class="fl-row hot"><span class="fl-name">Databricks Fundamentals</span></div>
-            <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
-            <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
-            <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
-            <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
-            <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
+            <div class="fl-grid">
+              <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
+              <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
+              <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
+              <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
+              <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
+            </div>
             <p class="fl-more"><b>Also free with membership:</b> Scrum Fundamentals, Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Basic Website Building.</p>
           </div>
         </div>
@@ -454,14 +488,23 @@
           <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
           <h3>The credentials that get you screened in</h3>
           <p class="sub">Instructor-led, paid paths to the certifications named in real job posts. Join the community, then reach out to ask about pricing and member discounts.</p>
-          <div class="chips">
-            <span class="chip">Salesforce Administrator</span>
-            <span class="chip">Salesforce Business Analyst</span>
-            <span class="chip">Salesforce Platform Foundations</span>
-            <span class="chip">Salesforce Agentforce Specialist</span>
-            <span class="chip">Scrum Master Certified</span>
-            <span class="chip">Scrum Product Owner Certified</span>
-            <span class="chip">Tableau Certified Desktop Specialist</span>
+          <div class="certlist">
+            <div class="cert-fam">
+              <div class="cf-head">Salesforce</div>
+              <div class="cf-item">Administrator</div>
+              <div class="cf-item">Business Analyst</div>
+              <div class="cf-item">Platform Foundations</div>
+              <div class="cf-item">Agentforce Specialist</div>
+            </div>
+            <div class="cert-fam">
+              <div class="cf-head">Scrum</div>
+              <div class="cf-item">Master Certified</div>
+              <div class="cf-item">Product Owner Certified</div>
+            </div>
+            <div class="cert-fam">
+              <div class="cf-head">Tableau</div>
+              <div class="cf-item">Certified Desktop Specialist</div>
+            </div>
           </div>
         </div>
       </div>
@@ -472,7 +515,7 @@
     <section class="services" id="inside">
       <div class="sec-head reveal">
         <h2>What you get inside.</h2>
-        <p>The certificate is the receipt. Inside, you build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that actually get you hired, the things a course alone never gives you.</p>
+        <p>Build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that get you hired. A course alone can't do all three.</p>
       </div>
       <!--
         TODO (Nalini, owner): This section is our real USP and needs your input to describe it accurately.
@@ -490,18 +533,18 @@
         <div class="cell reveal" data-panel><div class="ci">05 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
         <div class="cell reveal" data-panel><div class="ci">06 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. The hidden job market, opened up.</p></div>
         <div class="cell reveal" data-panel><div class="ci">07 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and give back while you grow. <!-- TODO: describe the program --></p></div>
+        <div class="cell flagship reveal" data-panel><div class="ci">08 / Also inside</div><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
-      <p class="srvnote reveal">Plus our flagship initiatives, <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p>
     </section>
 
     <section class="voices" id="voices">
-      <div class="sec-head reveal"><h2>Voices of impact</h2><p>What changes when the door finally opens.</p></div>
+      <div class="sec-head reveal"><h2>Voices of impact</h2></div>
       <div class="caro" data-caro>
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
