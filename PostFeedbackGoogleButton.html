@@ -204,9 +204,14 @@
   .editorial .cert-fam .cf-item:last-child{border-bottom:none}
   .editorial .cf-item::before{content:"";position:absolute;left:3px;top:0;bottom:0;margin:auto;width:7px;height:7px;transform:rotate(45deg);background:linear-gradient(135deg,var(--glow),var(--glow-2))}
 
-  /* Closing "flagship initiatives" card that fills the odd 8th services slot. */
-  .editorial .srv .cell.flagship{background:linear-gradient(180deg,rgba(227,171,140,.07),transparent)}
+  /* Closing "flagship initiatives" card fills the odd 8th services slot; it
+     uses the same surface colour as the other cells (only the glow names set
+     it apart). */
   .editorial .srv .cell.flagship p b{color:var(--glow);font-weight:700}
+
+  /* End-of-section CTA — a hero-style "Join free" button that scrolls to the
+     #join form, its label tuned to each section's pitch. */
+  .editorial .sec-cta{display:flex;justify-content:center;margin-top:54px}
 
   .editorial .voices{padding:30px 0 96px}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
@@ -264,6 +269,7 @@
     .editorial .voices{padding:24px 0 56px}
     .editorial .belong{padding:8px 0 60px}
     .editorial .joincta{padding:56px 0 80px}
+    .editorial .sec-cta{margin-top:36px}
     .editorial .sec-head{margin-bottom:26px}
     .editorial .sec-head h2 br{display:none}
 
@@ -372,6 +378,7 @@
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Peers, mentors, and referrals from women inside the field you want. The connections that turn a certificate into an interview.</p></div>
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a paycheck of your own.</p></div>
       </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
     </section>
 
     <section class="demand" id="demand">
@@ -449,6 +456,7 @@
       </div>
       </div>
       <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Train for these roles</a></div>
     </section>
 
     <section class="catalog" id="courses">
@@ -510,6 +518,7 @@
       </div>
       </div>
       <p class="srcnote reveal">Price comparison benchmarked against 2026 third-party training costs for SQL, AI, HIPAA, and Databricks courses (Salesforce/Scrum.org, vendor academies, and independent providers). Ranges vary by provider; free library access is included with community membership.</p>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start learning free</a></div>
     </section>
 
     <section class="services" id="inside">
@@ -541,6 +550,7 @@
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Get all this inside</a></div>
     </section>
 
     <section class="voices" id="voices">
@@ -557,6 +567,7 @@
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your story</a></div>
     </section>
 
     <section class="belong reveal">
