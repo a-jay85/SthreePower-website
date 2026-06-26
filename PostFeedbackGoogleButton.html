@@ -140,12 +140,21 @@
   .editorial .track .freeval .fv-text{font-size:13px;line-height:1.5;color:#C9BFD0}
   .editorial .track .freeval .fv-text b{color:var(--iv-1);font-weight:700}
 
-  /* COMPANY LOGO PILLS — favicon marks on a light "logo-wall" pill, grayscale → colour on hover */
-  .editorial .logos{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .editorial .logo-pill{display:inline-flex;align-items:center;justify-content:center;background:rgba(251,248,241,.9);border-radius:8px;padding:7px 11px;transition:transform .2s,box-shadow .2s}
-  .editorial .logo-pill img{height:18px;width:auto;filter:grayscale(1);opacity:.85;transition:filter .3s,opacity .3s}
-  .editorial .logo-pill:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
-  .editorial .logo-pill:hover img{filter:none;opacity:1}
+  /* COMPANY WORDMARKS — muted type "press strip", brightening on hover */
+  .editorial .logos{display:flex;flex-wrap:wrap;gap:9px 20px;align-items:center}
+  .editorial .wordmark{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.01em;color:#A99BB8;white-space:nowrap;transition:color .2s}
+  .editorial .wordmark:hover{color:var(--iv-1)}
+
+  /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
+  .editorial .freelist{margin-top:2px}
+  .editorial .fl-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--dk-3)}
+  .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:18px;line-height:1.2;color:var(--iv-1)}
+  .editorial .fl-row.sm{padding:8px 0}
+  .editorial .fl-row.sm .fl-name{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#D8CEDE}
+  .editorial .fl-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--dk-6);white-space:nowrap;flex:none}
+  .editorial .fl-tag.hot{color:var(--glow)}
+  .editorial .fl-more{margin-top:14px;font-size:13px;line-height:1.6;color:#9C8FAC}
+  .editorial .fl-more b{color:#C2B8CC;font-weight:700}
   .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
 
   /* PREMIUM tag on the paid track */
@@ -196,7 +205,8 @@
     .editorial .wrap{padding:0 20px}
 
     /* tame the oversized vertical whitespace */
-    .editorial .hero{padding:44px 0 64px}
+    .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
+    .editorial .horizon{bottom:28px}                   /* equalise space above/below the divider */
     .editorial .manifesto{padding:8px 0 36px}
     .editorial .stamp{margin-top:46px;gap:26px}
     .editorial .pillars-wrap{padding-top:8px}
@@ -215,9 +225,11 @@
     .editorial .tabbtn{flex:1;position:relative;z-index:1;padding:11px 8px;border-radius:999px;font-weight:700;font-size:13.5px;color:var(--dk-6);transition:color .25s}
     .editorial .tabbtn[aria-selected="true"]{color:var(--dk-1)}
 
-    .editorial .pillars{display:block;border-top:none}
-    .editorial .pillar{display:none;border:1px solid var(--dk-3);border-bottom:1px solid var(--dk-3);border-radius:10px;padding:30px 24px}
-    .editorial .pillar.is-active{display:block;animation:fadeup .4s ease both}
+    /* Stack all three panels in one grid cell so the box is always the tallest
+       panel's height — switching tabs never shifts the section below. */
+    .editorial .pillars{display:grid;border-top:none}
+    .editorial .pillar{grid-area:1 / 1;border:1px solid var(--dk-3);border-radius:10px;padding:30px 24px;visibility:hidden}
+    .editorial .pillar.is-active{visibility:visible;animation:fadeup .4s ease both}
 
     .editorial .tracks{display:block;margin-top:0}
     .editorial .track{display:none;padding:32px 24px}
@@ -325,10 +337,10 @@
           Fluency with AI tools is becoming the new baseline, and an edge for whoever gets there first.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=microsoft.com&amp;sz=128" alt="Microsoft" title="Microsoft" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=google.com&amp;sz=128" alt="Google" title="Google" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=accenture.com&amp;sz=128" alt="Accenture" title="Accenture" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=deloitte.com&amp;sz=128" alt="Deloitte" title="Deloitte" loading="lazy" width="18" height="18"></span>
+            <span class="wordmark">Microsoft</span>
+            <span class="wordmark">Google</span>
+            <span class="wordmark">Accenture</span>
+            <span class="wordmark">Deloitte</span>
           </div>
           <div class="offer">We teach: <b>AI Basics &amp; ChatGPT</b>, <b>Prompt Engineering</b>, <b>Business Analysis with AI</b>, and <b>Working with AI Agents</b>.</div>
         </div>
@@ -340,11 +352,11 @@
           One of the clearest on-ramps into a tech career.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=accenture.com&amp;sz=128" alt="Accenture" title="Accenture" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=deloitte.com&amp;sz=128" alt="Deloitte" title="Deloitte" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=cognizant.com&amp;sz=128" alt="Cognizant" title="Cognizant" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=ibm.com&amp;sz=128" alt="IBM" title="IBM" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&amp;sz=128" alt="Salesforce" title="Salesforce" loading="lazy" width="18" height="18"></span>
+            <span class="wordmark">Accenture</span>
+            <span class="wordmark">Deloitte</span>
+            <span class="wordmark">Cognizant</span>
+            <span class="wordmark">IBM</span>
+            <span class="wordmark">Salesforce</span>
           </div>
           <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
         </div>
@@ -356,10 +368,10 @@
           Data fluency plus ML is the combination employers pay up for.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=amazon.com&amp;sz=128" alt="Amazon" title="Amazon" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=google.com&amp;sz=128" alt="Google" title="Google" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=jpmorganchase.com&amp;sz=128" alt="JPMorgan Chase" title="JPMorgan Chase" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=unitedhealthgroup.com&amp;sz=128" alt="UnitedHealth Group" title="UnitedHealth Group" loading="lazy" width="18" height="18"></span>
+            <span class="wordmark">Amazon</span>
+            <span class="wordmark">Google</span>
+            <span class="wordmark">JPMorgan Chase</span>
+            <span class="wordmark">UnitedHealth Group</span>
           </div>
           <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Machine Learning Foundations</b>, <b>Model Evals &amp; Quality</b>, <b>Informatica MDM SaaS &amp; CDGC Foundations</b>, and <b>Databricks Fundamentals</b>.</div>
         </div>
@@ -371,10 +383,10 @@
           Agile is how modern teams ship, and certified women are leading them.</div>
           <div class="lab">Hiring for these roles</div>
           <div class="logos">
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=capitalone.com&amp;sz=128" alt="Capital One" title="Capital One" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=lockheedmartin.com&amp;sz=128" alt="Lockheed Martin" title="Lockheed Martin" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=boeing.com&amp;sz=128" alt="Boeing" title="Boeing" loading="lazy" width="18" height="18"></span>
-            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=rtx.com&amp;sz=128" alt="Raytheon" title="Raytheon" loading="lazy" width="18" height="18"></span>
+            <span class="wordmark">Capital One</span>
+            <span class="wordmark">Lockheed Martin</span>
+            <span class="wordmark">Boeing</span>
+            <span class="wordmark">Raytheon</span>
           </div>
           <div class="offer">We teach: <b>Certified Scrum Master</b>, <b>Certified Scrum Product Owner</b>, <b>Kanban</b>, and <b>Scrum Fundamentals</b>.</div>
         </div>
@@ -386,7 +398,7 @@
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
-      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Logos shown are companies publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
+      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
     </section>
 
     <section class="catalog" id="courses">
@@ -408,25 +420,17 @@
             <div class="fv-big">$0</div>
             <div class="fv-text">Comparable courses typically run <b>$200 to $2,000</b> each elsewhere, a median of about <b>$675</b> across the ones we benchmarked. Every course here is free with membership.</div>
           </div>
-          <div class="chips">
-            <span class="chip">SQL Basics</span>
-            <span class="chip">AI Basics &amp; ChatGPT</span>
-            <span class="chip">Business Analysis with AI</span>
-            <span class="chip">Scrum Fundamentals</span>
-            <span class="chip">Scrum for DevOps</span>
-            <span class="chip">Jira Fundamentals</span>
-            <span class="chip">Confluence Essentials</span>
-            <span class="chip">Kanban Essentials</span>
-            <span class="chip">OKR Fundamentals</span>
-            <span class="chip">Six Sigma Yellow Belt</span>
-            <span class="chip">Databricks Fundamentals</span>
-            <span class="chip">Informatica MDM Foundations</span>
-            <span class="chip">HIPAA Compliance</span>
-            <span class="chip">Digital Marketing</span>
-            <span class="chip">Marketing Strategy</span>
-            <span class="chip">Corporate Sales</span>
-            <span class="chip">Negotiation</span>
-            <span class="chip">Basic Website Building</span>
+          <div class="freelist">
+            <div class="fl-row"><span class="fl-name">SQL Basics</span><span class="fl-tag hot">Very high demand</span></div>
+            <div class="fl-row"><span class="fl-name">AI Basics &amp; ChatGPT</span><span class="fl-tag hot">Very high demand</span></div>
+            <div class="fl-row"><span class="fl-name">Databricks Fundamentals</span><span class="fl-tag hot">Very high demand</span></div>
+            <div class="fl-row"><span class="fl-name">Business Analysis with AI</span><span class="fl-tag">High demand</span></div>
+            <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span><span class="fl-tag">High demand</span></div>
+            <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span><span class="fl-tag">High demand</span></div>
+            <div class="fl-row sm"><span class="fl-name">Digital Marketing</span><span class="fl-tag">High demand</span></div>
+            <div class="fl-row sm"><span class="fl-name">Corporate Sales</span><span class="fl-tag">High demand</span></div>
+            <div class="fl-row sm"><span class="fl-name">Scrum Fundamentals</span><span class="fl-tag">In demand</span></div>
+            <p class="fl-more"><b>Also free with membership:</b> Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Basic Website Building.</p>
           </div>
         </div>
         <div class="track cert reveal" data-panel role="tabpanel">
@@ -606,6 +610,24 @@
     track.addEventListener('scroll', function(){
       var i = Math.round(track.scrollLeft / step());
       dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
+    }, {passive:true});
+
+    // Tap a peeking edge card to advance to it. We distinguish a tap from a swipe
+    // by the pointer travel between down and up — a real drag (>8px) is left to the
+    // native scroll-snap, so this never fights swiping.
+    var down = null;
+    track.addEventListener('pointerdown', function(e){ down = {x:e.clientX, y:e.clientY}; }, {passive:true});
+    track.addEventListener('pointerup', function(e){
+      if (!down) return;
+      var moved = Math.abs(e.clientX - down.x) > 8 || Math.abs(e.clientY - down.y) > 8;
+      down = null;
+      if (moved) return;                                   // it was a swipe
+      if (track.scrollWidth <= track.clientWidth + 4) return; // not scrollable (desktop)
+      var card = e.target.closest && e.target.closest('.dcard, .cell, .vcard');
+      if (!card) return;
+      var target = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      if (Math.abs(target - track.scrollLeft) < 8) return; // already centred
+      track.scrollTo({ left: target, behavior: 'smooth' });
     }, {passive:true});
   });
 
