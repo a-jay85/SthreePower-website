@@ -140,18 +140,16 @@
   .editorial .track .freeval .fv-text{font-size:13px;line-height:1.5;color:#C9BFD0}
   .editorial .track .freeval .fv-text b{color:var(--iv-1);font-weight:700}
 
-  /* DIGITAL RESUME spotlight */
-  .editorial .resume{padding:24px 0 96px}
-  .editorial .resume .panel{border:1px solid var(--dk-3);border-radius:12px;padding:50px 46px;background:linear-gradient(180deg,rgba(227,171,140,.08),rgba(201,138,160,.03));display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-  .editorial .resume .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow)}
-  .editorial .resume h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.06;margin-top:16px}
-  .editorial .resume h2 em{font-style:italic;color:var(--glow)}
-  .editorial .resume .lead{color:#D8CEDE;font-size:16px;line-height:1.6;margin-top:18px;max-width:44ch}
-  .editorial .resume .vlist{display:flex;flex-direction:column;gap:20px}
-  .editorial .resume .vrow{display:flex;gap:14px;align-items:flex-start}
-  .editorial .resume .vrow .n{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);padding-top:4px;min-width:26px}
-  .editorial .resume .vrow b{font-family:'Newsreader',serif;font-weight:600;font-size:18px;display:block;margin-bottom:4px;color:var(--iv-1)}
-  .editorial .resume .vrow p{color:#C2B8CC;font-size:14px;line-height:1.55}
+  /* COMPANY LOGO PILLS — favicon marks on a light "logo-wall" pill, grayscale → colour on hover */
+  .editorial .logos{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .editorial .logo-pill{display:inline-flex;align-items:center;justify-content:center;background:rgba(251,248,241,.9);border-radius:8px;padding:7px 11px;transition:transform .2s,box-shadow .2s}
+  .editorial .logo-pill img{height:18px;width:auto;filter:grayscale(1);opacity:.85;transition:filter .3s,opacity .3s}
+  .editorial .logo-pill:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
+  .editorial .logo-pill:hover img{filter:none;opacity:1}
+  .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
+
+  /* PREMIUM tag on the paid track */
+  .editorial .premium-tag{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px}
 
   .editorial .voices{padding:30px 0 96px}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
@@ -183,6 +181,75 @@
     .editorial .srv,.editorial .vgrid,.editorial .dgrid,.editorial .tracks{grid-template-columns:1fr}
     .editorial .resume .panel{grid-template-columns:1fr;gap:32px;padding:36px 26px}
   }
+  /* ============================================================
+     MOBILE INTERACTIVE LAYER (phones ≤600px)
+     Two reusable patterns over the SAME markup:
+       · tabs      → Skill/Network/Income + Free/Paid
+       · carousels → demand / what-you-get / voices (CSS scroll-snap)
+     Desktop keeps its grids — every control below is hidden until 600px.
+     Breakpoint MUST match the matchMedia() string in the script.
+     ============================================================ */
+  .editorial .tablist{display:none}
+  .editorial .caroctl{display:none}
+
+  @media(max-width:600px){
+    .editorial .wrap{padding:0 20px}
+
+    /* tame the oversized vertical whitespace */
+    .editorial .hero{padding:44px 0 64px}
+    .editorial .manifesto{padding:8px 0 36px}
+    .editorial .stamp{margin-top:46px;gap:26px}
+    .editorial .pillars-wrap{padding-top:8px}
+    .editorial .demand{padding:56px 0 8px}
+    .editorial .catalog{padding:52px 0 8px}
+    .editorial .services{padding:56px 0}
+    .editorial .voices{padding:24px 0 56px}
+    .editorial .belong{padding:8px 0 60px}
+    .editorial .joincta{padding:56px 0 80px}
+    .editorial .sec-head{margin-bottom:26px}
+    .editorial .sec-head h2 br{display:none}
+
+    /* ---- TABS ---- */
+    .editorial .tablist{display:flex;gap:4px;position:relative;background:rgba(0,0,0,.22);border:1px solid var(--dk-3);border-radius:999px;padding:5px;margin-bottom:22px}
+    .editorial .tablist::after{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/var(--tabs,2));border-radius:999px;background:var(--iv-1);transform:translateX(calc(var(--ti,0) * 100%));transition:transform .32s cubic-bezier(.2,.7,.2,1);z-index:0}
+    .editorial .tabbtn{flex:1;position:relative;z-index:1;padding:11px 8px;border-radius:999px;font-weight:700;font-size:13.5px;color:var(--dk-6);transition:color .25s}
+    .editorial .tabbtn[aria-selected="true"]{color:var(--dk-1)}
+
+    .editorial .pillars{display:block;border-top:none}
+    .editorial .pillar{display:none;border:1px solid var(--dk-3);border-bottom:1px solid var(--dk-3);border-radius:10px;padding:30px 24px}
+    .editorial .pillar.is-active{display:block;animation:fadeup .4s ease both}
+
+    .editorial .tracks{display:block;margin-top:0}
+    .editorial .track{display:none;padding:32px 24px}
+    .editorial .track.is-active{display:block;animation:fadeup .4s ease both}
+    /* premium feel for the paid panel */
+    .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.12),rgba(201,138,160,.05));border-color:var(--dk-4);box-shadow:0 0 0 1px rgba(227,171,140,.15),0 24px 60px -34px rgba(227,171,140,.5)}
+
+    /* ---- CAROUSELS (scroll-snap; swipe is native) ---- */
+    .editorial .dgrid,.editorial .srv,.editorial .vgrid{
+      display:flex;gap:14px;background:none;border:none;
+      overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      scrollbar-width:none;margin:0 -20px;padding:4px 20px}
+    .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
+    .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
+      flex:0 0 86%;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
+    .editorial .dcard{padding:30px 26px}
+    .editorial .srv .cell{padding:28px 24px}
+
+    .editorial .caroctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
+    .editorial .caro-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--dk-4);display:grid;place-items:center;color:var(--iv-1);transition:border-color .2s,background .2s,transform .15s}
+    .editorial .caro-arrow:hover{border-color:var(--dk-6)}
+    .editorial .caro-arrow:active{transform:scale(.92)}
+    .editorial .caro-arrow svg{width:18px;height:18px}
+    .editorial .caro-dots{display:flex;gap:7px}
+    .editorial .caro-dots i{width:7px;height:7px;border-radius:50%;background:var(--dk-4);transition:background .25s,transform .25s}
+    .editorial .caro-dots i.on{background:var(--glow);transform:scale(1.4)}
+
+    /* one-time swipe nudge on the first carousel */
+    .editorial .caro.hint .dgrid{animation:swipehint 1.1s ease both}
+    @keyframes swipehint{0%,100%{transform:none}28%{transform:translateX(-22px)}}
+  }
+
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
@@ -199,7 +266,7 @@
     <nav class="nav">
       <div class="logo">SthreePower<sup>®</sup></div>
       <div class="navlinks">
-        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#resume">Digital resume</a><a href="#inside">Community</a><a href="#voices">Voices</a>
+        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Community</a><a href="#voices">Voices</a>
       </div>
       <a href="#join" class="nav-cta">Join the community</a>
     </nav>
@@ -229,62 +296,97 @@
         real skills, a real network, and the income to match.</span></p>
     </section>
 
-    <section class="pillars">
-      <div class="pillar reveal"><div class="pn">The skill</div><h3>Skills with a market</h3><p>Learn the certifications employers actually screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
-      <div class="pillar reveal"><div class="pn">The network</div><h3>A network that opens doors</h3><p>Peers, mentors, and referrals from women already inside the field you want. The connections that turn a certificate into an interview.</p></div>
-      <div class="pillar reveal"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you found, plus resume reviews, interview prep, and real roles shared by members. The shortest honest path to a paycheck of your own.</p></div>
+    <section class="pillars-wrap" data-tabs>
+      <div class="tablist" role="tablist" aria-label="Skill, network, income">
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Skill</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Network</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skill</div><h3>Skills with a market</h3><p>Learn the certifications employers actually screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>A network that opens doors</h3><p>Peers, mentors, and referrals from women already inside the field you want. The connections that turn a certificate into an interview.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you found, plus resume reviews, interview prep, and real roles shared by members. The shortest honest path to a paycheck of your own.</p></div>
+      </div>
     </section>
 
     <section class="demand" id="demand">
       <div class="sec-head reveal">
-        <h2>Built for the jobs<br>that are <em>actually hiring.</em></h2>
+        <h2>Built for the jobs <br>that are <em>actually hiring.</em></h2>
         <p>Every course maps to a role employers are recruiting for in 2026.<br>
         Here's the demand, and a sample of the companies hiring for it.</p>
       </div>
+      <div class="caro" data-caro>
       <div class="dgrid">
 
         <div class="dcard reveal">
-          <div class="dk">01 / CRM &amp; Salesforce</div>
+          <div class="dk">01 / AI &amp; Automation</div>
+          <h3>AI Fundamentals</h3>
+          <div class="stat"><b>AI skills</b> are the fastest-growing requirement in U.S. job posts, now showing up in roles that never mentioned them a year ago.<br>
+          Fluency with AI tools is becoming the new baseline, and an edge for whoever gets there first.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="logos">
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=microsoft.com&amp;sz=128" alt="Microsoft" title="Microsoft" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=google.com&amp;sz=128" alt="Google" title="Google" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=accenture.com&amp;sz=128" alt="Accenture" title="Accenture" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=deloitte.com&amp;sz=128" alt="Deloitte" title="Deloitte" loading="lazy" width="18" height="18"></span>
+          </div>
+          <div class="offer">We teach: <b>AI Basics &amp; ChatGPT</b>, <b>Prompt Engineering</b>, <b>Business Analysis with AI</b>, and <b>Working with AI Agents</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">02 / CRM &amp; Salesforce</div>
           <h3>Salesforce</h3>
           <div class="stat"><b>150,000+</b> companies run on Salesforce, and U.S. Salesforce Administrators earn an average of <b>~$90,000</b> a year.<br>
           One of the clearest on-ramps into a tech career.</div>
           <div class="lab">Hiring for these roles</div>
-          <div class="chips"><span class="chip">Accenture</span><span class="chip">Deloitte</span><span class="chip">Cognizant</span><span class="chip">IBM</span><span class="chip">Salesforce</span></div>
+          <div class="logos">
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=accenture.com&amp;sz=128" alt="Accenture" title="Accenture" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=deloitte.com&amp;sz=128" alt="Deloitte" title="Deloitte" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=cognizant.com&amp;sz=128" alt="Cognizant" title="Cognizant" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=ibm.com&amp;sz=128" alt="IBM" title="IBM" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&amp;sz=128" alt="Salesforce" title="Salesforce" loading="lazy" width="18" height="18"></span>
+          </div>
           <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
         </div>
 
         <div class="dcard reveal">
-          <div class="dk">02 / Data &amp; Analytics</div>
-          <h3>SQL &amp; Data</h3>
-          <div class="stat"><b>430,000+</b> open Data-analysis roles in the U.S., and SQL is the single most-requested technical skill across them.<br>
-          Tableau shows up in thousands more.</div>
+          <div class="dk">03 / Data &amp; Machine Learning</div>
+          <h3>Data and Machine Learning</h3>
+          <div class="stat"><b>430,000+</b> open data roles in the U.S., and SQL is still the single most-requested technical skill across them, while machine learning is the fastest-rising one stacked on top.<br>
+          Data fluency plus ML is the combination employers pay up for.</div>
           <div class="lab">Hiring for these roles</div>
-          <div class="chips"><span class="chip">Amazon</span><span class="chip">Google</span><span class="chip">JPMorgan Chase</span><span class="chip">UnitedHealth Group</span></div>
-          <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Informatica MDM SaaS & CDGC Foundations Certifications</b>, and <b>Databricks Fundamentals</b>.</div>
+          <div class="logos">
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=amazon.com&amp;sz=128" alt="Amazon" title="Amazon" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=google.com&amp;sz=128" alt="Google" title="Google" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=jpmorganchase.com&amp;sz=128" alt="JPMorgan Chase" title="JPMorgan Chase" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=unitedhealthgroup.com&amp;sz=128" alt="UnitedHealth Group" title="UnitedHealth Group" loading="lazy" width="18" height="18"></span>
+          </div>
+          <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Machine Learning Foundations</b>, <b>Model Evals &amp; Quality</b>, <b>Informatica MDM SaaS &amp; CDGC Foundations</b>, and <b>Databricks Fundamentals</b>.</div>
         </div>
 
         <div class="dcard reveal">
-          <div class="dk">03 / Agile delivery</div>
+          <div class="dk">04 / Agile delivery</div>
           <h3>Scrum &amp; Agile</h3>
           <div class="stat"><b>72,000+</b> Scrum Master openings posted in the U.S.<br>
           Agile is how modern teams ship, and certified women are leading them.</div>
           <div class="lab">Hiring for these roles</div>
-          <div class="chips"><span class="chip">Capital One</span><span class="chip">Lockheed Martin</span><span class="chip">Boeing</span><span class="chip">Raytheon</span></div>
+          <div class="logos">
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=capitalone.com&amp;sz=128" alt="Capital One" title="Capital One" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=lockheedmartin.com&amp;sz=128" alt="Lockheed Martin" title="Lockheed Martin" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=boeing.com&amp;sz=128" alt="Boeing" title="Boeing" loading="lazy" width="18" height="18"></span>
+            <span class="logo-pill"><img src="https://www.google.com/s2/favicons?domain=rtx.com&amp;sz=128" alt="Raytheon" title="Raytheon" loading="lazy" width="18" height="18"></span>
+          </div>
           <div class="offer">We teach: <b>Certified Scrum Master</b>, <b>Certified Scrum Product Owner</b>, <b>Kanban</b>, and <b>Scrum Fundamentals</b>.</div>
         </div>
 
-        <div class="dcard reveal">
-          <div class="dk">04 / Business &amp; AI</div>
-          <h3>Business Analysis &amp; AI</h3>
-          <div class="stat">Business analysis is a <b>top hiring category</b> in tech consulting, and AI fluency now appears in the same job posts.<br>
-          Two skills, one fast-growing lane.</div>
-          <div class="lab">Hiring for these roles</div>
-          <div class="chips"><span class="chip">Deloitte</span><span class="chip">EY</span><span class="chip">Accenture</span><span class="chip">Microsoft</span></div>
-          <div class="offer">We teach: <b>Business Analysis with AI</b>, <b>AI Basics &amp; ChatGPT</b>, <b>Jira</b>, and <b>Confluence</b>.</div>
-        </div>
-
       </div>
-      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      </div>
+      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Logos shown are companies publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
     </section>
 
     <section class="catalog" id="courses">
@@ -292,22 +394,13 @@
         <h2>Two ways in.</h2>
         <p>Start from zero for free, or go straight for the credential. Most members do both.</p>
       </div>
+      <div class="tracks-wrap" data-tabs>
+      <div class="tablist" role="tablist" aria-label="Free or paid">
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Free</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Paid</button>
+      </div>
       <div class="tracks">
-        <div class="track cert reveal">
-          <div class="tk">Certification track · instructor-led &amp; paid</div>
-          <h3>The credentials that get you screened in</h3>
-          <p class="sub">Instructor-led, paid paths to the certifications named in real job posts. Join the community, then reach out to ask about pricing and member discounts.</p>
-          <div class="chips">
-            <span class="chip">Salesforce Administrator</span>
-            <span class="chip">Salesforce Business Analyst</span>
-            <span class="chip">Salesforce Platform Foundations</span>
-            <span class="chip">Salesforce Agentforce Specialist</span>
-            <span class="chip">Scrum Master Certified</span>
-            <span class="chip">Scrum Product Owner Certified</span>
-            <span class="chip">Tableau Certified Desktop Specialist</span>
-          </div>
-        </div>
-        <div class="track reveal">
+        <div class="track reveal is-active" data-panel role="tabpanel">
           <div class="tk">Free foundation library · self-paced &amp; free</div>
           <h3>Start where you are, at no cost</h3>
           <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
@@ -336,6 +429,21 @@
             <span class="chip">Basic Website Building</span>
           </div>
         </div>
+        <div class="track cert reveal" data-panel role="tabpanel">
+          <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
+          <h3>The credentials that get you screened in</h3>
+          <p class="sub">Instructor-led, paid paths to the certifications named in real job posts. Join the community, then reach out to ask about pricing and member discounts.</p>
+          <div class="chips">
+            <span class="chip">Salesforce Administrator</span>
+            <span class="chip">Salesforce Business Analyst</span>
+            <span class="chip">Salesforce Platform Foundations</span>
+            <span class="chip">Salesforce Agentforce Specialist</span>
+            <span class="chip">Scrum Master Certified</span>
+            <span class="chip">Scrum Product Owner Certified</span>
+            <span class="chip">Tableau Certified Desktop Specialist</span>
+          </div>
+        </div>
+      </div>
       </div>
       <p class="srcnote reveal">Price comparison benchmarked against 2026 third-party training costs for SQL, AI, HIPAA, and Databricks courses (Salesforce/Scrum.org, vendor academies, and independent providers). Ranges vary by provider; free library access is included with community membership.</p>
     </section>
@@ -343,8 +451,7 @@
     <section class="services" id="inside">
       <div class="sec-head reveal">
         <h2>What you get inside.</h2>
-        <p>The course is the start.<br>
-        The community is what gets you hired.</p>
+        <p>The certificate is the receipt. Inside, you build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that actually get you hired, the things a course alone never gives you.</p>
       </div>
       <!--
         TODO (Nalini, owner): This section is our real USP and needs your input to describe it accurately.
@@ -353,51 +460,44 @@
           - Volunteering: what kind, run by whom, how members opt in
         (The digital resume now has its own dedicated section below — see #resume.)
       -->
+      <div class="caro" data-caro>
       <div class="srv">
-        <div class="cell reveal"><div class="ci">01 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
-        <div class="cell reveal"><div class="ci">02 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
-        <div class="cell reveal"><div class="ci">03 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
-        <div class="cell reveal"><div class="ci">04 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
-        <div class="cell reveal"><div class="ci">05 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. The hidden job market, opened up.</p></div>
-        <div class="cell reveal"><div class="ci">06 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and give back while you grow. <!-- TODO: describe the program --></p></div>
+        <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can actually find, not a flat PDF that dies in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">02 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
+        <div class="cell reveal" data-panel><div class="ci">05 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">06 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. The hidden job market, opened up.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">07 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and give back while you grow. <!-- TODO: describe the program --></p></div>
+      </div>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
       </div>
       <p class="srvnote reveal">Plus our flagship initiatives, <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p>
     </section>
 
-    <!--
-      DIGITAL RESUME spotlight. The value points below are generic and true of any
-      good digital resume, so they're safe to publish now. The SthreePower-specific
-      mechanics (platform, who builds it, hosting, what makes ours different) are
-      still a TODO for Nalini — fill those in where flagged.
-    -->
-    <section class="resume" id="resume">
-      <div class="panel reveal">
-        <div class="rcopy">
-          <div class="eyebrow">Every member builds one</div>
-          <h2>A certificate proves you studied. A <em>digital resume</em> proves you can do the work.</h2>
-          <p class="lead">Most job seekers send the same flat PDF into a void. Your SthreePower digital resume is a living profile that puts your certifications, capstone, and real project work in one link recruiters can actually find.</p>
-          <!-- TODO (Nalini): one line on what specifically makes our digital resume ours -->
-        </div>
-        <div class="vlist">
-          <div class="vrow"><div class="n">01</div><div><b>Found, not buried</b><p>Built to be discoverable by recruiters searching for your skills, instead of sitting unopened in an inbox.</p></div></div>
-          <div class="vrow"><div class="n">02</div><div><b>One link, always current</b><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div></div>
-          <div class="vrow"><div class="n">03</div><div><b>Proof, not just claims</b><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div></div>
-        </div>
-      </div>
-    </section>
-
     <section class="voices" id="voices">
       <div class="sec-head reveal"><h2>Voices of impact</h2><p>What changes when the door finally opens.</p></div>
+      <div class="caro" data-caro>
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Interview</b></div><blockquote>“The resume review was brutal in the best way. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Referral</b></div><blockquote>“One intro from this community did more than a year of cold applications.”</blockquote><div class="who"><div class="av">D</div><div><b>Daniela M.</b><span>Career returner</span></div></div></div>
       </div>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      </div>
     </section>
 
     <section class="belong reveal">
-      <p>Centered on women.<br>
-        <span>Open to everyone the old rooms kept out.</span></p>
+      <p>Everyone carries something worth nurturing.<br>
+        <span>One human connection at a time, we help it grow.</span></p>
     </section>
   </div>
 
@@ -408,7 +508,7 @@
       <h2>The next version of your career <em>starts<br>
       in the group.</em></h2>
       <p>Joining is free and takes a minute.<br>
-        Bring your questions. The community brings<br>
+        Bring your questions. The community brings
         the skills, the network, and the roles.</p>
       <!--
         Consent is captured here, then persisted server-side in google-login.php before
@@ -467,6 +567,59 @@
         el.classList.add('shown');
       }
     });
+  }
+
+  // ---- Mobile tabs: one component, two uses (Skill/Network/Income + Free/Paid).
+  // Panels stay in a desktop grid; here we just toggle which one shows and slide
+  // the active-pill indicator. Above 600px the tablist is display:none, so these
+  // clicks can't happen and every panel renders in its grid.
+  document.querySelectorAll('[data-tabs]').forEach(function(group){
+    var list = group.querySelector('.tablist');
+    if (!list) return;
+    var btns = Array.prototype.slice.call(list.querySelectorAll('.tabbtn'));
+    var panels = Array.prototype.slice.call(group.querySelectorAll('[data-panel]'));
+    list.style.setProperty('--tabs', btns.length);
+    btns.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        btns.forEach(function(b){ b.setAttribute('aria-selected','false'); });
+        btn.setAttribute('aria-selected','true');
+        list.style.setProperty('--ti', i);
+        panels.forEach(function(p, j){ p.classList.toggle('is-active', j === i); });
+      });
+    });
+  });
+
+  // ---- Mobile carousels: arrows call scrollBy; native scroll-snap handles swipe;
+  // dots reflect the snapped card. Inert on desktop (controls are display:none).
+  document.querySelectorAll('[data-caro]').forEach(function(caro){
+    var track = caro.querySelector('.dgrid, .srv, .vgrid');
+    if (!track) return;
+    var prev = caro.querySelector('[data-prev]');
+    var next = caro.querySelector('[data-next]');
+    var dots = Array.prototype.slice.call(caro.querySelectorAll('.caro-dots i'));
+    var cards = track.children;
+    function step(){
+      return cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : track.clientWidth;
+    }
+    if (prev) prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+    if (next) next.addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
+    track.addEventListener('scroll', function(){
+      var i = Math.round(track.scrollLeft / step());
+      dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
+    }, {passive:true});
+  });
+
+  // ---- One-time swipe hint: nudge the first carousel so it reads as swipeable.
+  // Phones only, and only when motion is allowed.
+  if (window.matchMedia('(max-width:600px)').matches &&
+      !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    var firstCaro = document.querySelector('[data-caro]');
+    if (firstCaro) {
+      setTimeout(function(){
+        firstCaro.classList.add('hint');
+        setTimeout(function(){ firstCaro.classList.remove('hint'); }, 1200);
+      }, 900);
+    }
   }
 
   // Gate both join buttons (Google + email) on the marketing-consent checkbox.
