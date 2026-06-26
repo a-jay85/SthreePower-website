@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SthreePower — Build the skills. Take the seat.</title>
-<meta name="description" content="SthreePower is a global community where women build real skills, grow a professional network, and earn their way to financial independence. Free to join." />
+<title>SthreePower · Build the skills employers hire for.</title>
+<meta name="description" content="SthreePower is a global community where women build the certifications employers are hiring for right now (Salesforce, Scrum, SQL, Data), grow a real network, and build toward financial independence. Free to join." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -52,46 +52,178 @@
   .editorial .eyebrow{font-size:12.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--dk-6);margin-bottom:30px;font-weight:600}
   .editorial h1{font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,8.2vw,108px);line-height:.96;letter-spacing:-.01em;margin:0 auto;max-width:13ch}
   .editorial h1 em{font-style:italic;color:var(--glow)}
-  .editorial .lede{max-width:50ch;margin:34px auto 0;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#D8CEDE}
+  .editorial .lede{max-width:52ch;margin:34px auto 0;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#D8CEDE}
   .editorial .hero-cta{display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap}
   .editorial .btn-pri{background:var(--iv-1);color:var(--dk-1);padding:16px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s}
   .editorial .btn-pri:hover{transform:translateY(-2px);box-shadow:0 14px 40px -12px rgba(227,171,140,.5)}
   .editorial .btn-sec{padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;color:var(--iv-1);border:1px solid var(--dk-4);transition:border-color .2s}
   .editorial .btn-sec:hover{border-color:var(--dk-6)}
 
+  /* Google sign-in button + consent join form */
+  .editorial .btn-google{display:inline-flex;align-items:center;gap:12px;padding:14px 26px}
+  .editorial .btn-google svg{width:20px;height:20px;flex:none}
+  .editorial .btn-google:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+  .editorial .join-form{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:460px;margin:0 auto}
+  .editorial .consent{display:flex;gap:11px;align-items:flex-start;text-align:left;font-size:13.5px;line-height:1.5;color:#C9BFD0}
+  .editorial .consent input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--glow);cursor:pointer}
+  .editorial .consent a{color:var(--glow);text-decoration:underline}
+  .editorial .join-or{display:flex;align-items:center;gap:14px;width:100%;color:var(--dk-6);font-size:12.5px;letter-spacing:.04em}
+  .editorial .join-or::before,.editorial .join-or::after{content:"";flex:1;height:1px;background:var(--dk-3)}
+  .editorial .email-row{display:flex;gap:10px;width:100%;flex-wrap:wrap}
+  .editorial .email-field{flex:1;min-width:0;padding:15px 18px;border-radius:999px;border:1px solid var(--dk-4);background:rgba(0,0,0,.16);color:var(--iv-1);font-size:15px}
+  .editorial .email-field::placeholder{color:var(--dk-5)}
+  .editorial .email-field:focus{outline:none;border-color:var(--dk-6)}
+  .editorial .email-btn{padding:15px 26px;white-space:nowrap}
+  .editorial .email-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+  /* Honeypot — visually gone but still in the DOM for bots to fill. */
+  .editorial .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .editorial .joined-banner{max-width:560px;margin:0 auto 30px;padding:16px 22px;border-radius:10px;font-size:14.5px;line-height:1.5}
+  .editorial .joined-banner.ok{background:rgba(227,171,140,.12);border:1px solid var(--dk-4);color:var(--iv-1)}
+  .editorial .joined-banner.err{background:rgba(201,138,160,.14);border:1px solid var(--glow-2);color:var(--iv-1)}
+
   .editorial .stamp{position:relative;z-index:2;margin-top:78px;display:flex;justify-content:center;gap:46px;flex-wrap:wrap;color:var(--dk-6);font-size:13px;letter-spacing:.04em}
   .editorial .stamp b{display:block;font-family:'Newsreader',serif;font-size:30px;color:var(--iv-1);font-weight:500;letter-spacing:0}
 
-  .editorial .manifesto{padding:30px 0 110px;text-align:center}
-  .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,4vw,48px);line-height:1.28;max-width:20ch;margin:0 auto;color:var(--iv-1)}
+  .editorial .manifesto{padding:18px 0 64px;text-align:center}
+  .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
   .editorial .manifesto p span{color:var(--dk-5)}
 
   .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--dk-3)}
   .editorial .pillar{padding:48px 30px 56px;border-right:1px solid var(--dk-3)}
   .editorial .pillar:last-child{border-right:none}
-  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.1em}
+  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase}
   .editorial .pillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px}
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
-  .editorial .services{padding:96px 0}
+  /* DEMAND — built for jobs that are hiring */
+  .editorial .demand{padding:96px 0 30px}
   .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:46px;gap:24px;flex-wrap:wrap}
-  .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1}
-  .editorial .sec-head p{color:var(--dk-6);font-size:15px;max-width:34ch}
+  .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
+  .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
+  .editorial .sec-head p{color:var(--dk-6);font-size:15px;max-width:38ch;line-height:1.6}
+  .editorial .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
+  .editorial .dcard{background:var(--dk-1);padding:40px 36px;display:flex;flex-direction:column}
+  .editorial .dcard .dk{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);letter-spacing:.08em}
+  .editorial .dcard h3{font-family:'Newsreader',serif;font-weight:500;font-size:27px;margin:14px 0 16px}
+  .editorial .dcard .stat{font-size:16px;line-height:1.55;color:#D8CEDE;margin-bottom:22px}
+  .editorial .dcard .stat b{color:var(--iv-1);font-weight:700}
+  .editorial .dcard .lab{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:700;margin-bottom:12px}
+  .editorial .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .editorial .chip{font-size:13px;font-weight:600;color:#E7DEEF;border:1px solid var(--dk-4);border-radius:999px;padding:6px 13px;white-space:nowrap}
+  .editorial .dcard .offer{margin-top:22px;padding-top:22px;border-top:1px solid var(--dk-3);font-size:13.5px;line-height:1.55;color:#B7AAC6}
+  .editorial .dcard .offer b{color:var(--iv-2);font-weight:600}
+  .editorial .srcnote{font-size:12px;color:var(--dk-5);line-height:1.6;margin-top:22px;max-width:80ch}
+
+  /* CATALOG — two ways in */
+  .editorial .catalog{padding:80px 0 30px}
+  .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}
+  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:38px 34px}
+  .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03))}
+  .editorial .track .tk{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.08em}
+  .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:12px 0 10px}
+  .editorial .track .sub{font-size:14.5px;line-height:1.6;color:#C2B8CC;margin-bottom:24px}
+
+  .editorial .services{padding:96px 0}
   .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .srv .cell{background:var(--dk-1);padding:38px 34px;transition:background .3s}
   .editorial .srv .cell:hover{background:var(--dk-2)}
   .editorial .srv .ci{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5)}
   .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:14px 0 10px}
+  .editorial .srv h4 .soon{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);vertical-align:middle;margin-left:8px;border:1px solid var(--dk-4);border-radius:999px;padding:2px 7px}
   .editorial .srv p{color:#C2B8CC;font-size:14.5px;line-height:1.6}
+  .editorial .srvnote{font-size:13.5px;line-height:1.6;color:#B7AAC6;margin-top:22px}
+  .editorial .srvnote b{color:var(--iv-2);font-weight:600}
 
-  .editorial .voices{padding:30px 0 110px}
-  .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px}
-  .editorial .vcard{border:1px solid var(--dk-3);border-radius:4px;padding:32px}
-  .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:19px;line-height:1.45;color:var(--iv-1)}
-  .editorial .vcard .who{display:flex;align-items:center;gap:12px;margin-top:24px}
-  .editorial .vcard .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--glow),var(--glow-2));display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--dk-1)}
-  .editorial .vcard .who div b{display:block;font-size:14px}
-  .editorial .vcard .who div span{font-size:12.5px;color:var(--dk-6)}
+  /* FREE VALUE callout inside the free-library track */
+  .editorial .track .freeval{display:flex;align-items:center;gap:16px;margin:0 0 22px;padding:16px 18px;border:1px solid var(--dk-4);border-radius:8px;background:rgba(0,0,0,.14)}
+  .editorial .track .freeval .fv-big{font-family:'Newsreader',serif;font-size:40px;font-weight:600;color:var(--glow);line-height:1}
+  .editorial .track .freeval .fv-text{font-size:13px;line-height:1.5;color:#C9BFD0}
+  .editorial .track .freeval .fv-text b{color:var(--iv-1);font-weight:700}
+
+  /* COMPANY WORDMARKS — official brand wordmarks (local SVGs) on individual
+     "plates". Default: flat grey on a subtle dark plate (reads on the dark
+     card). Hover: the plate flips to ivory + full brand colour, so dark/navy
+     marks (UnitedHealth, JPMorgan, IBM) stay legible — no single static
+     background can satisfy both the grey and the full-colour state. */
+  .editorial .logos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:2px}
+  .editorial .logo-plate{display:grid;place-items:center;min-height:58px;padding:10px 14px;
+    border:1px solid var(--dk-3);border-radius:9px;background:rgba(255,255,255,.022);
+    transition:background .25s,border-color .25s}
+  .editorial .logo-plate:hover{background:var(--iv-1);border-color:var(--iv-2)}
+  .editorial img.wordmark{width:auto;max-width:100%;filter:brightness(0) invert(.66);opacity:.9;transition:filter .25s,opacity .25s}
+  .editorial .logo-plate:hover img.wordmark{filter:none;opacity:1}
+  /* Per-logo heights normalise every wordmark to a uniform ink cap-height
+     (each SVG carries different internal padding, so equal box height ≠ equal
+     weight); bumped up ~25% over the old press-strip for recognisability. */
+  .editorial img.wm-microsoft{height:46px}
+  .editorial img.wm-servicenow{height:45px}
+  .editorial img.wm-boeing{height:41px}
+  .editorial img.wm-accenture{height:40px}
+  .editorial img.wm-amazon{height:35px}
+  .editorial img.wm-unitedhealth{height:41px}
+  .editorial img.wm-ibm{height:32px}
+  .editorial img.wm-google{height:30px}
+  .editorial img.wm-cisco{height:22px}
+  .editorial img.wm-deloitte{height:20px}
+  .editorial img.wm-capitalone{height:18px}
+  .editorial img.wm-cognizant{height:18px}
+  .editorial img.wm-jpmorgan{height:18px}
+
+  /* Salesforce wordmark sits beside the card title instead of in the plate grid:
+     its cloud mark is recognisable and the heading supplies the word, and its
+     white "salesforce" text would vanish on the ivory hover plate. */
+  .editorial .dcard h3.brand-h3{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+  .editorial img.brandmark{height:34px;width:auto;filter:brightness(0) invert(.66);opacity:.85;transition:filter .25s,opacity .25s}
+  .editorial h3.brand-h3:hover img.brandmark{filter:none;opacity:1}
+
+  /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
+  .editorial .freelist{margin-top:2px}
+  .editorial .fl-legend{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-5);margin-bottom:4px}
+  .editorial .fl-row{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--dk-3)}
+  .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:19px;line-height:1.2;color:var(--iv-1)}
+  .editorial .fl-row.hot .fl-name{color:var(--glow)}
+  /* The long tail of solid-but-secondary picks sits two-up to save vertical
+     space; the three hot picks above stay full-width to hold the hierarchy. */
+  .editorial .fl-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+  .editorial .fl-row.sm{padding:8px 0}
+  .editorial .fl-row.sm .fl-name{font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#D8CEDE}
+  .editorial .fl-more{margin-top:14px;font-size:13px;line-height:1.6;color:#9C8FAC}
+  .editorial .fl-more b{color:#C2B8CC;font-weight:700}
+  .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
+
+  /* PREMIUM tag on the paid track */
+  .editorial .premium-tag{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px}
+
+  /* PREMIUM CERT LIST — replaces the flat pills on the paid track. Grouped by
+     credential family, serif names, gold diamond markers + hairline gold rules
+     so it reads a clear notch above the free library's list. */
+  .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:26px}
+  .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:6px;display:flex;align-items:center;gap:12px}
+  .editorial .cf-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
+  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0 10px 24px;border-bottom:1px solid rgba(227,171,140,.13);position:relative}
+  .editorial .cert-fam .cf-item:last-child{border-bottom:none}
+  .editorial .cf-item::before{content:"";position:absolute;left:3px;top:0;bottom:0;margin:auto;width:7px;height:7px;transform:rotate(45deg);background:linear-gradient(135deg,var(--glow),var(--glow-2))}
+
+  /* Closing "flagship initiatives" card fills the odd 8th services slot; it
+     uses the same surface colour as the other cells (only the glow names set
+     it apart). */
+  .editorial .srv .cell.flagship p b{color:var(--glow);font-weight:700}
+
+  /* End-of-section CTA — a hero-style "Join free" button that scrolls to the
+     #join form, its label tuned to each section's pitch. */
+  .editorial .sec-cta{display:flex;justify-content:center;margin-top:54px}
+
+  .editorial .voices{padding:30px 0 96px}
+  .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
+  .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+  .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
+  .editorial .vcard .tix b{color:var(--glow);font-weight:700}
+  .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
+  .editorial .vcard .who{display:flex;align-items:center;gap:11px;margin-top:18px}
+  .editorial .vcard .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--glow),var(--glow-2));display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--dk-1)}
+  .editorial .vcard .who div b{display:block;font-size:13.5px}
+  .editorial .vcard .who div span{font-size:12px;color:var(--dk-6)}
 
   .editorial .belong{padding:18px 0 104px;text-align:center}
   .editorial .belong p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.25;max-width:22ch;margin:0 auto}
@@ -108,8 +240,87 @@
     .editorial .navlinks{display:none}
     .editorial .pillars{grid-template-columns:1fr}
     .editorial .pillar{border-right:none;border-bottom:1px solid var(--dk-3)}
-    .editorial .srv,.editorial .vgrid{grid-template-columns:1fr}
+    .editorial .srv,.editorial .vgrid,.editorial .dgrid,.editorial .tracks{grid-template-columns:1fr}
+    .editorial .resume .panel{grid-template-columns:1fr;gap:32px;padding:36px 26px}
   }
+  /* ============================================================
+     MOBILE INTERACTIVE LAYER (phones ≤600px)
+     Two reusable patterns over the SAME markup:
+       · tabs      → Skill/Network/Income + Free/Paid
+       · carousels → demand / what-you-get / voices (CSS scroll-snap)
+     Desktop keeps its grids — every control below is hidden until 600px.
+     Breakpoint MUST match the matchMedia() string in the script.
+     ============================================================ */
+  .editorial .tablist{display:none}
+  .editorial .caroctl{display:none}
+
+  @media(max-width:600px){
+    .editorial .wrap{padding:0 20px}
+
+    /* tame the oversized vertical whitespace */
+    .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
+    .editorial .horizon{bottom:28px}                   /* equalise space above/below the divider */
+    .editorial .manifesto{padding:8px 0 36px}
+    .editorial .stamp{margin-top:46px;gap:26px}
+    .editorial .pillars-wrap{padding-top:8px}
+    .editorial .demand{padding:56px 0 8px}
+    .editorial .catalog{padding:52px 0 8px}
+    .editorial .services{padding:56px 0}
+    .editorial .voices{padding:24px 0 56px}
+    .editorial .belong{padding:8px 0 60px}
+    .editorial .joincta{padding:56px 0 80px}
+    .editorial .sec-cta{margin-top:36px}
+    .editorial .sec-head{margin-bottom:26px}
+    .editorial .sec-head h2 br{display:none}
+
+    /* ---- TABS ---- */
+    .editorial .tablist{display:flex;gap:4px;position:relative;background:rgba(0,0,0,.22);border:1px solid var(--dk-3);border-radius:999px;padding:5px;margin-bottom:22px}
+    .editorial .tablist::after{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/var(--tabs,2));border-radius:999px;background:var(--iv-1);transform:translateX(calc(var(--ti,0) * 100%));transition:transform .32s cubic-bezier(.2,.7,.2,1);z-index:0}
+    .editorial .tabbtn{flex:1;position:relative;z-index:1;padding:11px 8px;border-radius:999px;font-weight:700;font-size:13.5px;color:var(--dk-6);transition:color .25s}
+    .editorial .tabbtn[aria-selected="true"]{color:var(--dk-1)}
+
+    /* Stack all three panels in one grid cell so the box is always the tallest
+       panel's height — switching tabs never shifts the section below. */
+    .editorial .pillars{display:grid;border-top:none}
+    .editorial .pillar{grid-area:1 / 1;border:1px solid var(--dk-3);border-radius:10px;padding:30px 24px;visibility:hidden}
+    .editorial .pillar.is-active{visibility:visible;animation:fadeup .4s ease both}
+
+    .editorial .tracks{display:block;margin-top:0}
+    .editorial .track{display:none;padding:32px 24px}
+    .editorial .track.is-active{display:block;animation:fadeup .4s ease both}
+    /* premium feel for the paid panel */
+    .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.12),rgba(201,138,160,.05));border-color:var(--dk-4);box-shadow:0 0 0 1px rgba(227,171,140,.15),0 24px 60px -34px rgba(227,171,140,.5)}
+
+    /* ---- CAROUSELS (scroll-snap; swipe is native) ---- */
+    .editorial .dgrid,.editorial .srv,.editorial .vgrid{
+      display:flex;gap:14px;background:none;border:none;
+      overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      scrollbar-width:none;margin:0 -20px;padding:4px 20px}
+    .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
+    .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
+      flex:0 0 86%;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
+    .editorial .dcard{padding:30px 26px}
+    .editorial .srv .cell{padding:28px 24px}
+
+    /* Phones are too narrow to fit a wordmark in a half-width plate, so stack
+       them one-up where each mark gets the full card width and stays legible. */
+    .editorial .logos{grid-template-columns:1fr;gap:7px}
+    .editorial .logo-plate{min-height:50px}
+
+    .editorial .caroctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
+    .editorial .caro-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--dk-4);display:grid;place-items:center;color:var(--iv-1);transition:border-color .2s,background .2s,transform .15s}
+    .editorial .caro-arrow:hover{border-color:var(--dk-6)}
+    .editorial .caro-arrow:active{transform:scale(.92)}
+    .editorial .caro-arrow svg{width:18px;height:18px}
+    .editorial .caro-dots{display:flex;gap:7px}
+    .editorial .caro-dots i{width:7px;height:7px;border-radius:50%;background:var(--dk-4);transition:background .25s,transform .25s}
+    .editorial .caro-dots i.on{background:var(--glow);transform:scale(1.4)}
+
+    /* one-time swipe nudge on the first carousel */
+    .editorial .caro.hint .dgrid{animation:swipehint 1.1s ease both}
+    @keyframes swipehint{0%,100%{transform:none}28%{transform:translateX(-22px)}}
+  }
+
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
@@ -126,9 +337,9 @@
     <nav class="nav">
       <div class="logo">SthreePower<sup>®</sup></div>
       <div class="navlinks">
-        <a href="#">Community</a><a href="#">Training</a><a href="#">Network</a><a href="#">Events</a><a href="#">Voices</a>
+        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Community</a><a href="#voices">Voices</a>
       </div>
-      <a href="#" class="nav-cta">Join the community</a>
+      <a href="#join" class="nav-cta">Join the community</a>
     </nav>
   </div>
 
@@ -137,63 +348,271 @@
     <div class="horizon" aria-hidden="true"></div>
     <div class="wrap inner">
       <div class="eyebrow reveal">A global community for women</div>
-      <h1 class="reveal">Build the skills.<br>Take the <em>seat.</em></h1>
-      <p class="lede reveal">SthreePower is where women build real skills, grow a real network, and earn their way to financial stability. No gatekeeping, no fluff — just the people and the practice to move you forward.</p>
+      <h1 class="reveal">Build the skills employers <em>are hiring for.</em></h1>
+      <p class="lede reveal">Courses the U.S. job market is actively recruiting for: Salesforce, Scrum, SQL, Data. Learn them alongside a community of women, grow a real network, and build toward financial independence.</p>
       <div class="hero-cta reveal">
-        <a href="#" class="btn-pri">Join free on WhatsApp</a>
-        <a href="#" class="btn-sec">See how it works</a>
-      </div>
-      <div class="stamp reveal">
-        <div><b>Weekly</b>live workshops</div>
-        <div><b>Global</b>member network</div>
-        <div><b>Free</b>to join</div>
+        <!-- Primary CTA scrolls to the #join form. Plain CTA (no Google logo): clicking this
+             doesn't sign you in, it scrolls to the form. The official Google-branded button
+             lives at the form itself (#join). -->
+        <a href="#join" class="btn-pri">Join free</a>
+        <a href="#demand" class="btn-sec">See what's in demand</a>
       </div>
     </div>
   </section>
 
   <div class="wrap">
     <section class="manifesto reveal">
-      <p>Ambition was never the part in short supply — access was. <span>SthreePower closes the gap: skills, network, and the income to match.</span></p>
+      <p>Ambition was never the problem. <em>Access was.</em></p>
+      <p><span>SthreePower closes the gap:<br>
+        real skills, a real network, and the income to match.</span></p>
     </section>
 
-    <section class="pillars">
-      <div class="pillar reveal"><div class="pn">/ 01</div><h3>Skill-building</h3><p>Hands-on workshops in the tools and methods employers hire for — from project management to the certifications that get noticed.</p></div>
-      <div class="pillar reveal"><div class="pn">/ 02</div><h3>Professional network</h3><p>Peers, mentors, and referrals from women already inside the field you're aiming for — the connections that turn effort into an opening.</p></div>
-      <div class="pillar reveal"><div class="pn">/ 03</div><h3>Financial stability</h3><p>Resume reviews, interview prep, and real roles shared by members — the shortest honest path to your own income.</p></div>
+    <section class="pillars-wrap" data-tabs>
+      <div class="tablist" role="tablist" aria-label="Skill, network, income">
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Skills</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Network</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skill</div><h3>Learn in-demand skills</h3><p>Earn the certifications employers screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Peers, mentors, and referrals from women inside the field you want. The connections that turn a certificate into an interview.</p></div>
+        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a paycheck of your own.</p></div>
+      </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
     </section>
 
-    <section class="services">
+    <section class="demand" id="demand">
       <div class="sec-head reveal">
-        <h2>What you get<br>inside.</h2>
-        <p>Five ways the community shows up for women at the start of something new.</p>
+        <h2>Built for the jobs <br>that are <em>actually hiring.</em></h2>
       </div>
-      <div class="srv">
-        <div class="cell reveal"><div class="ci">01 / Services</div><h4>Resume Review</h4><p>Direct, honest feedback on your resume from women already working in the field you're aiming for.</p></div>
-        <div class="cell reveal"><div class="ci">02 / Services</div><h4>Training</h4><p>Live sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and business presentations.</p></div>
-        <div class="cell reveal"><div class="ci">03 / Services</div><h4>Recruitments</h4><p>Openings and referrals shared by members, for members — the hidden job market, opened up.</p></div>
-        <div class="cell reveal"><div class="ci">04 / Initiatives</div><h4>Vinodha &amp; Banumathi</h4><p>Flagship initiatives created to support women through specific transitions. Programs announced as they launch.</p></div>
+      <div class="caro" data-caro>
+      <div class="dgrid">
+
+        <div class="dcard reveal">
+          <div class="dk">01 / AI &amp; Automation</div>
+          <h3>AI Fundamentals</h3>
+          <div class="stat"><b>AI skills</b> are the fastest-growing requirement in U.S. job posts, now showing up in roles that never mentioned them a year ago.<br>
+          Fluency with AI tools is becoming the new baseline, and an edge for whoever gets there first.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="logos">
+            <span class="logo-plate"><img class="wordmark wm-microsoft" src="assets/logos/microsoft.svg" alt="Microsoft" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" loading="lazy"></span>
+          </div>
+          <div class="offer">We teach: <b>AI Basics &amp; ChatGPT</b>, <b>Prompt Engineering</b>, <b>Business Analysis with AI</b>, and <b>Working with AI Agents</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">02 / CRM &amp; Salesforce</div>
+          <h3 class="brand-h3">Salesforce <img class="brandmark" src="assets/logos/salesforce.svg" alt="Salesforce" loading="lazy"></h3>
+          <div class="stat"><b>150,000+</b> companies run on Salesforce, and U.S. Salesforce Administrators earn an average of <b>~$90,000</b> a year.<br>
+          One of the clearest on-ramps into a tech career.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="logos">
+            <span class="logo-plate"><img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-cognizant" src="assets/logos/cognizant.svg" alt="Cognizant" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-ibm" src="assets/logos/ibm.svg" alt="IBM" loading="lazy"></span>
+          </div>
+          <div class="offer">We teach: <b>Salesforce Administrator</b>, <b>Salesforce Business Analyst</b>, <b>Salesforce Platform Foundations</b>, and <b>Agentforce Specialist</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">03 / Data &amp; Machine Learning</div>
+          <h3>Data and Machine Learning</h3>
+          <div class="stat"><b>430,000+</b> open data roles in the U.S., and SQL is still the single most-requested technical skill across them, while machine learning is the fastest-rising one stacked on top.<br>
+          Data fluency plus ML is the combination employers pay up for.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="logos">
+            <span class="logo-plate"><img class="wordmark wm-amazon" src="assets/logos/amazon.svg" alt="Amazon" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-google" src="assets/logos/google.svg" alt="Google" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-jpmorgan" src="assets/logos/jpmorgan.svg" alt="JPMorgan Chase" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-unitedhealth" src="assets/logos/unitedhealth.svg" alt="UnitedHealth Group" loading="lazy"></span>
+          </div>
+          <div class="offer">We teach: <b>SQL Basics</b>, <b>Tableau Desktop Specialist</b>, <b>Machine Learning Foundations</b>, <b>Model Evals &amp; Quality</b>, <b>Informatica MDM SaaS &amp; CDGC Foundations</b>, and <b>Databricks Fundamentals</b>.</div>
+        </div>
+
+        <div class="dcard reveal">
+          <div class="dk">04 / Agile delivery</div>
+          <h3>Scrum &amp; Agile</h3>
+          <div class="stat"><b>72,000+</b> Scrum Master openings posted in the U.S.<br>
+          Agile is how modern teams ship, and certified women are leading them.</div>
+          <div class="lab">Hiring for these roles</div>
+          <div class="logos">
+            <span class="logo-plate"><img class="wordmark wm-capitalone" src="assets/logos/capitalone.svg" alt="Capital One" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-cisco" src="assets/logos/cisco.svg" alt="Cisco" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-boeing" src="assets/logos/boeing.svg" alt="Boeing" loading="lazy"></span>
+            <span class="logo-plate"><img class="wordmark wm-servicenow" src="assets/logos/servicenow.svg" alt="ServiceNow" loading="lazy"></span>
+          </div>
+          <div class="offer">We teach: <b>Certified Scrum Master</b>, <b>Certified Scrum Product Owner</b>, <b>Kanban</b>, and <b>Scrum Fundamentals</b>.</div>
+        </div>
+
       </div>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      </div>
+      <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your training</a></div>
     </section>
 
-    <section class="voices">
-      <div class="sec-head reveal"><h2>Voices of impact</h2><p>What changes when the door finally opens.</p></div>
-      <div class="vgrid">
-        <div class="vcard reveal"><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
-        <div class="vcard reveal"><blockquote>“The resume review was brutal in the best way. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
-        <div class="vcard reveal"><blockquote>“One intro from this community did more than a year of cold applications.”</blockquote><div class="who"><div class="av">D</div><div><b>Daniela M.</b><span>Career returner</span></div></div></div>
+    <section class="catalog" id="courses">
+      <div class="sec-head reveal">
+        <h2>Two ways in.</h2>
       </div>
+      <div class="tracks-wrap" data-tabs>
+      <div class="tablist" role="tablist" aria-label="Free or paid">
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Free</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Paid</button>
+      </div>
+      <div class="tracks">
+        <div class="track reveal is-active" data-panel role="tabpanel">
+          <div class="tk">Free foundation library · self-paced &amp; free</div>
+          <h3>Start where you are, at no cost</h3>
+          <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
+          <div class="freeval">
+            <div class="fv-big">$0</div>
+            <div class="fv-text">Courses like these run <b>$200–$2,000</b> elsewhere.<br>Here, every one is free.</div>
+          </div>
+          <div class="freelist">
+            <div class="fl-legend">Ranked by current U.S. hiring demand</div>
+            <div class="fl-row hot"><span class="fl-name">SQL Basics</span></div>
+            <div class="fl-row hot"><span class="fl-name">AI Basics &amp; ChatGPT</span></div>
+            <div class="fl-row hot"><span class="fl-name">Databricks Fundamentals</span></div>
+            <div class="fl-grid">
+              <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
+              <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
+              <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
+              <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
+              <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
+            </div>
+            <p class="fl-more"><b>Also free with membership:</b> Scrum Fundamentals, Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Basic Website Building.</p>
+          </div>
+        </div>
+        <div class="track cert reveal" data-panel role="tabpanel">
+          <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
+          <h3>The credentials that get you screened in</h3>
+          <p class="sub">Instructor-led, paid paths to the certifications named in real job posts. Join the community, then reach out to ask about pricing and member discounts.</p>
+          <div class="certlist">
+            <div class="cert-fam">
+              <div class="cf-head">Salesforce</div>
+              <div class="cf-item">Administrator</div>
+              <div class="cf-item">Business Analyst</div>
+              <div class="cf-item">Platform Foundations</div>
+              <div class="cf-item">Agentforce Specialist</div>
+            </div>
+            <div class="cert-fam">
+              <div class="cf-head">Scrum</div>
+              <div class="cf-item">Master Certified</div>
+              <div class="cf-item">Product Owner Certified</div>
+            </div>
+            <div class="cert-fam">
+              <div class="cf-head">Tableau</div>
+              <div class="cf-item">Certified Desktop Specialist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <p class="srcnote reveal">Price comparison benchmarked against 2026 third-party training costs for SQL, AI, HIPAA, and Databricks courses (Salesforce/Scrum.org, vendor academies, and independent providers). Ranges vary by provider; free library access is included with community membership.</p>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start learning free</a></div>
+    </section>
+
+    <section class="services" id="inside">
+      <div class="sec-head reveal">
+        <h2>What you get inside.</h2>
+        <p>Build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that get you hired. A course alone can't do all three.</p>
+      </div>
+      <!--
+        TODO (Nalini, owner): This section is our real USP and needs your input to describe it accurately.
+        The copy below is placeholder. Please confirm/correct, especially:
+          - Capstone project: scope, how it's assessed, whether it ships to a portfolio
+          - Volunteering: what kind, run by whom, how members opt in
+        (The digital resume now has its own dedicated section below — see #resume.)
+      -->
+      <div class="caro" data-caro>
+      <div class="srv">
+        <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can actually find, not a flat PDF that dies in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">02 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
+        <div class="cell reveal" data-panel><div class="ci">05 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">06 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. The hidden job market, opened up.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">07 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and give back while you grow. <!-- TODO: describe the program --></p></div>
+        <div class="cell flagship reveal" data-panel><div class="ci">08 / Also inside</div><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
+      </div>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start building today</a></div>
+    </section>
+
+    <section class="voices" id="voices">
+      <div class="sec-head reveal"><h2>Voices of impact</h2></div>
+      <div class="caro" data-caro>
+      <div class="vgrid">
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Interview</b></div><blockquote>“The resume review was brutal in the best way. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Referral</b></div><blockquote>“One intro from this community did more than a year of cold applications.”</blockquote><div class="who"><div class="av">D</div><div><b>Daniela M.</b><span>Career returner</span></div></div></div>
+      </div>
+      <div class="caroctl" aria-hidden="true">
+        <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i></div>
+        <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      </div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your story</a></div>
     </section>
 
     <section class="belong reveal">
-      <p>Centered on women. <span>Open to everyone the old rooms kept out.</span></p>
+      <p>Everyone carries something worth nurturing.<br>
+        <span>One human connection at a time, we help it grow.</span></p>
     </section>
   </div>
 
-  <section class="joincta">
+  <section class="joincta" id="join">
     <div class="wrap">
-      <h2>The next version of your career <em>starts in the group.</em></h2>
-      <p>Joining is free and takes a minute. Bring your questions — the community brings the rest.</p>
-      <a href="#" class="btn-pri">Join free on WhatsApp</a>
+      <!-- Populated by JS from the ?joined / ?error query params after the OAuth round-trip. -->
+      <div id="joinBanner" class="joined-banner" hidden></div>
+      <h2>The next version of your career <em>starts<br>
+      in the group.</em></h2>
+      <p>Joining is free and takes a minute.<br>
+        Bring your questions. The community brings
+        the skills, the network, and the roles.</p>
+      <!--
+        Consent is captured here, then persisted server-side in google-login.php before
+        the redirect to Google (the callback can't see this form). The button stays
+        disabled until the consent box is ticked.
+      -->
+      <!--
+        One POST form, two ways in. The Google button overrides the action to the OIDC
+        endpoint (formnovalidate so it isn't blocked by the email field's required attr);
+        the email button posts to email-signup.php. POST keeps the typed address out of
+        the URL. Both buttons stay disabled until the consent box is ticked (see JS).
+      -->
+      <form class="join-form" method="post" action="email-signup.php">
+        <label class="consent">
+          <input type="checkbox" id="consent" name="consent" value="yes" required>
+          <span>I agree to receive marketing emails from SthreePower about courses, events, and opportunities. I understand I can unsubscribe at any time. See our <a href="privacy.html">Privacy&nbsp;Policy</a>.</span>
+        </label>
+        <button type="submit" id="googleBtn" class="btn-pri btn-google" formaction="google-login.php" formnovalidate disabled>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Sign up with Google
+        </button>
+        <div class="join-or"><span>or sign up with email</span></div>
+        <!-- Honeypot: hidden from people, tempting to bots. Real submissions leave it empty. -->
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="email-row">
+          <input type="email" id="emailInput" name="email" class="email-field" placeholder="you@example.com" required autocomplete="email">
+          <button type="submit" id="emailBtn" class="btn-pri email-btn" disabled>Join free</button>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -201,7 +620,7 @@
     <footer class="footer">
       <div><div class="logo">SthreePower®</div><div style="margin-top:8px">Empowering women to grow as people and professionals.</div></div>
       <div>105 Oak Park Dr, Suite C<br>Irmo, SC 29063<br>(586) 214-9934</div>
-      <div>© SthreePower. All rights reserved.</div>
+      <div>© SthreePower. All rights reserved. · <a href="privacy.html" style="color:var(--dk-6);text-decoration:underline">Privacy Policy</a></div>
     </footer>
   </div>
 </div>
@@ -213,17 +632,154 @@
   var items = document.querySelectorAll('.reveal');
   if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
     items.forEach(function(el){ el.classList.add('in'); });
-    return;
+  } else {
+    // Animate only what's already on-screen at first load.
+    // Everything below the fold is shown instantly when scrolled to — no repeat animation.
+    items.forEach(function(el){
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('in');
+      } else {
+        el.classList.add('shown');
+      }
+    });
   }
-  // Animate only what's already on-screen at first load.
-  // Everything below the fold is shown instantly when scrolled to — no repeat animation.
-  items.forEach(function(el){
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add('in');
-    } else {
-      el.classList.add('shown');
-    }
+
+  // ---- Mobile tabs: one component, two uses (Skill/Network/Income + Free/Paid).
+  // Panels stay in a desktop grid; here we just toggle which one shows and slide
+  // the active-pill indicator. Above 600px the tablist is display:none, so these
+  // clicks can't happen and every panel renders in its grid.
+  document.querySelectorAll('[data-tabs]').forEach(function(group){
+    var list = group.querySelector('.tablist');
+    if (!list) return;
+    var btns = Array.prototype.slice.call(list.querySelectorAll('.tabbtn'));
+    var panels = Array.prototype.slice.call(group.querySelectorAll('[data-panel]'));
+    list.style.setProperty('--tabs', btns.length);
+    btns.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        btns.forEach(function(b){ b.setAttribute('aria-selected','false'); });
+        btn.setAttribute('aria-selected','true');
+        list.style.setProperty('--ti', i);
+        panels.forEach(function(p, j){ p.classList.toggle('is-active', j === i); });
+      });
+    });
   });
+
+  // ---- Mobile carousels: arrows call scrollBy; native scroll-snap handles swipe;
+  // dots reflect the snapped card. Inert on desktop (controls are display:none).
+  document.querySelectorAll('[data-caro]').forEach(function(caro){
+    var track = caro.querySelector('.dgrid, .srv, .vgrid');
+    if (!track) return;
+    var prev = caro.querySelector('[data-prev]');
+    var next = caro.querySelector('[data-next]');
+    var dots = Array.prototype.slice.call(caro.querySelectorAll('.caro-dots i'));
+    var cards = track.children;
+    function step(){
+      return cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : track.clientWidth;
+    }
+    if (prev) prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+    if (next) next.addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
+    track.addEventListener('scroll', function(){
+      var i = Math.round(track.scrollLeft / step());
+      dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
+    }, {passive:true});
+
+    // Tap a peeking edge card to advance to it. We distinguish a tap from a swipe
+    // by the pointer travel between down and up — a real drag (>8px) is left to the
+    // native scroll-snap, so this never fights swiping.
+    var down = null;
+    track.addEventListener('pointerdown', function(e){ down = {x:e.clientX, y:e.clientY}; }, {passive:true});
+    track.addEventListener('pointerup', function(e){
+      if (!down) return;
+      var moved = Math.abs(e.clientX - down.x) > 8 || Math.abs(e.clientY - down.y) > 8;
+      down = null;
+      if (moved) return;                                   // it was a swipe
+      if (track.scrollWidth <= track.clientWidth + 4) return; // not scrollable (desktop)
+      var card = e.target.closest && e.target.closest('.dcard, .cell, .vcard');
+      if (!card) return;
+      var target = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      if (Math.abs(target - track.scrollLeft) < 8) return; // already centred
+      track.scrollTo({ left: target, behavior: 'smooth' });
+    }, {passive:true});
+  });
+
+  // ---- One-time swipe hint: nudge the first carousel so it reads as swipeable.
+  // Phones only, and only when motion is allowed.
+  if (window.matchMedia('(max-width:600px)').matches &&
+      !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    var firstCaro = document.querySelector('[data-caro]');
+    if (firstCaro) {
+      setTimeout(function(){
+        firstCaro.classList.add('hint');
+        setTimeout(function(){ firstCaro.classList.remove('hint'); }, 1200);
+      }, 900);
+    }
+  }
+
+  // Gate both join buttons (Google + email) on the marketing-consent checkbox.
+  var cb = document.getElementById('consent');
+  var emailBtn = document.getElementById('emailBtn');
+  var gateBtns = [document.getElementById('googleBtn'), emailBtn];
+  if (cb) {
+    cb.addEventListener('change', function(){
+      gateBtns.forEach(function(b){ if (b) b.disabled = !cb.checked; });
+    });
+  }
+
+  // Pressing Enter in the email field would otherwise submit via the form's first
+  // submit button (the Google one, with formaction=google-login.php). Route Enter
+  // through the email button instead so it signs up by email, not Google.
+  var emailInput = document.getElementById('emailInput');
+  if (emailInput && emailBtn) {
+    emailInput.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        emailBtn.click();
+      }
+    });
+  }
+
+  // Show the outcome banner after a redirect:
+  //   ?joined=1     Google sign-in succeeded (verified, no confirm step)
+  //   ?check=1      email submitted — confirmation link sent, awaiting the click
+  //   ?confirmed=1  email confirmation link clicked — lead is now live
+  //   ?error=...    something went wrong (see branches below)
+  var banner = document.getElementById('joinBanner');
+  if (banner) {
+    var qp = new URLSearchParams(window.location.search);
+    var shown = true;
+    if (qp.get('joined') === '1') {
+      banner.className = 'joined-banner ok';
+      banner.textContent = "You're in — thanks for joining SthreePower. We'll be in touch soon.";
+    } else if (qp.get('confirmed') === '1') {
+      banner.className = 'joined-banner ok';
+      banner.textContent = "Email confirmed — you're in. Welcome to SthreePower. We'll be in touch soon.";
+    } else if (qp.get('check') === '1') {
+      banner.className = 'joined-banner ok';
+      banner.textContent = "Almost there — we've emailed you a confirmation link. Click it to finish joining (check spam too).";
+    } else if (qp.get('error')) {
+      var err = qp.get('error');
+      banner.className = 'joined-banner err';
+      banner.textContent = err === 'consent'
+        ? 'Please tick the consent box so we can email you, then sign up again.'
+        : err === 'email'
+        ? 'Please enter a valid email address and try again.'
+        : err === 'token'
+        ? 'That confirmation link is invalid or has expired. Please sign up again.'
+        : err === 'send'
+        ? "We couldn't send your confirmation email. Please try again in a moment."
+        : "Something went wrong signing you up. Please try again. (" + err + ")";
+    } else {
+      shown = false;
+    }
+    // Scroll to the banner for any outcome — it sits below the fold after the redirect.
+    // rAF lets layout settle first so smooth-scroll lands on the right position.
+    if (shown) {
+      banner.hidden = false;
+      requestAnimationFrame(function () {
+        banner.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    }
+  }
 })();
 </script>
 </body>
