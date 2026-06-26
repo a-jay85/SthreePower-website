@@ -51,7 +51,7 @@ define('SHEET_SHARED_SECRET',  sp_env('SHEET_SHARED_SECRET'));
 // Where to send the user after the flow (success or handled error). Relative (no leading
 // slash) so it resolves against the directory the flow runs from — works whether the site
 // is served from the web root or a subfolder like /new-twilight-site/.
-define('JOIN_PAGE', 'PostFeedbackGoogleButton.html');
+define('JOIN_PAGE', 'index.html');
 
 // Bump this string whenever the consent wording on the page changes — it is stored
 // alongside each opt-in so you can prove exactly what the user agreed to (GDPR Art. 7).
