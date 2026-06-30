@@ -554,7 +554,7 @@
       -->
       <div class="caro" data-caro>
       <div class="srv">
-        <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can actually find, not a flat PDF that gets lost in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can find, not a flat PDF that gets lost in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
         <div class="cell reveal" data-panel><div class="ci">02 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
         <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
         <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
@@ -727,22 +727,30 @@
     }, {passive:true});
   });
 
-  // ---- Desktop: equalize the four demand-card stat blocks so the "Hiring for
-  // these roles" labels — and the rule + "We teach" line below them — sit at the
-  // same height across all cards. Mobile is a carousel of standalone cards, so we
-  // clear the override there.
+  // ---- Desktop: equalize each stacked band of the demand cards (heading, stat,
+  // and logo grid) so the "Hiring for these roles" labels, the logo plates, and
+  // the "We teach" line below them all sit at the same height across cards. Each
+  // band varies on its own — the Salesforce heading carries an inline logo, the
+  // stats differ in length, and each logo plate grows to its tallest mark — so
+  // equalizing only one band leaves the rest drifting. Mobile is a carousel of
+  // standalone cards, so we clear the overrides there.
   (function(){
     var grid = document.querySelector('.demand .dgrid');
     if (!grid) return;
-    var stats = Array.prototype.slice.call(grid.querySelectorAll('.stat'));
-    if (!stats.length) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.dcard'));
+    if (!cards.length) return;
+    var bands = ['h3', '.stat', '.logos'];
     var desktop = window.matchMedia('(min-width:861px)');
     function equalize(){
-      stats.forEach(function(s){ s.style.minHeight = ''; });
-      if (!desktop.matches) return;
-      var max = 0;
-      stats.forEach(function(s){ max = Math.max(max, s.offsetHeight); });
-      stats.forEach(function(s){ s.style.minHeight = max + 'px'; });
+      bands.forEach(function(sel){
+        var els = cards.map(function(c){ return c.querySelector(sel); })
+                       .filter(Boolean);
+        els.forEach(function(el){ el.style.minHeight = ''; });
+        if (!desktop.matches) return;
+        var max = 0;
+        els.forEach(function(el){ max = Math.max(max, el.offsetHeight); });
+        els.forEach(function(el){ el.style.minHeight = max + 'px'; });
+      });
     }
     equalize();
     window.addEventListener('resize', equalize);
