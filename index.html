@@ -200,8 +200,10 @@
      so it reads a clear notch above the free library's list. */
   .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:26px}
   .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:6px;display:flex;align-items:center;gap:12px}
-  .editorial .cf-head::before{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(227,171,140,.42))}
-  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0;border-bottom:1px solid rgba(227,171,140,.13);position:relative}
+  .editorial .cf-head::before,.editorial .cf-head::after{content:"";flex:1;height:1px}
+  .editorial .cf-head::before{background:linear-gradient(90deg,transparent,rgba(227,171,140,.42))}
+  .editorial .cf-head::after{background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
+  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0;border-bottom:1px solid rgba(227,171,140,.13);position:relative;text-align:center}
   .editorial .cert-fam .cf-item:last-child{border-bottom:none}
 
   /* Closing "flagship initiatives" card fills the odd 8th services slot; it
