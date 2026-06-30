@@ -261,10 +261,14 @@
     /* tame the oversized vertical whitespace */
     .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
     .editorial .horizon{bottom:32px}                   /* equalise space above/below the divider */
-    .editorial .manifesto{padding:36px 0}
-    .editorial .grule{margin:40px calc(50% - 50vw)}
+    /* Unify manifesto + the three pillars into ONE card on phones — they were
+       reading as three disconnected boxes (filled quote, pill tabs, outlined card).
+       The card owns the surface; the pieces inside go flush. */
+    .editorial .story{border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2)}
+    .editorial .manifesto{padding:34px 24px 30px;background:none;border-radius:0;border-bottom:1px solid var(--dk-3)}
+    .editorial .grule{margin:34px calc(50% - 50vw)}
     .editorial .stamp{margin-top:46px;gap:26px}
-    .editorial .pillars-wrap{padding:8px 0 16px}
+    .editorial .pillars-wrap{padding:26px 22px 30px}
     .editorial .demand{padding:16px 0}
     .editorial .catalog{padding:16px 0}
     .editorial .services{padding:16px 0}
@@ -284,7 +288,7 @@
     /* Stack all three panels in one grid cell so the box is always the tallest
        panel's height — switching tabs never shifts the section below. */
     .editorial .pillars{display:grid;border:none;border-radius:0;overflow:visible}
-    .editorial .pillar{grid-area:1 / 1;border:1px solid var(--dk-3);border-radius:10px;padding:30px 24px;visibility:hidden}
+    .editorial .pillar{grid-area:1 / 1;border:none;border-radius:0;padding:6px 0 0;visibility:hidden}
     .editorial .pillar.is-active{visibility:visible;animation:fadeup .4s ease both}
 
     .editorial .tracks{display:block;margin-top:0}
@@ -363,6 +367,11 @@
   </section>
 
   <div class="wrap">
+    <!-- On mobile these two read as one story (manifesto → the three pillars).
+         .story is a purely visual wrapper: it draws a single card on phones and
+         is inert on desktop. The inner DOM (manifesto, pillars-wrap[data-tabs],
+         tablist) is untouched so the tabs JS still finds .tablist inside its group. -->
+    <div class="story">
     <section class="manifesto reveal">
       <p>Ambition was never the problem. <em>Access was.</em></p>
       <p><span>SthreePower closes the gap:<br>
@@ -382,6 +391,7 @@
       </div>
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
     </section>
+    </div><!-- /.story -->
 
     <hr class="grule reveal" aria-hidden="true">
 
