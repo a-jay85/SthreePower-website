@@ -221,16 +221,16 @@
 
   /* DIGITAL RESUME spotlight */
   .editorial .resume{padding:24px 0 96px}
-  .editorial .resume .panel{border:1px solid var(--dk-3);border-radius:12px;padding:50px 46px;background:linear-gradient(180deg,rgba(227,171,140,.08),rgba(201,138,160,.03));display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  .editorial .resume .panel{border:1px solid var(--dk-3);border-radius:12px;padding:50px 46px;background:linear-gradient(180deg,rgba(227,171,140,.08),rgba(201,138,160,.03))}
+  .editorial .resume .rintro{text-align:center;max-width:60ch;margin:0 auto}
   .editorial .resume .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow)}
-  .editorial .resume h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.06;margin-top:16px}
-  .editorial .resume h2 em{font-style:italic;color:var(--glow)}
-  .editorial .resume .lead{color:#D8CEDE;font-size:16px;line-height:1.6;margin-top:18px;max-width:44ch}
-  .editorial .resume .vlist{display:flex;flex-direction:column;gap:20px}
-  .editorial .resume .vrow{display:flex;gap:14px;align-items:flex-start}
-  .editorial .resume .vrow .n{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);padding-top:4px;min-width:26px}
-  .editorial .resume .vrow b{font-family:'Newsreader',serif;font-weight:600;font-size:18px;display:block;margin-bottom:4px;color:var(--iv-1)}
-  .editorial .resume .vrow p{color:#C2B8CC;font-size:14px;line-height:1.55}
+  .editorial .resume .lead{color:#D8CEDE;font-size:16px;line-height:1.6;margin-top:14px}
+  .editorial .resume .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;margin-top:40px}
+  .editorial .resume .rpillar{padding:42px 28px 46px;border-right:1px solid var(--dk-3)}
+  .editorial .resume .rpillar:last-child{border-right:none}
+  .editorial .resume .rpillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase;text-align:center}
+  .editorial .resume .rpillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px;text-align:center}
+  .editorial .resume .rpillar p{font-size:15px;line-height:1.65;color:#C9BFD0;text-align:center}
 
   .editorial .voices{padding:40px 0}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
@@ -260,7 +260,10 @@
     .editorial .pillars{grid-template-columns:1fr}
     .editorial .pillar{border-right:none;border-bottom:1px solid var(--dk-3)}
     .editorial .srv,.editorial .vgrid,.editorial .dgrid,.editorial .tracks{grid-template-columns:1fr}
-    .editorial .resume .panel{grid-template-columns:1fr;gap:32px;padding:36px 26px}
+    .editorial .resume .panel{padding:32px 22px}
+    .editorial .resume .rgrid{grid-template-columns:1fr}
+    .editorial .resume .rpillar{border-right:none;border-bottom:1px solid var(--dk-3)}
+    .editorial .resume .rpillar:last-child{border-bottom:none}
   }
   /* ============================================================
      MOBILE INTERACTIVE LAYER (phones ≤600px)
@@ -496,16 +499,18 @@
     <hr class="grule reveal" aria-hidden="true">
 
     <section class="resume" id="resume">
+      <div class="sec-head reveal" style="justify-content:center;text-align:center">
+        <h2>A certificate proves you studied. A <em>digital resume</em> proves you can do the work.</h2>
+      </div>
       <div class="panel reveal">
-        <div class="rcopy">
+        <div class="rintro">
           <div class="eyebrow">Every member builds one</div>
-          <h2>A certificate proves you studied. A <em>digital resume</em> proves you can do the work.</h2>
           <p class="lead">Most job seekers send the same flat PDF into a void. Your SthreePower digital resume is a living profile that puts your certifications, capstone, and real project work in one link recruiters can actually find.</p>
         </div>
-        <div class="vlist">
-          <div class="vrow"><div class="n">01</div><div><b>Found, not buried</b><p>Built to be discoverable by recruiters searching for your skills, instead of sitting unopened in an inbox.</p></div></div>
-          <div class="vrow"><div class="n">02</div><div><b>One link, always current</b><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div></div>
-          <div class="vrow"><div class="n">03</div><div><b>Proof, not just claims</b><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div></div>
+        <div class="rgrid">
+          <div class="rpillar reveal"><div class="pn">The proof</div><h3>Found, not buried</h3><p>Built to be discoverable by recruiters searching for your skills, instead of sitting unopened in an inbox.</p></div>
+          <div class="rpillar reveal"><div class="pn">The reach</div><h3>One link, always current</h3><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div>
+          <div class="rpillar reveal"><div class="pn">The receipts</div><h3>Proof, not just claims</h3><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div>
         </div>
       </div>
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your resume today</a></div>
