@@ -47,7 +47,7 @@
     background:radial-gradient(120% 100% at 50% 0%, var(--glow) 0%, var(--glow-2) 16%, var(--dk-3) 42%, var(--dk-1) 70%);
     filter:blur(2px);opacity:.85;animation:sky 14s ease-in-out infinite alternate}
   @keyframes sky{from{transform:translateY(-12px) scale(1.02)}to{transform:translateY(8px) scale(1.05)}}
-  .editorial .horizon{position:absolute;left:0;right:0;top:auto;bottom:40px;height:1px;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;z-index:1}
+  .editorial .horizon{position:absolute;left:0;right:0;top:auto;bottom:55px;height:1px;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;z-index:1}
   .editorial .hero .inner{position:relative;z-index:2}
   .editorial .eyebrow{font-size:12.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--dk-6);margin-bottom:30px;font-weight:600}
   .editorial h1{font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,8.2vw,108px);line-height:.96;letter-spacing:-.01em;margin:0 auto;max-width:13ch}
@@ -87,6 +87,7 @@
   /* Gradient hairline divider — full-bleed, mirrors the hero .horizon. Closes the manifesto block
      below the CTA the same way the horizon opens it above the quote. */
   .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:60px calc(50% - 50vw)}
+  .editorial .pillars-wrap{padding-bottom:40px}
   /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
   .editorial .manifesto{padding:60px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2)}
   .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
@@ -100,7 +101,7 @@
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
   /* DEMAND — built for jobs that are hiring */
-  .editorial .demand{padding:40px 0 30px}
+  .editorial .demand{padding:40px 0}
   .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:46px;gap:24px;flex-wrap:wrap}
   .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
   .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
@@ -119,7 +120,7 @@
   .editorial .srcnote{font-size:12px;color:var(--dk-5);line-height:1.6;margin-top:22px;max-width:80ch}
 
   /* CATALOG — two ways in */
-  .editorial .catalog{padding:80px 0 30px}
+  .editorial .catalog{padding:40px 0}
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}
   .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:38px 34px}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03))}
@@ -127,7 +128,7 @@
   .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:12px 0 10px}
   .editorial .track .sub{font-size:14.5px;line-height:1.6;color:#C2B8CC;margin-bottom:24px}
 
-  .editorial .services{padding:96px 0}
+  .editorial .services{padding:40px 0}
   .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .srv .cell{background:var(--dk-1);padding:38px 34px;transition:background .3s}
   .editorial .srv .cell:hover{background:var(--dk-2)}
@@ -213,7 +214,7 @@
      #join form, its label tuned to each section's pitch. */
   .editorial .sec-cta{display:flex;justify-content:center;margin-top:54px}
 
-  .editorial .voices{padding:30px 0 96px}
+  .editorial .voices{padding:40px 0}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
@@ -225,11 +226,11 @@
   .editorial .vcard .who div b{display:block;font-size:13.5px}
   .editorial .vcard .who div span{font-size:12px;color:var(--dk-6)}
 
-  .editorial .belong{padding:18px 0 104px;text-align:center}
+  .editorial .belong{padding:40px 0;text-align:center}
   .editorial .belong p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.25;max-width:22ch;margin:0 auto}
   .editorial .belong p span{color:var(--glow)}
 
-  .editorial .joincta{position:relative;text-align:center;padding:96px 0 120px;border-top:1px solid var(--dk-3)}
+  .editorial .joincta{position:relative;text-align:center;padding:40px 0 120px}
   .editorial .joincta h2{font-family:'Newsreader',serif;font-weight:600;font-size:clamp(32px,5.5vw,68px);line-height:1.02;max-width:16ch;margin:0 auto}
   .editorial .joincta h2 em{color:var(--glow);font-style:italic}
   .editorial .joincta p{color:#CDC3D6;margin:24px auto 36px;max-width:42ch;font-size:16px}
@@ -259,17 +260,17 @@
 
     /* tame the oversized vertical whitespace */
     .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
-    .editorial .horizon{bottom:28px}                   /* equalise space above/below the divider */
+    .editorial .horizon{bottom:32px}                   /* equalise space above/below the divider */
     .editorial .manifesto{padding:36px 0}
     .editorial .grule{margin:40px calc(50% - 50vw)}
     .editorial .stamp{margin-top:46px;gap:26px}
-    .editorial .pillars-wrap{padding-top:8px}
-    .editorial .demand{padding:56px 0 8px}
-    .editorial .catalog{padding:52px 0 8px}
-    .editorial .services{padding:56px 0}
-    .editorial .voices{padding:24px 0 56px}
-    .editorial .belong{padding:8px 0 60px}
-    .editorial .joincta{padding:56px 0 80px}
+    .editorial .pillars-wrap{padding:8px 0 16px}
+    .editorial .demand{padding:16px 0}
+    .editorial .catalog{padding:16px 0}
+    .editorial .services{padding:16px 0}
+    .editorial .voices{padding:16px 0}
+    .editorial .belong{padding:16px 0}
+    .editorial .joincta{padding:16px 0 80px}
     .editorial .sec-cta{margin-top:36px}
     .editorial .sec-head{margin-bottom:26px}
     .editorial .sec-head h2 br{display:none}
@@ -462,6 +463,8 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your training</a></div>
     </section>
 
+    <hr class="grule reveal" aria-hidden="true">
+
     <section class="catalog" id="courses">
       <div class="sec-head reveal">
         <h2>Two ways in.</h2>
@@ -524,6 +527,8 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start learning free</a></div>
     </section>
 
+    <hr class="grule reveal" aria-hidden="true">
+
     <section class="services" id="inside">
       <div class="sec-head reveal">
         <h2>What you get inside.</h2>
@@ -556,6 +561,8 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start building today</a></div>
     </section>
 
+    <hr class="grule reveal" aria-hidden="true">
+
     <section class="voices" id="voices">
       <div class="sec-head reveal"><h2>Voices of impact</h2></div>
       <div class="caro" data-caro>
@@ -573,10 +580,14 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your story</a></div>
     </section>
 
+    <hr class="grule reveal" aria-hidden="true">
+
     <section class="belong reveal">
       <p>Everyone carries something worth nurturing.<br>
         <span>One human connection at a time, we help it grow.</span></p>
     </section>
+
+    <hr class="grule reveal" aria-hidden="true">
   </div>
 
   <section class="joincta" id="join">
