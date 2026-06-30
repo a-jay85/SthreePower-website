@@ -124,7 +124,7 @@
   /* CATALOG — two ways in */
   .editorial .catalog{padding:40px 0}
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}
-  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:38px 34px}
+  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:38px 34px;display:flex;flex-direction:column}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03));border-color:rgba(227,171,140,.45)}
   .editorial .track .tk{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.08em}
   .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:12px 0 10px}
@@ -200,14 +200,15 @@
   /* PREMIUM CERT LIST — replaces the flat pills on the paid track. Grouped by
      credential family, serif names, gold diamond markers + hairline gold rules
      so it reads a clear notch above the free library's list. */
-  .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:20px}
+  .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:26px;flex:1}
+  .editorial .certlist .cert-fam:last-child{flex:1;display:flex;flex-direction:column}
   .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:0;display:flex;align-items:center;gap:12px}
   .editorial .cf-head::before,.editorial .cf-head::after{content:"";flex:1;height:1px}
   .editorial .cf-head::before{background:linear-gradient(90deg,transparent,rgba(227,171,140,.42))}
   .editorial .cf-head::after{background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
-  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:8px 0;border-bottom:1px solid rgba(227,171,140,.13);position:relative;text-align:center}
+  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0;border-bottom:1px solid rgba(227,171,140,.13);position:relative;text-align:center}
   .editorial .cert-fam .cf-item:last-child,.editorial .cf-item:has(+ .cf-note){border-bottom:none}
-  .editorial .cf-note{font-family:'Newsreader',serif;font-style:italic;font-size:13px;color:var(--iv-2,var(--iv-1));opacity:.72;text-align:center;margin-top:8px}
+  .editorial .cf-note{font-family:'Newsreader',serif;font-style:italic;font-size:13px;color:var(--iv-2,var(--iv-1));opacity:.72;text-align:center;margin-top:auto;padding-top:10px}
 
   /* Closing "flagship initiatives" card fills the odd 8th services slot; it
      uses the same surface colour as the other cells (only the glow names set
