@@ -96,8 +96,8 @@
   .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--dk-3);border-radius:14px;overflow:hidden}
   .editorial .pillar{padding:48px 30px 56px;border-right:1px solid var(--dk-3)}
   .editorial .pillar:last-child{border-right:none}
-  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase}
-  .editorial .pillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px}
+  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase;text-align:center}
+  .editorial .pillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px;text-align:center}
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
   /* DEMAND — built for jobs that are hiring */
@@ -108,11 +108,11 @@
   .editorial .sec-head p{color:var(--dk-6);font-size:15px;max-width:38ch;line-height:1.6}
   .editorial .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .dcard{background:var(--dk-1);padding:40px 36px;display:flex;flex-direction:column}
-  .editorial .dcard .dk{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);letter-spacing:.08em}
-  .editorial .dcard h3{font-family:'Newsreader',serif;font-weight:500;font-size:27px;margin:14px 0 16px}
+  .editorial .dcard .dk{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);letter-spacing:.08em;text-align:center}
+  .editorial .dcard h3{font-family:'Newsreader',serif;font-weight:500;font-size:27px;margin:14px 0 16px;text-align:center}
   .editorial .dcard .stat{font-size:16px;line-height:1.55;color:#D8CEDE;margin-bottom:22px}
   .editorial .dcard .stat b{color:var(--iv-1);font-weight:700}
-  .editorial .dcard .lab{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:700;margin-bottom:12px}
+  .editorial .dcard .lab{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:700;margin-bottom:12px;text-align:center}
   .editorial .chips{display:flex;flex-wrap:wrap;gap:8px}
   .editorial .chip{font-size:13px;font-weight:600;color:#E7DEEF;border:1px solid var(--dk-4);border-radius:999px;padding:6px 13px;white-space:nowrap}
   .editorial .dcard .offer{margin-top:22px;padding-top:22px;border-top:1px solid var(--dk-3);font-size:13.5px;line-height:1.55;color:#B7AAC6}
@@ -132,8 +132,8 @@
   .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .srv .cell{background:var(--dk-1);padding:38px 34px;transition:background .3s}
   .editorial .srv .cell:hover{background:var(--dk-2)}
-  .editorial .srv .ci{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5)}
-  .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:14px 0 10px}
+  .editorial .srv .ci{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);text-align:center}
+  .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:14px 0 10px;text-align:center}
   .editorial .srv h4 .soon{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);vertical-align:middle;margin-left:8px;border:1px solid var(--dk-4);border-radius:999px;padding:2px 7px}
   .editorial .srv p{color:#C2B8CC;font-size:14.5px;line-height:1.6}
   .editorial .srvnote{font-size:13.5px;line-height:1.6;color:#B7AAC6;margin-top:22px}
@@ -174,7 +174,7 @@
   /* Salesforce wordmark sits beside the card title instead of in the plate grid:
      its cloud mark is recognisable and the heading supplies the word, and its
      white "salesforce" text would vanish on the ivory hover plate. */
-  .editorial .dcard h3.brand-h3{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+  .editorial .dcard h3.brand-h3{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap}
   .editorial img.brandmark{height:34px;width:auto}
 
   /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
@@ -564,7 +564,7 @@
     <hr class="grule reveal" aria-hidden="true">
 
     <section class="voices" id="voices">
-      <div class="sec-head reveal"><h2>Voices of impact</h2></div>
+      <div class="sec-head reveal" style="justify-content:center;text-align:center"><h2>Voices of impact</h2></div>
       <div class="caro" data-caro>
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
