@@ -726,6 +726,28 @@
     }, {passive:true});
   });
 
+  // ---- Desktop: equalize the four demand-card stat blocks so the "Hiring for
+  // these roles" labels — and the rule + "We teach" line below them — sit at the
+  // same height across all cards. Mobile is a carousel of standalone cards, so we
+  // clear the override there.
+  (function(){
+    var grid = document.querySelector('.demand .dgrid');
+    if (!grid) return;
+    var stats = Array.prototype.slice.call(grid.querySelectorAll('.stat'));
+    if (!stats.length) return;
+    var desktop = window.matchMedia('(min-width:861px)');
+    function equalize(){
+      stats.forEach(function(s){ s.style.minHeight = ''; });
+      if (!desktop.matches) return;
+      var max = 0;
+      stats.forEach(function(s){ max = Math.max(max, s.offsetHeight); });
+      stats.forEach(function(s){ s.style.minHeight = max + 'px'; });
+    }
+    equalize();
+    window.addEventListener('resize', equalize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
+  })();
+
   // ---- One-time swipe hint: nudge the first carousel so it reads as swipeable.
   // Phones only, and only when motion is allowed.
   if (window.matchMedia('(max-width:600px)').matches &&
