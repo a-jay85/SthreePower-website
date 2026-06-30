@@ -200,10 +200,9 @@
      so it reads a clear notch above the free library's list. */
   .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:26px}
   .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:6px;display:flex;align-items:center;gap:12px}
-  .editorial .cf-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
-  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0 10px 24px;border-bottom:1px solid rgba(227,171,140,.13);position:relative}
+  .editorial .cf-head::before{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(227,171,140,.42))}
+  .editorial .cf-item{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--iv-1);padding:10px 0;border-bottom:1px solid rgba(227,171,140,.13);position:relative}
   .editorial .cert-fam .cf-item:last-child{border-bottom:none}
-  .editorial .cf-item::before{content:"";position:absolute;left:3px;top:0;bottom:0;margin:auto;width:7px;height:7px;transform:rotate(45deg);background:linear-gradient(135deg,var(--glow),var(--glow-2))}
 
   /* Closing "flagship initiatives" card fills the odd 8th services slot; it
      uses the same surface colour as the other cells (only the glow names set
