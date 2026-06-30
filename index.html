@@ -84,11 +84,14 @@
   .editorial .stamp{position:relative;z-index:2;margin-top:78px;display:flex;justify-content:center;gap:46px;flex-wrap:wrap;color:var(--dk-6);font-size:13px;letter-spacing:.04em}
   .editorial .stamp b{display:block;font-family:'Newsreader',serif;font-size:30px;color:var(--iv-1);font-weight:500;letter-spacing:0}
 
-  .editorial .manifesto{padding:18px 0 64px;text-align:center}
+  /* Gradient hairline divider — mirrors the hero .horizon, reused to bracket the manifesto block. */
+  .editorial .grule{height:1px;border:none;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.5;margin:60px 0}
+  /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
+  .editorial .manifesto{padding:60px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2)}
   .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
   .editorial .manifesto p span{color:var(--dk-5)}
 
-  .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--dk-3)}
+  .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--dk-3);border-radius:14px;overflow:hidden}
   .editorial .pillar{padding:48px 30px 56px;border-right:1px solid var(--dk-3)}
   .editorial .pillar:last-child{border-right:none}
   .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase}
@@ -96,7 +99,7 @@
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
   /* DEMAND — built for jobs that are hiring */
-  .editorial .demand{padding:96px 0 30px}
+  .editorial .demand{padding:40px 0 30px}
   .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:46px;gap:24px;flex-wrap:wrap}
   .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
   .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
@@ -256,7 +259,8 @@
     /* tame the oversized vertical whitespace */
     .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
     .editorial .horizon{bottom:28px}                   /* equalise space above/below the divider */
-    .editorial .manifesto{padding:8px 0 36px}
+    .editorial .manifesto{padding:36px 0}
+    .editorial .grule{margin:40px 0}
     .editorial .stamp{margin-top:46px;gap:26px}
     .editorial .pillars-wrap{padding-top:8px}
     .editorial .demand{padding:56px 0 8px}
@@ -277,7 +281,7 @@
 
     /* Stack all three panels in one grid cell so the box is always the tallest
        panel's height — switching tabs never shifts the section below. */
-    .editorial .pillars{display:grid;border-top:none}
+    .editorial .pillars{display:grid;border:none;border-radius:0;overflow:visible}
     .editorial .pillar{grid-area:1 / 1;border:1px solid var(--dk-3);border-radius:10px;padding:30px 24px;visibility:hidden}
     .editorial .pillar.is-active{visibility:visible;animation:fadeup .4s ease both}
 
@@ -357,6 +361,7 @@
   </section>
 
   <div class="wrap">
+    <hr class="grule reveal" aria-hidden="true">
     <section class="manifesto reveal">
       <p>Ambition was never the problem. <em>Access was.</em></p>
       <p><span>SthreePower closes the gap:<br>
@@ -370,12 +375,14 @@
         <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
       </div>
       <div class="pillars">
-        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skill</div><h3>Learn in-demand skills</h3><p>Earn the certifications employers screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
+        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skills</div><h3>Learn in-demand skills</h3><p>Earn the certifications employers screen for: Salesforce, Scrum, Tableau, SQL.</p></div>
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Peers, mentors, and referrals from women inside the field you want. The connections that turn a certificate into an interview.</p></div>
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>A digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a paycheck of your own.</p></div>
       </div>
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
     </section>
+
+    <hr class="grule reveal" aria-hidden="true">
 
     <section class="demand" id="demand">
       <div class="sec-head reveal">
