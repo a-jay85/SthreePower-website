@@ -90,7 +90,7 @@
   /* Gradient hairline divider — full-bleed, mirrors the hero .horizon. Closes the manifesto block
      below the CTA the same way the horizon opens it above the quote. */
   .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:30px calc(50% - 50vw)}
-  .editorial .pillars-wrap{padding-bottom:24px}
+  .editorial .pillars-wrap{padding-bottom:0}
   /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
   .editorial .manifesto{padding:40px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.11), rgba(227,171,140,.03) 45%, transparent 65%), var(--dk-2)}
   .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
@@ -104,7 +104,7 @@
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
   /* DEMAND — built for jobs that are hiring */
-  .editorial .demand{padding:0 0 28px}
+  .editorial .demand{padding:0}
   .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;gap:24px;flex-wrap:wrap}
   .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
   .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
@@ -125,7 +125,7 @@
   .editorial .srcnote{font-size:12px;color:var(--dk-5);line-height:1.6;margin-top:16px}
 
   /* CATALOG — two ways in */
-  .editorial .catalog{padding:0 0 28px}
+  .editorial .catalog{padding:0}
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
   .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03));border-color:rgba(227,171,140,.45)}
@@ -133,7 +133,7 @@
   .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:10px 0 8px}
   .editorial .track .sub{font-size:14.5px;line-height:1.55;color:#C2B8CC;margin-bottom:18px}
 
-  .editorial .services{padding:0 0 28px}
+  .editorial .services{padding:0}
   .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .srv .cell{background:var(--dk-1);padding:28px 32px;transition:background .3s}
   .editorial .srv .cell:hover{background:var(--dk-2)}
@@ -229,12 +229,12 @@
   .editorial .sec-cta{display:flex;justify-content:center;margin-top:32px}
 
   /* DIGITAL RESUME spotlight */
-  .editorial .resume{padding:0 0 28px}
+  .editorial .resume{padding:0}
   /* Resume reuses the Ambition layout classes (.story/.manifesto/.pillars); only
      the heading accent is scoped here so "digital resume" reads in the glow color. */
   .editorial .resume .manifesto em{font-style:italic;color:var(--glow)}
 
-  .editorial .voices{padding:0 0 28px}
+  .editorial .voices{padding:0}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
@@ -289,11 +289,11 @@
     .editorial .manifesto{padding:34px 24px 30px;background:none;border-radius:0;border-bottom:1px solid var(--dk-3)}
     .editorial .grule{margin:18px calc(50% - 50vw)}
     .editorial .stamp{margin-top:46px;gap:26px}
-    .editorial .pillars-wrap{padding:26px 22px 24px}
-    .editorial .demand{padding:0 0 16px}
-    .editorial .catalog{padding:0 0 16px}
-    .editorial .services{padding:0 0 16px}
-    .editorial .voices{padding:0 0 16px}
+    .editorial .pillars-wrap{padding:26px 22px 0}
+    .editorial .demand{padding:0}
+    .editorial .catalog{padding:0}
+    .editorial .services{padding:0}
+    .editorial .voices{padding:0}
     .editorial .belong{padding:16px 0}
     .editorial .joincta{padding:16px 0 80px}
     .editorial .sec-cta{margin-top:36px}
