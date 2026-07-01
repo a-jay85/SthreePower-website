@@ -771,7 +771,12 @@
     if (!grid) return;
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.dcard'));
     if (!cards.length) return;
-    var bands = ['h3', '.stat', '.logos'];
+    // Include .dk: on narrow mobile cards a longer kicker (e.g. "03 / Data &
+    // Machine Learning") wraps to two lines while shorter ones stay on one,
+    // which shifts everything below it and drifts the labels/plates/dividers
+    // out of alignment. Equalizing it keeps the h3 tops — and every band under
+    // them — level across cards.
+    var bands = ['.dk', 'h3', '.stat', '.logos'];
     function equalize(){
       bands.forEach(function(sel){
         var els = cards.map(function(c){ return c.querySelector(sel); })
