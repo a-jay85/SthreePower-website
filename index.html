@@ -104,7 +104,7 @@
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
   /* DEMAND — built for jobs that are hiring */
-  .editorial .demand{padding:28px 0}
+  .editorial .demand{padding:0 0 28px}
   .editorial .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;gap:24px;flex-wrap:wrap}
   .editorial .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.04}
   .editorial .sec-head h2 em{font-style:italic;color:var(--glow)}
@@ -125,7 +125,7 @@
   .editorial .srcnote{font-size:12px;color:var(--dk-5);line-height:1.6;margin-top:16px}
 
   /* CATALOG — two ways in */
-  .editorial .catalog{padding:28px 0}
+  .editorial .catalog{padding:0 0 28px}
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
   .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03));border-color:rgba(227,171,140,.45)}
@@ -133,7 +133,7 @@
   .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:10px 0 8px}
   .editorial .track .sub{font-size:14.5px;line-height:1.55;color:#C2B8CC;margin-bottom:18px}
 
-  .editorial .services{padding:28px 0}
+  .editorial .services{padding:0 0 28px}
   .editorial .srv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .srv .cell{background:var(--dk-1);padding:28px 32px;transition:background .3s}
   .editorial .srv .cell:hover{background:var(--dk-2)}
@@ -223,12 +223,12 @@
   .editorial .sec-cta{display:flex;justify-content:center;margin-top:32px}
 
   /* DIGITAL RESUME spotlight */
-  .editorial .resume{padding:16px 0 48px}
+  .editorial .resume{padding:0 0 28px}
   /* Resume reuses the Ambition layout classes (.story/.manifesto/.pillars); only
      the heading accent is scoped here so "digital resume" reads in the glow color. */
   .editorial .resume .manifesto em{font-style:italic;color:var(--glow)}
 
-  .editorial .voices{padding:28px 0}
+  .editorial .voices{padding:0 0 28px}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
@@ -284,10 +284,10 @@
     .editorial .grule{margin:18px calc(50% - 50vw)}
     .editorial .stamp{margin-top:46px;gap:26px}
     .editorial .pillars-wrap{padding:26px 22px 24px}
-    .editorial .demand{padding:16px 0}
-    .editorial .catalog{padding:16px 0}
-    .editorial .services{padding:16px 0}
-    .editorial .voices{padding:16px 0}
+    .editorial .demand{padding:0 0 16px}
+    .editorial .catalog{padding:0 0 16px}
+    .editorial .services{padding:0 0 16px}
+    .editorial .voices{padding:0 0 16px}
     .editorial .belong{padding:16px 0}
     .editorial .joincta{padding:16px 0 80px}
     .editorial .sec-cta{margin-top:36px}
@@ -517,7 +517,7 @@
 
     <section class="services" id="inside">
       <div class="sec-head reveal">
-        <h2>What's inside the <em>community</em>:</h2>
+        <h2>Benefits within the <em>community.</em></h2>
         <p>Build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that get you hired. A course alone can't do all three.</p>
       </div>
       <!--
@@ -531,12 +531,12 @@
       <div class="srv">
         <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can find, not a flat PDF that gets lost in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
         <div class="cell reveal" data-panel><div class="ci">02 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
+        <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
+        <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
         <div class="cell reveal" data-panel><div class="ci">05 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
         <div class="cell reveal" data-panel><div class="ci">06 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. Jobs that are never publicly posted.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">07 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and contribute while you grow. <!-- TODO: describe the program --></p></div>
-        <div class="cell flagship reveal" data-panel><div class="ci">08 / Also inside</div><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
+        <div class="cell flagship reveal" data-panel><div class="ci">07 / Also inside</div><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
+        <div class="cell reveal" data-panel><div class="ci">08 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and contribute while you grow. <!-- TODO: describe the program --></p></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -551,7 +551,7 @@
 
     <section class="catalog" id="courses">
       <div class="sec-head reveal" style="justify-content:center;text-align:center">
-        <h2>Two ways to <em>join</em>:</h2>
+        <h2>Two paths open when you <em>join.</em></h2>
       </div>
       <div class="tracks-wrap" data-tabs>
       <div class="tablist" role="tablist" aria-label="Free or paid">
@@ -616,7 +616,7 @@
     <hr class="grule reveal" aria-hidden="true">
 
     <section class="voices" id="voices">
-      <div class="sec-head reveal" style="justify-content:center;text-align:center"><h2>Voices of <em>impact</em>:</h2></div>
+      <div class="sec-head reveal" style="justify-content:center;text-align:center"><h2>Voices of <em>impact.</em></h2></div>
       <div class="caro" data-caro>
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
@@ -630,13 +630,6 @@
       </div>
       </div>
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your story</a></div>
-    </section>
-
-    <hr class="grule reveal" aria-hidden="true">
-
-    <section class="belong reveal">
-      <p>Everyone carries something worth <em>nurturing</em>.<br>
-        <span>One human connection at a time, we help it <em>grow</em>.</span></p>
     </section>
 
     <hr class="grule reveal" aria-hidden="true">
