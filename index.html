@@ -345,6 +345,10 @@
     .editorial .caro-dots i{width:7px;height:7px;border-radius:50%;background:var(--dk-4);transition:background .25s,transform .25s}
     .editorial .caro-dots i.on{background:var(--glow);transform:scale(1.4)}
 
+    /* Shrink the free-course labels + membership blurb on phones */
+    .editorial .fl-row.sm .fl-name{font-size:13px}
+    .editorial .fl-more{font-size:11.5px}
+
     /* one-time swipe nudge on the first carousel */
     .editorial .caro.hint .dgrid{animation:swipehint 1.1s ease both}
     @keyframes swipehint{0%,100%{transform:none}28%{transform:translateX(-22px)}}
@@ -568,7 +572,7 @@
       <div class="tracks">
         <div class="track cert reveal" data-panel role="tabpanel">
           <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
-          <h3>The credentials that get you selected</h3>
+          <h3>The credentials that get you selected.</h3>
           <p class="sub">Instructor-led, paid paths to required certifications for highly-paid jobs. Join the community and inquire directly regarding pricing and community-exclusive discounts.</p>
           <div class="certlist">
             <div class="cert-fam">
@@ -592,7 +596,7 @@
         </div>
         <div class="track reveal is-active" data-panel role="tabpanel">
           <div class="tk">Free foundation library · self-paced &amp; free</div>
-          <h3>Start where you are. Zero cost</h3>
+          <h3>Start where you are. Zero cost.</h3>
           <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
           <div class="freeval">
             <div class="fv-big">$0</div>
