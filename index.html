@@ -158,10 +158,13 @@
      card). Hover: the plate flips to ivory + full brand colour, so dark/navy
      marks (UnitedHealth, JPMorgan, IBM) stay legible — no single static
      background can satisfy both the grey and the full-colour state. */
-  .editorial .logos{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:2px}
-  .editorial .logo-plate{display:grid;place-items:center;height:56px;padding:4px 11px;
+  .editorial .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:2px}
+  .editorial .logo-plate{display:grid;place-items:center;height:56px;padding:4px 8px;
     border:1px solid rgba(0,0,0,.08);border-radius:9px;background:#fff}
-  .editorial img.wordmark{width:auto;max-width:100%;max-height:100%}
+  /* object-fit:contain lets a wide mark scale down to the narrower 4-up plate
+     without distorting when it hits max-width (the per-logo height becomes a
+     ceiling, not a fixed size). */
+  .editorial img.wordmark{width:auto;max-width:100%;max-height:100%;object-fit:contain}
   /* Per-logo heights normalise every wordmark to a uniform ink cap-height
      (each SVG carries different internal padding, so equal box height ≠ equal
      weight); bumped up ~25% over the old press-strip for recognisability. */
@@ -521,9 +524,8 @@
     <hr class="grule reveal" aria-hidden="true">
 
     <section class="services" id="inside">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal" style="justify-content:center;text-align:center">
         <h2>Benefits within the <em>community.</em></h2>
-        <p>Build the <b>proof</b>, the <b>profile</b>, and the <b>people</b> that get you hired. A course alone can't do all three.</p>
       </div>
       <!--
         TODO (Nalini, owner): This section is our real USP and needs your input to describe it accurately.
