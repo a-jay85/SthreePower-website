@@ -90,7 +90,7 @@
   /* Gradient hairline divider — full-bleed, mirrors the hero .horizon. Closes the manifesto block
      below the CTA the same way the horizon opens it above the quote. */
   .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:30px calc(50% - 50vw)}
-  .editorial .pillars-wrap{padding-bottom:30px}
+  .editorial .pillars-wrap{padding-bottom:0}
   /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
   .editorial .manifesto{padding:40px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.11), rgba(227,171,140,.03) 45%, transparent 65%), var(--dk-2)}
   .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
@@ -226,7 +226,7 @@
 
   /* End-of-section CTA — a hero-style "Join free" button that scrolls to the
      #join form, its label tuned to each section's pitch. */
-  .editorial .sec-cta{display:flex;justify-content:center;margin-top:32px}
+  .editorial .sec-cta{display:flex;justify-content:center;margin-top:30px}
 
   /* DIGITAL RESUME spotlight */
   .editorial .resume{padding:0}
@@ -280,24 +280,24 @@
     .editorial .hero-cta{gap:24px}
 
     /* tame the oversized vertical whitespace */
-    .editorial .hero{padding:34px 0 64px}              /* top gap == gap below headline */
+    .editorial .hero{padding:0 0 64px}              /* top gap == gap below headline */
     .editorial .horizon{bottom:32px}                   /* equalise space above/below the divider */
     /* Unify manifesto + the three pillars into ONE card on phones — they were
        reading as three disconnected boxes (filled quote, pill tabs, outlined card).
        The card owns the surface; the pieces inside go flush. */
-    .editorial .story{border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2); padding-bottom:30px}
-    .editorial .manifesto{padding:34px 24px 30px;background:none;border-radius:0;border-bottom:1px solid var(--dk-3)}
-    .editorial .grule{margin:18px calc(50% - 50vw)}
+    .editorial .story{border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2)}
+    .editorial .manifesto{padding:34px 24px 26px;background:none;border-radius:0;border-bottom:1px solid var(--dk-3)}
+    .editorial .grule{margin:24px calc(50% - 50vw) 20px}
     .editorial .stamp{margin-top:46px;gap:26px}
-    .editorial .pillars-wrap{padding:26px 22px 0}
+    .editorial .pillars-wrap{padding:26px 22px 34px}
     .editorial .demand{padding:0}
     .editorial .catalog{padding:0}
     .editorial .services{padding:0}
     .editorial .voices{padding:0}
-    .editorial .belong{padding:16px 0}
-    .editorial .joincta{padding:0 0 80px}
-    .editorial .sec-cta{margin-top:36px}
-    .editorial .sec-head{margin-bottom:26px}
+    .editorial .belong{padding:20px 0}
+    .editorial .joincta{padding:0 0 32px}
+    .editorial .sec-cta{margin-top:20px}
+    .editorial .sec-head{margin-bottom:20px}
     .editorial .sec-head h2 br{display:none}
 
     /* ---- TABS ---- */
@@ -324,10 +324,10 @@
     .editorial .dgrid,.editorial .srv,.editorial .vgrid{
       display:flex;gap:14px;background:none;border:none;
       overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-      scrollbar-width:none;margin:0 -20px;padding:4px 20px}
+      scrollbar-width:none;margin:0 -20px;padding:4px 7vw}
     .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
     .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
-      flex:0 0 86%;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
+      flex:0 0 86vw;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
@@ -395,25 +395,26 @@
          is inert on desktop. The inner DOM (manifesto, pillars-wrap[data-tabs],
          tablist) is untouched so the tabs JS still finds .tablist inside its group. -->
     <div class="story">
-    <section class="manifesto reveal">
-      <p>Ambition was never the problem. <em>Access was.</em></p>
-      <p><span>SthreePower closes the gap:<br>
-        real skills, a real network, and the income to match.</span></p>
-    </section>
+      <section class="manifesto reveal">
+        <p>Ambition was never the problem. <em>Access was.</em></p>
+        <p><span>SthreePower closes the gap:<br>
+          real <em>skills</em>, a real <em>network</em>, and the <em>income</em> to match.</span></p>
+      </section>
 
-    <section class="pillars-wrap" data-tabs>
-      <div class="tablist" role="tablist" aria-label="Skill, network, income">
-        <button class="tabbtn" type="button" role="tab" aria-selected="true">Skills</button>
-        <button class="tabbtn" type="button" role="tab" aria-selected="false">Network</button>
-        <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
-      </div>
-      <div class="pillars">
-        <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skills</div><h3>Learn in-demand skills</h3><p>Earn highly-demanded certifications in Salesforce, Scrum, Tableau, and SQL that top employers require. Take courses, gain experience, achieve success.</p></div>
-        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Meet peers, gain mentors, and request referrals from women doing the work. Form connections that turn a certification into an interview, a job, a career: a new life.</p></div>
-        <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>Build a digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a salary.</p></div>
-      </div>
-    </section>
-  </div><!-- /.story -->
+      <section class="pillars-wrap" data-tabs>
+        <div class="tablist" role="tablist" aria-label="Skill, network, income">
+          <button class="tabbtn" type="button" role="tab" aria-selected="true">Skills</button>
+          <button class="tabbtn" type="button" role="tab" aria-selected="false">Network</button>
+          <button class="tabbtn" type="button" role="tab" aria-selected="false">Income</button>
+        </div>
+        <div class="pillars">
+          <div class="pillar reveal is-active" data-panel role="tabpanel"><div class="pn">The skills</div><h3>Learn in-demand skills</h3><p>Earn highly-demanded certifications in Salesforce, Scrum, Tableau, and SQL that top employers require. Take courses, gain experience, achieve success.</p></div>
+          <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Meet peers, gain mentors, and request referrals from women doing the work. Form connections that turn a certification into an interview, a job, a career: a new life.</p></div>
+          <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>Build a digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a salary.</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
   <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
 
     <hr class="grule reveal" aria-hidden="true">
