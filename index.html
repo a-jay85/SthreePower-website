@@ -323,10 +323,10 @@
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
-    /* Phones are too narrow to fit a wordmark in a half-width plate, so stack
-       them one-up where each mark gets the full card width and stays legible. */
-    .editorial .logos{grid-template-columns:1fr;gap:7px}
-    .editorial .logo-plate{height:56px}
+    /* Keep the wordmarks in a 2x2 grid on phones to save vertical space; the
+       plates shrink a touch so each half-width mark still reads. */
+    .editorial .logos{grid-template-columns:repeat(2,1fr);gap:7px}
+    .editorial .logo-plate{height:48px;padding:4px 8px}
 
     .editorial .caroctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
     .editorial .caro-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--dk-4);display:grid;place-items:center;color:var(--iv-1);transition:border-color .2s,background .2s,transform .15s}
@@ -554,34 +554,11 @@
         <h2>Two paths open when you <em>join.</em></h2>
       </div>
       <div class="tracks-wrap" data-tabs>
-      <div class="tablist" role="tablist" aria-label="Free or paid">
-        <button class="tabbtn" type="button" role="tab" aria-selected="true">Free</button>
+      <div class="tablist" role="tablist" aria-label="Free or paid" style="--ti:1">
         <button class="tabbtn" type="button" role="tab" aria-selected="false">Paid</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Free</button>
       </div>
       <div class="tracks">
-        <div class="track reveal is-active" data-panel role="tabpanel">
-          <div class="tk">Free foundation library · self-paced &amp; free</div>
-          <h3>Start where you are. Zero cost</h3>
-          <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
-          <div class="freeval">
-            <div class="fv-big">$0</div>
-            <div class="fv-text">Courses like these can cost <b>$200–$2,000+</b>. Here, all free.</div>
-          </div>
-          <div class="freelist">
-            <div class="fl-legend">Ranked by current U.S. hiring demand</div>
-            <div class="fl-row hot"><span class="fl-name">AI Fundamentals</span></div>
-            <div class="fl-row hot"><span class="fl-name">Databricks Fundamentals</span></div>
-            <div class="fl-row hot"><span class="fl-name">SQL Basics</span></div>
-            <div class="fl-grid">
-              <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
-              <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
-              <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
-              <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
-              <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
-            </div>
-            <p class="fl-more"><b>Also free with membership:</b> Scrum Fundamentals, Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Website Building.</p>
-          </div>
-        </div>
         <div class="track cert reveal" data-panel role="tabpanel">
           <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
           <h3>The credentials that get you selected</h3>
@@ -604,6 +581,29 @@
               <div class="cf-item">Certified Desktop Specialist</div>
               <div class="cf-note">Contact us directly for pricing.</div>
             </div>
+          </div>
+        </div>
+        <div class="track reveal is-active" data-panel role="tabpanel">
+          <div class="tk">Free foundation library · self-paced &amp; free</div>
+          <h3>Start where you are. Zero cost</h3>
+          <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
+          <div class="freeval">
+            <div class="fv-big">$0</div>
+            <div class="fv-text">Courses like these can cost <b>$200–$2,000+</b>. Here, all free.</div>
+          </div>
+          <div class="freelist">
+            <div class="fl-legend">Ranked by current U.S. hiring demand</div>
+            <div class="fl-row hot"><span class="fl-name">AI Fundamentals</span></div>
+            <div class="fl-row hot"><span class="fl-name">Databricks Fundamentals</span></div>
+            <div class="fl-row hot"><span class="fl-name">SQL Basics</span></div>
+            <div class="fl-grid">
+              <div class="fl-row sm"><span class="fl-name">Business Analysis with AI</span></div>
+              <div class="fl-row sm"><span class="fl-name">Jira Fundamentals</span></div>
+              <div class="fl-row sm"><span class="fl-name">HIPAA Compliance</span></div>
+              <div class="fl-row sm"><span class="fl-name">Digital Marketing</span></div>
+              <div class="fl-row sm"><span class="fl-name">Corporate Sales</span></div>
+            </div>
+            <p class="fl-more"><b>Also free with membership:</b> Scrum Fundamentals, Confluence Essentials, Scrum for DevOps, Kanban Essentials, OKR Fundamentals, Six Sigma Yellow Belt, Informatica MDM Foundations, Marketing Strategy, Negotiation, Website Building.</p>
           </div>
         </div>
       </div>
