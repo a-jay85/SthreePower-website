@@ -695,23 +695,11 @@
 
 <script>
 (function(){
+  // Reveal every element once, at page load — regardless of scroll position.
+  // Below-fold items animate off-screen and are settled by the time you reach
+  // them, so the reveal never re-triggers as you scroll.
   var items = document.querySelectorAll('.reveal');
-  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches || !('IntersectionObserver' in window)) {
-    items.forEach(function(el){ el.classList.add('in'); });
-  } else {
-    // Reveal each element once, the first time it enters the viewport — on-screen
-    // items animate at load, the rest as they're scrolled to. Unobserving after the
-    // first reveal means the animation never replays on subsequent scrolls.
-    var io = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('in');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    items.forEach(function(el){ io.observe(el); });
-  }
+  items.forEach(function(el){ el.classList.add('in'); });
 
   // ---- Mobile tabs: one component, two uses (Skill/Network/Income + Free/Paid).
   // Panels stay in a desktop grid; here we just toggle which one shows and slide
