@@ -43,7 +43,7 @@
   .editorial .nav-cta:hover{background:var(--iv-1);color:var(--dk-1);border-color:var(--iv-1)}
 
   .editorial .hero{position:relative;padding:22px 0 60px;text-align:center}
-  .editorial .sky{position:absolute;inset:-200px -40% auto -40%;height:760px;z-index:0;
+  .editorial .sky{position:absolute;inset:-200px -40% auto -40%;height:760px;z-index:-1;
     background:radial-gradient(120% 100% at 50% 0%, var(--glow) 0%, var(--glow-2) 16%, var(--dk-3) 42%, var(--dk-1) 70%);
     filter:blur(2px);opacity:.85;animation:sky 14s ease-in-out infinite alternate}
   @keyframes sky{from{transform:translateY(-12px) scale(1.02)}to{transform:translateY(8px) scale(1.05)}}
@@ -90,7 +90,7 @@
   /* Gradient hairline divider — full-bleed, mirrors the hero .horizon. Closes the manifesto block
      below the CTA the same way the horizon opens it above the quote. */
   .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:30px calc(50% - 50vw)}
-  .editorial .pillars-wrap{padding-bottom:0}
+  .editorial .pillars-wrap{padding-bottom:30px}
   /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
   .editorial .manifesto{padding:40px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.11), rgba(227,171,140,.03) 45%, transparent 65%), var(--dk-2)}
   .editorial .manifesto p{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;max-width:24ch;margin:0 auto;color:var(--iv-1)}
@@ -285,7 +285,7 @@
     /* Unify manifesto + the three pillars into ONE card on phones — they were
        reading as three disconnected boxes (filled quote, pill tabs, outlined card).
        The card owns the surface; the pieces inside go flush. */
-    .editorial .story{border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2)}
+    .editorial .story{border:1px solid var(--dk-3);border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%, rgba(227,171,140,.06), transparent 55%), var(--dk-2); padding-bottom:30px}
     .editorial .manifesto{padding:34px 24px 30px;background:none;border-radius:0;border-bottom:1px solid var(--dk-3)}
     .editorial .grule{margin:18px calc(50% - 50vw)}
     .editorial .stamp{margin-top:46px;gap:26px}
@@ -412,9 +412,9 @@
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The network</div><h3>Unlock new doors</h3><p>Meet peers, gain mentors, and request referrals from women doing the work. Form connections that turn a certification into an interview, a job, a career: a new life.</p></div>
         <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>Build a digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a salary.</p></div>
       </div>
-      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
     </section>
-    </div><!-- /.story -->
+  </div><!-- /.story -->
+  <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
 
     <hr class="grule reveal" aria-hidden="true">
 
@@ -516,9 +516,9 @@
           <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The reach</div><h3>One link, always current</h3><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div>
           <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The receipts</div><h3>Proof, not just claims</h3><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div>
         </div>
-        <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your resume today</a></div>
       </section>
-      </div><!-- /.story -->
+    </div><!-- /.story -->
+    <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your resume today</a></div>
     </section>
 
     <hr class="grule reveal" aria-hidden="true">
@@ -561,12 +561,12 @@
         <h2>Two paths open when you <em>join.</em></h2>
       </div>
       <div class="tracks-wrap" data-tabs>
-      <div class="tablist" role="tablist" aria-label="Free or paid" style="--ti:1">
-        <button class="tabbtn" type="button" role="tab" aria-selected="false">Paid</button>
-        <button class="tabbtn" type="button" role="tab" aria-selected="true">Free</button>
+      <div class="tablist" role="tablist" aria-label="Free or paid" style="--ti:0">
+        <button class="tabbtn" type="button" role="tab" aria-selected="true">Paid</button>
+        <button class="tabbtn" type="button" role="tab" aria-selected="false">Free</button>
       </div>
       <div class="tracks">
-        <div class="track cert reveal" data-panel role="tabpanel">
+        <div class="track cert reveal is-active" data-panel role="tabpanel">
           <div class="tk"><span class="premium-tag">Premium</span> Certification track · instructor-led &amp; paid</div>
           <h3>The credentials that get you selected.</h3>
           <p class="sub">Instructor-led, paid paths to required certifications for highly-paid jobs. Join the community and inquire directly regarding pricing and community-exclusive discounts.</p>
@@ -590,7 +590,7 @@
             </div>
           </div>
         </div>
-        <div class="track reveal is-active" data-panel role="tabpanel">
+        <div class="track reveal" data-panel role="tabpanel">
           <div class="tk">Free foundation library · self-paced &amp; free</div>
           <h3>Start where you are. Zero cost.</h3>
           <p class="sub">Self-paced and free to community members. Build the basics before you commit to anything. No payment, no pressure.</p>
@@ -628,7 +628,7 @@
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Testimonial</b></div><blockquote>“Right after graduating, I joined SthreePower to strengthen my skills and prepare for my career. The industry-recognized certifications, practical learning, and mentorship boosted my confidence and helped me transition from college to the professional world with a strong foundation.”</blockquote><div class="who"><div class="av">S</div><div><b>Sri Vaishnavi T.</b><span>Aspiring Professional</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Interview</b></div><blockquote>“The resume review was tough but honest. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
-        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio, and I felt I had purpose in helping support the community.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio while also providing new job openings I could apply for. Since my work supported the community, my work felt truly meaningful.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
