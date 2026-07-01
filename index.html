@@ -314,6 +314,11 @@
     .editorial .pillar{grid-area:1 / 1;border:none;border-radius:0;padding:6px 0 0;visibility:hidden}
     .editorial .pillar.is-active{visibility:visible;animation:fadeup .4s ease both}
 
+    /* Digital resume points reuse the same tab-switch as the pillars above. */
+    .editorial .resume .rgrid{display:grid;border:none;border-radius:0;overflow:visible;margin-top:0}
+    .editorial .resume .rpillar{grid-area:1 / 1;border:none;border-radius:0;padding:6px 0 0;visibility:hidden}
+    .editorial .resume .rpillar.is-active{visibility:visible;animation:fadeup .4s ease both}
+
     .editorial .tracks{display:block;margin-top:0}
     .editorial .track{display:none;padding:32px 24px}
     .editorial .track.is-active{display:block;animation:fadeup .4s ease both}
@@ -502,15 +507,20 @@
       <div class="sec-head reveal" style="justify-content:center;text-align:center">
         <h2>A certificate proves you studied. A <em>digital resume</em> proves you can do the work.</h2>
       </div>
-      <div class="panel reveal">
+      <div class="panel reveal" data-tabs>
         <div class="rintro">
           <div class="eyebrow">Every member builds one</div>
           <p class="lead">Most job seekers send the same flat PDF into a void. Your SthreePower digital resume is a living profile that puts your certifications, capstone, and real project work in one link recruiters can actually find.</p>
         </div>
+        <div class="tablist" role="tablist" aria-label="Proof, reach, receipts">
+          <button class="tabbtn" type="button" role="tab" aria-selected="true">Proof</button>
+          <button class="tabbtn" type="button" role="tab" aria-selected="false">Reach</button>
+          <button class="tabbtn" type="button" role="tab" aria-selected="false">Receipts</button>
+        </div>
         <div class="rgrid">
-          <div class="rpillar reveal"><div class="pn">The proof</div><h3>Found, not buried</h3><p>Built to be discoverable by recruiters searching for your skills, instead of sitting unopened in an inbox.</p></div>
-          <div class="rpillar reveal"><div class="pn">The reach</div><h3>One link, always current</h3><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div>
-          <div class="rpillar reveal"><div class="pn">The receipts</div><h3>Proof, not just claims</h3><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div>
+          <div class="rpillar reveal is-active" data-panel role="tabpanel"><div class="pn">The proof</div><h3>Found, not buried</h3><p>Built to be discoverable by recruiters searching for your skills, instead of sitting unopened in an inbox.</p></div>
+          <div class="rpillar reveal" data-panel role="tabpanel"><div class="pn">The reach</div><h3>One link, always current</h3><p>Send the same shareable link everywhere. Update it once and every recruiter sees the latest version.</p></div>
+          <div class="rpillar reveal" data-panel role="tabpanel"><div class="pn">The receipts</div><h3>Proof, not just claims</h3><p>Your certifications and capstone project linked in place, so employers see what you built, not just what you listed.</p></div>
         </div>
       </div>
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your resume today</a></div>
@@ -613,7 +623,7 @@
       </div>
       <p class="srcnote reveal">Price comparison benchmarked against 2026 third-party training costs for SQL, AI, HIPAA, and Databricks courses (Salesforce/Scrum.org, vendor academies, and independent providers).<br>
         Ranges vary by provider; free library access is included with community membership.</p>
-      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start learning free</a></div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Join for free</a></div>
     </section>
 
     <hr class="grule reveal" aria-hidden="true">
