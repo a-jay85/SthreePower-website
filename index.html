@@ -328,10 +328,10 @@
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
-    /* Keep the wordmarks in a 2x2 grid on phones to save vertical space; the
-       plates shrink a touch so each half-width mark still reads. */
+    /* Keep the wordmarks in a 2x2 grid on phones to save vertical space (two
+       rows instead of four). Plates keep their desktop 56px height so the
+       per-logo cap-height normalisation holds and no mark gets clipped. */
     .editorial .logos{grid-template-columns:repeat(2,1fr);gap:7px}
-    .editorial .logo-plate{height:48px;padding:4px 8px}
 
     .editorial .caroctl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}
     .editorial .caro-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--dk-4);display:grid;place-items:center;color:var(--iv-1);transition:border-color .2s,background .2s,transform .15s}
