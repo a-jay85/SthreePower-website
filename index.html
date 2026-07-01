@@ -757,26 +757,27 @@
     }, {passive:true});
   });
 
-  // ---- Desktop: equalize each stacked band of the demand cards (heading, stat,
-  // and logo grid) so the "Hiring for these roles" labels, the logo plates, and
-  // the "We teach" line below them all sit at the same height across cards. Each
+  // ---- Equalize each stacked band of the demand cards (heading, stat, and logo
+  // grid) so the "Hiring for these roles" labels, the logo plates, and the
+  // "We teach" divider below them all sit at the same height across cards. Each
   // band varies on its own — the Salesforce heading carries an inline logo, the
   // stats differ in length, and each logo plate grows to its tallest mark — so
-  // equalizing only one band leaves the rest drifting. Mobile is a carousel of
-  // standalone cards, so we clear the overrides there.
+  // equalizing only one band leaves the rest drifting. This runs on mobile too:
+  // the cards become a horizontal swipe carousel, and equal bands keep those
+  // rows from jumping as you swipe from one card to the next. Heights are read
+  // at the current width, so it adapts to whichever layout is active.
   (function(){
     var grid = document.querySelector('.demand .dgrid');
     if (!grid) return;
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.dcard'));
     if (!cards.length) return;
     var bands = ['h3', '.stat', '.logos'];
-    var desktop = window.matchMedia('(min-width:861px)');
     function equalize(){
       bands.forEach(function(sel){
         var els = cards.map(function(c){ return c.querySelector(sel); })
                        .filter(Boolean);
         els.forEach(function(el){ el.style.minHeight = ''; });
-        if (!desktop.matches) return;
+        // Reflow with overrides cleared before measuring natural heights.
         var max = 0;
         els.forEach(function(el){ max = Math.max(max, el.offsetHeight); });
         els.forEach(function(el){ el.style.minHeight = max + 'px'; });
