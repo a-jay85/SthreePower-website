@@ -237,11 +237,11 @@
   .editorial .voices{padding:0}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
-  .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+  .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column}
   .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
   .editorial .vcard .tix b{color:var(--glow);font-weight:700}
   .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
-  .editorial .vcard .who{display:flex;align-items:center;gap:11px;margin-top:18px}
+  .editorial .vcard .who{display:flex;align-items:center;gap:11px;margin-top:auto;padding-top:18px}
   .editorial .vcard .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--glow),var(--glow-2));display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--dk-1)}
   .editorial .vcard .who div b{display:block;font-size:13.5px}
   .editorial .vcard .who div span{font-size:12px;color:var(--dk-6)}
@@ -345,10 +345,6 @@
     .editorial .caro-dots i{width:7px;height:7px;border-radius:50%;background:var(--dk-4);transition:background .25s,transform .25s}
     .editorial .caro-dots i.on{background:var(--glow);transform:scale(1.4)}
 
-    /* Shrink the free-course labels + membership blurb on phones */
-    .editorial .fl-row.sm .fl-name{font-size:11.5px}
-    .editorial .fl-more{font-size:10.5px}
-
     /* one-time swipe nudge on the first carousel */
     .editorial .caro.hint .dgrid{animation:swipehint 1.1s ease both}
     @keyframes swipehint{0%,100%{transform:none}28%{transform:translateX(-22px)}}
@@ -370,7 +366,7 @@
     <nav class="nav">
       <div class="logo">SthreePower<sup>®</sup></div>
       <div class="navlinks">
-        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Community</a><a href="#voices">Voices</a>
+        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Services</a><a href="#voices">Voices</a>
       </div>
       <a href="#join" class="nav-cta">Join our community</a>
     </nav>
@@ -630,9 +626,9 @@
       <div class="sec-head reveal" style="justify-content:center;text-align:center"><h2>Voices of <em>impact.</em></h2></div>
       <div class="caro" data-caro>
       <div class="vgrid">
-        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Hired</b></div><blockquote>“I came in unsure I even belonged in tech. I left with a certification and a job offer.”</blockquote><div class="who"><div class="av">P</div><div><b>Priya R.</b><span>Now a Business Analyst</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Testimonial</b></div><blockquote>“Right after graduating, I joined SthreePower to strengthen my skills and prepare for my career. The industry-recognized certifications, practical learning, and mentorship boosted my confidence and helped me transition from college to the professional world with a strong foundation.”</blockquote><div class="who"><div class="av">S</div><div><b>Sri Vaishnavi T.</b><span>Aspiring Professional</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Interview</b></div><blockquote>“The resume review was tough but honest. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
-        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Referral</b></div><blockquote>“One intro from this community did more than a year of blind applications.”</blockquote><div class="who"><div class="av">D</div><div><b>Daniela M.</b><span>Returning to work after a break</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio, and I felt I had purpose in helping support the community.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
