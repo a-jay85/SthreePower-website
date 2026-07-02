@@ -122,7 +122,7 @@
   .editorial .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--dk-3);border-radius:14px;overflow:hidden}
   .editorial .pillar{padding:34px 30px 38px;border-right:1px solid var(--dk-3)}
   .editorial .pillar:last-child{border-right:none}
-  .editorial .pillar .pn{font-family:'Space Mono',monospace;font-size:11px;color:var(--glow);letter-spacing:.16em;text-transform:uppercase;text-align:center}
+  .editorial .pillar .pn{font-family:'Hanken Grotesk',monospace;font-size:11px;font-weight:700;color:var(--glow);letter-spacing:.16em;text-transform:uppercase;text-align:center}
   .editorial .pillar h3{font-family:'Newsreader',serif;font-weight:500;font-size:25px;margin:18px 0 12px;text-align:center}
   .editorial .pillar p{font-size:15px;line-height:1.65;color:#C9BFD0}
 
@@ -134,7 +134,7 @@
   .editorial .sec-head p{color:var(--dk-6);font-size:15px;max-width:38ch;line-height:1.6}
   .editorial .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--dk-3);border:1px solid var(--dk-3)}
   .editorial .dcard{background:var(--dk-1);padding:28px 32px;display:flex;flex-direction:column}
-  .editorial .dcard .dk{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);letter-spacing:.08em;text-align:center}
+  .editorial .dcard .dk{font-family:'Hanken Grotesk',monospace;font-size:12px;font-weight:700;color:var(--dk-5);letter-spacing:.08em;text-align:center}
   .editorial .dcard h3{font-family:'Newsreader',serif;font-weight:500;font-size:27px;margin:10px 0 12px;text-align:center}
   .editorial .dcard .stat{font-size:16px;line-height:1.5;color:#D8CEDE;margin-bottom:16px}
   .editorial .dcard .stat b{color:var(--iv-1);font-weight:700}
@@ -152,8 +152,8 @@
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
   .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03));border-color:rgba(227,171,140,.45)}
-  .editorial .track .tk{font-family:'Space Mono',monospace;font-size:12px;color:var(--glow);letter-spacing:.08em}
-  .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:10px 0 8px}
+  .editorial .track .tk{font-family:'Hanken Grotesk',monospace;font-size:12px;font-weight:700;color:var(--glow);letter-spacing:.08em;text-align:center;position:relative}
+  .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:10px 0 8px;text-align:center}
   .editorial .track .sub{font-size:14.5px;line-height:1.55;color:#C2B8CC;margin-bottom:18px}
 
   .editorial .services{padding:0}
@@ -163,9 +163,9 @@
   /* Same peach tint as the premium card, on the odd-numbered boxes */
   .editorial .srv .cell:nth-child(odd){background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03)),var(--dk-1)}
   .editorial .srv .cell:nth-child(odd):hover{background:linear-gradient(180deg,rgba(227,171,140,.11),rgba(201,138,160,.05)),var(--dk-2)}
-  .editorial .srv .ci{font-family:'Space Mono',monospace;font-size:12px;color:var(--dk-5);text-align:center}
-  .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:10px 0 8px;text-align:center}
-  .editorial .srv h4 .soon{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);vertical-align:middle;margin-left:8px;border:1px solid var(--dk-4);border-radius:999px;padding:2px 7px}
+  .editorial .srv .ci{font-family:'Hanken Grotesk',monospace;font-size:12px;color:var(--dk-5);text-align:center}
+  .editorial .srv h4{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:8px 0 8px;text-align:center}
+  .editorial .srv h4 .soon{font-family:'Hanken Grotesk',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);vertical-align:middle;margin-left:8px;border:1px solid var(--dk-4);border-radius:999px;padding:2px 7px}
   .editorial .srv p{color:#C2B8CC;font-size:14.5px;line-height:1.6}
   .editorial .srvnote{font-size:13.5px;line-height:1.6;color:#B7AAC6;margin-top:16px}
   .editorial .srvnote b{color:var(--iv-2);font-weight:600}
@@ -213,7 +213,7 @@
 
   /* FREE LIBRARY — scannable demand-ranked list; strong picks larger, long tail compact */
   .editorial .freelist{margin-top:2px;flex:1;display:flex;flex-direction:column}
-  .editorial .fl-legend{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-5);margin-bottom:4px;text-align:center}
+  .editorial .fl-legend{font-family:'Hanken Grotesk',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-5);margin-bottom:4px;text-align:center}
   .editorial .fl-row{display:flex;align-items:baseline;justify-content:center;gap:14px;padding:12px 0 10px;border-bottom:1px solid var(--dk-3)}
   .editorial .fl-row .fl-name{font-family:'Newsreader',serif;font-weight:600;font-size:19px;line-height:1.2;color:var(--iv-1)}
   .editorial .fl-row.hot .fl-name{color:var(--glow)}
@@ -227,14 +227,14 @@
   .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
 
   /* PREMIUM tag on the paid track */
-  .editorial .premium-tag{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px}
+  .editorial .premium-tag{font-family:'Hanken Grotesk',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px;position:absolute;left:0;top:50%;transform:translateY(-50%)}
 
   /* PREMIUM CERT LIST — replaces the flat pills on the paid track. Grouped by
      credential family, serif names, gold diamond markers + hairline gold rules
      so it reads a clear notch above the free library's list. */
   .editorial .certlist{margin-top:4px;display:flex;flex-direction:column;gap:18px;flex:1}
   .editorial .certlist .cert-fam:last-child{flex:1;display:flex;flex-direction:column}
-  .editorial .cf-head{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:0;display:flex;align-items:center;gap:12px}
+  .editorial .cf-head{font-family:'Hanken Grotesk',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glow);margin-bottom:0;display:flex;align-items:center;gap:12px}
   .editorial .cf-head::before,.editorial .cf-head::after{content:"";flex:1;height:1px}
   .editorial .cf-head::before{background:linear-gradient(90deg,transparent,rgba(227,171,140,.42))}
   .editorial .cf-head::after{background:linear-gradient(90deg,rgba(227,171,140,.42),transparent)}
@@ -273,7 +273,7 @@
   }
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column;max-height:320px;overflow:hidden}
-  .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
+  .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Hanken Grotesk',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
   .editorial .vcard .tix b{color:var(--glow);font-weight:700}
   .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
   /* Read-more: JS caps the tall testimonial's blockquote (via inline max-height)
@@ -287,7 +287,7 @@
   .editorial .vcard.open blockquote{max-height:none!important}
   .editorial .vcard.open{max-height:none;overflow:visible}
   .editorial .vcard .readmore{display:none;align-self:flex-start;margin-top:12px;padding:0;
-    background:none;border:none;cursor:pointer;font-family:'Space Mono',monospace;
+    background:none;border:none;cursor:pointer;font-family:'Hanken Grotesk',monospace;
     font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow);transition:color .2s}
   .editorial .vcard .readmore:hover{color:var(--glow-2)}
   .editorial .vcard.clamp .readmore{display:inline-block}
@@ -599,14 +599,14 @@
       -->
       <div class="caro" data-caro>
       <div class="srv">
-        <div class="cell reveal" data-panel><div class="ci">01 / What you get</div><h4>Digital Resume</h4><p>A living profile recruiters can find, not a flat PDF that gets lost in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">02 / What you get</div><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you're aiming for.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">03 / What you get</div><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
-        <div class="cell reveal" data-panel><div class="ci">04 / What you get</div><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">05 / What you get</div><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">06 / What you get</div><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. Jobs that are never publicly posted.</p></div>
-        <div class="cell flagship reveal" data-panel><div class="ci">07 / Also inside</div><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
-        <div class="cell reveal" data-panel><div class="ci">08 / What you get</div><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and contribute while you grow. <!-- TODO: describe the program --></p></div>
+        <div class="cell reveal" data-panel><h4>Digital Resume</h4><p>A living profile recruiters can find, not a flat PDF that gets lost in an inbox. Your certifications, capstone, and real project work in one shareable link. Update it once and everyone sees the latest. Proof, not just claims.</p></div>
+        <div class="cell reveal" data-panel><h4>Resume Review</h4><p>Direct, honest feedback from women already working in the field you want to join.</p></div>
+        <div class="cell reveal" data-panel><h4>Capstone Project</h4><p>Finish with portfolio-ready work that proves you can do the job, not just pass the test. <!-- TODO: confirm scope --></p></div>
+        <div class="cell reveal" data-panel><h4>Interview Prep</h4><p>Mock interviews and interview-ready presentations so you walk in able to talk about the work, not just the certificate.</p></div>
+        <div class="cell reveal" data-panel><h4>Live Training</h4><p>Weekly sessions on Jira, Confluence, Scrum, Six Sigma, project charters, and interview-ready presentations.</p></div>
+        <div class="cell reveal" data-panel><h4>Recruitment &amp; Referrals</h4><p>Openings and referrals shared by members, for members. Jobs that are never publicly posted.</p></div>
+        <div class="cell flagship reveal" data-panel><h4>Flagship initiatives</h4><p>Plus <b>Vinodha</b> and <b>Banumathi</b>, created to support women through specific transitions. Programs announced as they launch.</p></div>
+        <div class="cell reveal" data-panel><h4>Volunteering</h4><p>Hands-on opportunities that build real experience and contribute while you grow. <!-- TODO: describe the program --></p></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
