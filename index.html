@@ -89,7 +89,7 @@
 
   /* Gradient hairline divider — full-bleed, mirrors the hero .horizon. Closes the manifesto block
      below the CTA the same way the horizon opens it above the quote. */
-  .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:30px calc(50% - 50vw)}
+  .editorial .grule{height:1px;border:none;width:100vw;background:linear-gradient(90deg,transparent,var(--glow) 30%,var(--glow) 70%,transparent);opacity:.55;margin:40px calc(50% - 50vw)}
   .editorial .pillars-wrap{padding-bottom:0}
   /* Manifesto sits on its own tinted band so it reads distinctly from the hero above and the pillars below. */
   .editorial .manifesto{padding:40px 0;text-align:center;border-radius:14px;background:radial-gradient(120% 150% at 50% 0%, rgba(227,171,140,.11), rgba(227,171,140,.03) 45%, transparent 65%), var(--dk-2)}
@@ -235,12 +235,27 @@
   .editorial .resume .manifesto em{font-style:italic;color:var(--glow)}
 
   .editorial .voices{padding:0}
-  .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  .editorial .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column}
   .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
   .editorial .vcard .tix b{color:var(--glow);font-weight:700}
   .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
+  /* Read-more: JS caps the tall testimonial's blockquote (via inline max-height)
+     to the height of the tallest short card so all four read cleanly in the 2x2.
+     When capped, the visible text fades out at the bottom and a Read more link
+     expands it. Only wired up on desktop; on mobile each card is a full-width
+     carousel slide and shows its whole quote. */
+  .editorial .vcard.clamp blockquote{overflow:hidden}
+  .editorial .vcard.clamp:not(.open) blockquote{
+    -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);
+    mask-image:linear-gradient(180deg,#000 62%,transparent)}
+  .editorial .vcard.open blockquote{max-height:none!important}
+  .editorial .vcard .readmore{display:none;align-self:flex-start;margin-top:12px;padding:0;
+    background:none;border:none;cursor:pointer;font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow);transition:color .2s}
+  .editorial .vcard .readmore:hover{color:var(--glow-2)}
+  .editorial .vcard.clamp .readmore{display:inline-block}
   .editorial .vcard .who{display:flex;align-items:center;gap:11px;margin-top:auto;padding-top:18px}
   .editorial .vcard .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--glow),var(--glow-2));display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--dk-1)}
   .editorial .vcard .who div b{display:block;font-size:13.5px}
@@ -414,8 +429,7 @@
           <div class="pillar reveal" data-panel role="tabpanel"><div class="pn">The income</div><h3>Financial independence</h3><p>Build a digital resume that gets you discovered, plus resume reviews, interview prep, and real roles shared by members. The shortest, honest path to a salary.</p></div>
         </div>
       </section>
-    </div>
-  </div>
+  </div><!-- /.story -->
   <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
 
     <hr class="grule reveal" aria-hidden="true">
@@ -492,7 +506,7 @@
       </div>
       </div>
       <p class="srcnote reveal">Figures from 2026 U.S. labor-market sources (LinkedIn, Indeed, Salesforce). Companies shown are publicly recruiting for these roles, a signal of demand, not a statement of partnership.</p>
-      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your training</a></div>
+      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Get certified today</a></div>
     </section>
 
     <hr class="grule reveal" aria-hidden="true">
@@ -629,12 +643,14 @@
       <div class="caro" data-caro>
       <div class="vgrid">
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Testimonial</b></div><blockquote>“Right after graduating, I joined SthreePower to strengthen my skills and prepare for my career. The industry-recognized certifications, practical learning, and mentorship boosted my confidence and helped me transition from college to the professional world with a strong foundation.”</blockquote><div class="who"><div class="av">S</div><div><b>Sri Vaishnavi T.</b><span>Aspiring Professional</span></div></div></div>
-        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Interview</b></div><blockquote>“The resume review was tough but honest. It's the reason I got the interview.”</blockquote><div class="who"><div class="av">L</div><div><b>Latha M.</b><span>First tech role at 41</span></div></div></div>
-        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio while also providing new job openings I could apply for. Since my work supported the community, my work felt truly meaningful.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Recent Graduate</b></div><blockquote>“I joined SthreePower feeling a little lost and unsure, not expecting much but I was welcomed by women who had been exactly where I was and showed up as they truly are.<br><br>
+          Women here are real about their struggles, imperfect, hardworking, and incredibly supportive of one another. They genuinely cheer for one another without hesitation. I found people who checked in on me, celebrated my small wins, and gently pushed me when I needed it.<br><br>
+          Coming from a background where women weren't always encouraged to aim high, I felt deeply grateful to have found a community like this. I'm still figuring things out, but I know I'm doing it alongside the right people.”</blockquote><div class="who"><div class="av">L</div><div><b>Divya D.</b><span>Data Professional</span></div></div></div>
+        <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio while also providing new job openings I could apply for. Since my work supported the community, my work felt truly meaningful.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div><div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“I know Nalini personally.<br><br>Her belief in community is unshakable, and SthreePower runs on it.<br><br>Have her on your side and winning is only a matter of time.”</blockquote><div class="who"><div class="av">A</div><div><b>Namrata S.</b><span>Product Professional</span></div></div></div>
       </div>
       <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <div class="caro-dots"><i class="on"></i><i></i><i></i></div>
+        <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i></div>
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
@@ -647,7 +663,7 @@
     <div class="wrap">
       <!-- Populated by JS from the ?joined / ?error query params after the OAuth round-trip. -->
       <div id="joinBanner" class="joined-banner" hidden></div>
-      <h2>The next version of your career <em>starts<br>
+      <h2>The next chapter of your career <em>starts<br>
       in the group.</em></h2>
       <p>Joining is <em>free.</em><br>
         Bring your questions, the community brings<br>
@@ -794,6 +810,65 @@
     equalize();
     window.addEventListener('resize', equalize);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
+  })();
+
+  // ---- Read more on the testimonials. On desktop the quotes vary a lot in
+  // length; cap the tall one(s) to the height of the tallest short card so the
+  // 2x2 grid reads evenly, fade the cut-off text, and reveal it on Read more.
+  // Skipped on the mobile carousel (each slide is full-width and shows it all).
+  (function(){
+    var section = document.querySelector('.voices');
+    if (!section) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll('.vcard'));
+    if (!cards.length) return;
+    var isDesktop = window.matchMedia('(min-width:861px)');
+
+    // Give each clampable card its Read more control once.
+    cards.forEach(function(card){
+      if (card.querySelector('.readmore')) return;
+      var q = card.querySelector('blockquote');
+      var who = card.querySelector('.who');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'readmore';
+      btn.textContent = 'Read more';
+      btn.setAttribute('aria-expanded', 'false');
+      card.insertBefore(btn, who);
+      btn.addEventListener('click', function(){
+        var open = card.classList.toggle('open');
+        btn.textContent = open ? 'Read less' : 'Read more';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+
+    function reset(){
+      cards.forEach(function(card){
+        card.classList.remove('clamp');
+        card.querySelector('blockquote').style.maxHeight = '';
+      });
+    }
+
+    function apply(){
+      reset();
+      if (!isDesktop.matches) return;
+      // Measure natural quote heights, then cap to the tallest *short* card so
+      // the three shorter quotes stay whole and only the outlier(s) clamp.
+      var qs = cards.map(function(c){ return c.querySelector('blockquote'); });
+      var heights = qs.map(function(q){ return q.scrollHeight; });
+      var sorted = heights.slice().sort(function(a,b){ return a - b; });
+      var cap = sorted[sorted.length - 2]; // tallest short card
+      if (!cap) return;
+      qs.forEach(function(q, i){
+        if (heights[i] > cap + 4){
+          q.style.maxHeight = cap + 'px';
+          cards[i].classList.add('clamp');
+        }
+      });
+    }
+
+    apply();
+    window.addEventListener('resize', apply);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
   })();
 
   // ---- One-time swipe hint: nudge the first carousel so it reads as swipeable.
