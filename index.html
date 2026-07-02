@@ -58,6 +58,9 @@
   .editorial h1 em{font-style:italic;color:var(--glow)}
   .editorial .lede{max-width:52ch;margin:24px auto 0;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#D8CEDE}
   .editorial .hero-cta{display:flex;gap:16px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+  /* Explicit display:flex above beats the UA [hidden] rule, so hiding the CTA
+     via the hidden attr (JS, on submission) needs this to actually take effect. */
+  .editorial .hero-cta[hidden]{display:none}
   .editorial .btn-pri{background:var(--iv-1);color:var(--dk-1);padding:16px 30px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 12px 30px -10px rgba(227,171,140,.6),0 5px 12px -6px rgba(201,138,160,.5);transition:transform .2s,box-shadow .2s}
   .editorial .btn-pri:hover{transform:translateY(-2px);box-shadow:0 22px 56px -8px rgba(227,171,140,1),0 10px 24px -6px rgba(201,138,160,.85)}
   .editorial .btn-sec{padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;color:var(--iv-1);border:1px solid var(--dk-4);transition:border-color .2s}
@@ -82,8 +85,12 @@
   /* Honeypot — visually gone but still in the DOM for bots to fill. */
   .editorial .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
   .editorial .joined-banner{max-width:560px;margin:0 auto 30px;padding:16px 22px;border-radius:10px;font-size:14.5px;line-height:1.5}
-  .editorial .joined-banner.ok{background:rgba(227,171,140,.12);border:1px solid var(--dk-4);color:var(--iv-1)}
-  .editorial .joined-banner.err{background:rgba(201,138,160,.14);border:1px solid var(--glow-2);color:var(--iv-1)}
+  /* Peach border (matches the <em> accents) + brighter gradient so the banner grabs
+     attention on the post-submission reload — otherwise it reads as "nothing happened". */
+  .editorial .joined-banner.ok{background:linear-gradient(135deg,rgba(227,171,140,.24),rgba(201,138,160,.15));border:1px solid var(--glow);color:var(--iv-1);box-shadow:0 0 24px -6px rgba(227,171,140,.6),inset 0 0 0 1px rgba(227,171,140,.16)}
+  .editorial .joined-banner.err{background:linear-gradient(135deg,rgba(201,138,160,.26),rgba(227,171,140,.13));border:1px solid var(--glow);color:var(--iv-1);box-shadow:0 0 24px -6px rgba(227,171,140,.6),inset 0 0 0 1px rgba(227,171,140,.16)}
+  /* In the hero it stands in for the CTA buttons, so it sits below the lede like they did. */
+  .editorial .hero .joined-banner{margin:30px auto 0}
 
   .editorial .stamp{position:relative;z-index:2;margin-top:44px;display:flex;justify-content:center;gap:46px;flex-wrap:wrap;color:var(--dk-6);font-size:13px;letter-spacing:.04em}
   .editorial .stamp b{display:block;font-family:'Newsreader',serif;font-size:30px;color:var(--iv-1);font-weight:500;letter-spacing:0}
@@ -400,13 +407,18 @@
       <div class="eyebrow reveal">A global community for women</div>
       <h1 class="reveal">Build skills companies <em>are hiring for.</em></h1>
       <p class="lede reveal">Get certified for highly in-demand jobs in AI/ML, Salesforce, Scrum, SQL, Data. Gain experience alongside a community of women, grow your network, and build toward financial independence.</p>
-      <div class="hero-cta reveal">
+      <div class="hero-cta reveal" id="heroCta">
         <!-- Primary CTA scrolls to the #join form. Plain CTA (no Google logo): clicking this
              doesn't sign you in, it scrolls to the form. The official Google-branded button
              lives at the form itself (#join). -->
         <a href="#join" class="btn-pri">Join free</a>
         <a href="#demand" class="btn-sec">See what's in demand</a>
       </div>
+      <!-- Post-submission outcome banner. Populated by JS from the ?joined / ?check /
+           ?confirmed / ?error query params after the round-trip; it replaces the CTA
+           buttons above so the confirmation is the first thing the user sees, without
+           forcing a scroll to the bottom of the page. -->
+      <div id="joinBanner" class="joined-banner" hidden></div>
     </div>
   </section>
 
@@ -666,8 +678,6 @@
 
   <section class="joincta">
     <div class="wrap">
-      <!-- Populated by JS from the ?joined / ?error query params after the OAuth round-trip. -->
-      <div id="joinBanner" class="joined-banner" hidden></div>
       <h2>The next chapter of your career <em>starts<br>
       in the group.</em></h2>
       <p>Joining is <em>free.</em><br>
@@ -991,13 +1001,14 @@
     } else {
       shown = false;
     }
-    // Scroll to the banner for any outcome — it sits below the fold after the redirect.
-    // rAF lets layout settle first so smooth-scroll lands on the right position.
+    // The banner lives in the hero and stands in for the CTA buttons, so on any outcome
+    // we hide those buttons, reveal the banner in their place, and pin the view to the
+    // top — the confirmation is visible immediately, no scroll to the bottom required.
     if (shown) {
+      var heroCta = document.getElementById('heroCta');
+      if (heroCta) heroCta.hidden = true;
       banner.hidden = false;
-      requestAnimationFrame(function () {
-        banner.scrollIntoView({behavior:'smooth', block:'center'});
-      });
+      window.scrollTo(0, 0);
     }
   }
 })();
