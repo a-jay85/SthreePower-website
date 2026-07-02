@@ -367,7 +367,7 @@
     .editorial .caro-dots i.on{background:var(--glow);transform:scale(1.4)}
 
     /* one-time swipe nudge on the first carousel */
-    .editorial .caro.hint .dgrid{animation:swipehint 1.1s ease both}
+    .editorial .caro.hint .dgrid,.editorial .caro.hint .srv,.editorial .caro.hint .vgrid{animation:swipehint 1.1s ease both}
     @keyframes swipehint{0%,100%{transform:none}28%{transform:translateX(-22px)}}
   }
 
@@ -653,13 +653,13 @@
           Coming from a background where women weren't always encouraged to aim high, I felt deeply grateful to have found a community like this. I'm still figuring things out, but I know I'm doing it alongside the right people.”</blockquote><div class="who"><div class="av">L</div><div><b>Divya D.</b><span>Data Professional</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio while also providing new job openings I could apply for. Since my work supported the community, my work felt truly meaningful.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div><div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“I know Nalini personally.<br><br>Her belief in community is unshakable, and SthreePower runs on it.<br><br>Have her on your side and winning is only a matter of time.”</blockquote><div class="who"><div class="av">A</div><div><b>Namrata S.</b><span>Product Professional</span></div></div></div>
       </div>
-      <div class="caroctl" aria-hidden="true" id="join">
+      <div class="caroctl" aria-hidden="true">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
         <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i></div>
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
-      <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your story</a></div>
+      <div class="sec-cta reveal" id="join"><a href="#join" class="btn-pri">Start your story</a></div>
     </section>
 
     <hr class="grule reveal" aria-hidden="true">
@@ -918,17 +918,21 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
   })();
 
-  // ---- One-time swipe hint: nudge the first carousel so it reads as swipeable.
-  // Phones only, and only when motion is allowed.
+  // ---- One-time swipe hint: nudge each carousel the first time it scrolls into
+  // view so it reads as swipeable. Phones only, and only when motion is allowed.
   if (window.matchMedia('(max-width:600px)').matches &&
-      !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-    var firstCaro = document.querySelector('[data-caro]');
-    if (firstCaro) {
-      setTimeout(function(){
-        firstCaro.classList.add('hint');
-        setTimeout(function(){ firstCaro.classList.remove('hint'); }, 1200);
-      }, 900);
-    }
+      !window.matchMedia('(prefers-reduced-motion:reduce)').matches &&
+      'IntersectionObserver' in window) {
+    var hintObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var caro = e.target;
+        hintObs.unobserve(caro);
+        caro.classList.add('hint');
+        setTimeout(function(){ caro.classList.remove('hint'); }, 1200);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-caro]').forEach(function(caro){ hintObs.observe(caro); });
   }
 
   // Gate both join buttons (Google + email) on the marketing-consent checkbox.
