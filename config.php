@@ -55,7 +55,7 @@ define('JOIN_PAGE', 'index.html');
 
 // Bump this string whenever the consent wording on the page changes — it is stored
 // alongside each opt-in so you can prove exactly what the user agreed to (GDPR Art. 7).
-define('CONSENT_TEXT_VERSION', '2026-06-24-v1');
+define('CONSENT_TEXT_VERSION', '2026-07-01-v1');
 
 // How long an email-confirmation link stays valid (double-opt-in). 3 days.
 define('CONFIRM_TOKEN_TTL', 3 * 24 * 60 * 60);

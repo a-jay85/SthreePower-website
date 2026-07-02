@@ -42,7 +42,7 @@ function doPost(e) {
 function sendConfirmation(email, url) {
   const subject = "You're almost in — confirm your email";
   const htmlBody = `
-<div style="display:none;max-height:0;overflow:hidden;opacity:0">Confirm your email to claim your place in the SthreePower community.</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">Confirm your email to join the SthreePower community.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#15101F;margin:0;padding:0">
   <tr><td align="center" style="padding:32px 16px">
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#1E1830;border-radius:14px;overflow:hidden;border:1px solid #3E3357">
