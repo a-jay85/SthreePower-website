@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<!-- iOS home-screen (standalone) web app: run under the status bar/notch so the hero
-     gradient fills it. black-translucent overlays the web view under the status bar. -->
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- iOS Safari tints the status-bar/notch backdrop a single solid color (not painted page
+     content). Match it to the mauve at the very top of the hero gradient so the notch reads
+     as a continuation of the gradient instead of a dark band. -->
+<meta name="theme-color" content="#9D7488" />
 <title>SthreePower · Build the skills employers hire for.</title>
 <meta name="description" content="SthreePower is a global community where women build the certifications employers are hiring for right now (Salesforce, Scrum, SQL, Data), grow a real network, and build toward financial independence. Free to join." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,11 +36,7 @@
   .reveal.shown{opacity:1;transform:none;transition:none}
 
   /* DIRECTION 1 — TWILIGHT EDITORIAL */
-  /* viewport-fit=cover lets the page run under the iOS notch. Pad by the safe-area
-     inset here (not on an ancestor) so element positions are unchanged AND the region
-     stays inside .editorial's overflow:hidden box — that lets the hero's .sky gradient
-     (which starts 200px above the hero) paint up into the notch instead of being clipped. */
-  .editorial{background:var(--dk-1);color:var(--iv-1);font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden;padding-top:env(safe-area-inset-top)}
+  .editorial{background:var(--dk-1);color:var(--iv-1);font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden}
   .editorial .wrap{max-width:1180px;margin:0 auto;padding:0 36px}
   .editorial .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:15px 0;position:relative;z-index:5}
   .editorial .nav-cta{justify-self:end}
