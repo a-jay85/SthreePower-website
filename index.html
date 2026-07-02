@@ -258,7 +258,16 @@
   .editorial .manifesto em{font-style:italic;color:var(--glow)}
 
   .editorial .voices{padding:0}
-  .editorial .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+  .editorial .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  .editorial .vmore-wrap{display:none}
+  @media(min-width:861px){
+    .editorial .vmore-wrap{display:flex;justify-content:center;margin-top:26px}
+    .editorial .voices:not(.stories-open) .vgrid .vcard:nth-child(n+4){display:none}
+    .editorial .vmore{padding:11px 22px;background:none;border:1px solid var(--dk-4);border-radius:999px;
+      cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;
+      text-transform:uppercase;color:var(--iv-1);transition:border-color .2s,color .2s}
+    .editorial .vmore:hover{border-color:var(--glow);color:var(--glow)}
+  }
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
   .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column;max-height:263px;overflow:hidden}
   .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
@@ -373,7 +382,7 @@
     .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
     .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
       flex:0 0 86vw;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
-    .editorial .vcard{max-height:400px}
+    .editorial .vcard{max-height:350px}
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
@@ -698,6 +707,7 @@
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
+      <div class="vmore-wrap reveal"><button class="vmore" type="button" aria-expanded="false">Read more stories</button></div>
       <div class="sec-cta reveal" id="join"><a href="#join" class="btn-pri">Start your story</a></div>
     </section>
 
@@ -955,6 +965,21 @@
     apply();
     window.addEventListener('resize', apply);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
+
+    // Desktop "Read more stories": reveal rows beyond the first, then re-measure
+    // the newly shown cards so each gets its own per-card clamp.
+    var more = section.querySelector('.vmore');
+    if (more) {
+      more.addEventListener('click', function(){
+        var open = section.classList.toggle('stories-open');
+        more.textContent = open ? 'Show fewer stories' : 'Read more stories';
+        more.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // Cards hidden by CSS were never seen by the reveal observer, so make
+        // them visible on first reveal, then measure their per-card clamp.
+        if (open) cards.forEach(function(c){ c.classList.add('in'); });
+        apply();
+      });
+    }
   })();
 
   // ---- One-time swipe hint: nudge each carousel the first time it scrolls into
