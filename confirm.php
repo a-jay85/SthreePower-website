@@ -66,7 +66,7 @@ if ($method !== 'POST') {
 </head>
 <body>
   <div class="card">
-    <h1>One last step</h1>
+    <h1>One last click</h1>
     <p>Confirm <b>{$safeEmail}</b> to finish joining SthreePower and start receiving our emails.</p>
     <form method="post" action="confirm.php">
       <input type="hidden" name="t" value="{$safeToken}">
