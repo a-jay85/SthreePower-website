@@ -150,9 +150,9 @@
   /* CATALOG — two ways in */
   .editorial .catalog{padding:0}
   .editorial .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
-  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column}
+  .editorial .track{border:1px solid var(--dk-3);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column;position:relative}
   .editorial .track.cert{background:linear-gradient(180deg,rgba(227,171,140,.07),rgba(201,138,160,.03));border-color:rgba(227,171,140,.45)}
-  .editorial .track .tk{font-family:'Hanken Grotesk',monospace;font-size:12px;font-weight:700;color:var(--glow);letter-spacing:.08em;text-align:center;position:relative}
+  .editorial .track .tk{font-family:'Hanken Grotesk',monospace;font-size:12px;font-weight:700;color:var(--glow);letter-spacing:.08em;text-align:center}
   .editorial .track h3{font-family:'Newsreader',serif;font-weight:500;font-size:26px;margin:10px 0 8px;text-align:center}
   .editorial .track .sub{font-size:14.5px;line-height:1.55;color:#C2B8CC;margin-bottom:18px}
 
@@ -227,7 +227,7 @@
   .editorial .sec-head p b{color:var(--iv-2);font-weight:700}
 
   /* PREMIUM tag on the paid track */
-  .editorial .premium-tag{font-family:'Hanken Grotesk',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;margin-right:8px;position:absolute;left:0;top:50%;transform:translateY(-50%)}
+  .editorial .premium-tag{font-family:'Hanken Grotesk',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dk-1);background:linear-gradient(135deg,var(--glow),var(--glow-2));border-radius:999px;padding:2px 9px;position:absolute;top:0;left:50%;transform:translate(-50%,-50%)}
 
   /* PREMIUM CERT LIST — replaces the flat pills on the paid track. Grouped by
      credential family, serif names, gold diamond markers + hairline gold rules
