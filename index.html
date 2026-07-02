@@ -242,10 +242,9 @@
   .editorial .vcard .tix b{color:var(--glow);font-weight:700}
   .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
   /* Read-more: JS caps the tall testimonial's blockquote (via inline max-height)
-     to the height of the tallest short card so all four read cleanly in the 2x2.
-     When capped, the visible text fades out at the bottom and a Read more link
-     expands it. Only wired up on desktop; on mobile each card is a full-width
-     carousel slide and shows its whole quote. */
+     to the height of the tallest short card so the cards read cleanly at equal
+     height (2x2 on desktop, carousel slides on mobile). When capped, the visible
+     text fades out at the bottom and a Read more link expands it. */
   .editorial .vcard.clamp blockquote{overflow:hidden}
   .editorial .vcard.clamp:not(.open) blockquote{
     -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);
@@ -764,8 +763,11 @@
     track.addEventListener('pointerdown', function(e){ down = {x:e.clientX, y:e.clientY}; }, {passive:true});
     track.addEventListener('pointerup', function(e){
       if (!down) return;
-      var moved = Math.abs(e.clientX - down.x) > 8 || Math.abs(e.clientY - down.y) > 8;
+      var start = down;
       down = null;
+      // A Read more tap must not also advance the carousel — leave it to the button.
+      if (e.target.closest && e.target.closest('.readmore')) return;
+      var moved = Math.abs(e.clientX - start.x) > 8 || Math.abs(e.clientY - start.y) > 8;
       if (moved) return;                                   // it was a swipe
       if (track.scrollWidth <= track.clientWidth + 4) return; // not scrollable (desktop)
       var card = e.target.closest && e.target.closest('.dcard, .cell, .vcard');
@@ -812,17 +814,16 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
   })();
 
-  // ---- Read more on the testimonials. On desktop the quotes vary a lot in
-  // length; cap the tall one(s) to the height of the tallest short card so the
-  // 2x2 grid reads evenly, fade the cut-off text, and reveal it on Read more.
-  // Skipped on the mobile carousel (each slide is full-width and shows it all).
+  // ---- Read more on the testimonials. The quotes vary a lot in length; cap the
+  // tall one(s) to the height of the tallest short card so the cards read evenly
+  // (a tidy 2x2 on desktop, equal-height slides on the mobile carousel), fade the
+  // cut-off text, and reveal it on Read more. Heights are measured at the current
+  // width, so the cap adapts to whichever layout is active.
   (function(){
     var section = document.querySelector('.voices');
     if (!section) return;
     var cards = Array.prototype.slice.call(section.querySelectorAll('.vcard'));
     if (!cards.length) return;
-    var isDesktop = window.matchMedia('(min-width:861px)');
-
     // Give each clampable card its Read more control once.
     cards.forEach(function(card){
       if (card.querySelector('.readmore')) return;
@@ -834,7 +835,9 @@
       btn.textContent = 'Read more';
       btn.setAttribute('aria-expanded', 'false');
       card.insertBefore(btn, who);
-      btn.addEventListener('click', function(){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
         var open = card.classList.toggle('open');
         btn.textContent = open ? 'Read less' : 'Read more';
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -850,7 +853,6 @@
 
     function apply(){
       reset();
-      if (!isDesktop.matches) return;
       // Measure natural quote heights, then cap to the tallest *short* card so
       // the three shorter quotes stay whole and only the outlier(s) clamp.
       var qs = cards.map(function(c){ return c.querySelector('blockquote'); });
