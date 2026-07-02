@@ -75,7 +75,9 @@
   .editorial .btn-google svg{width:20px;height:20px;flex:none}
   .editorial .btn-google:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
   .editorial .join-form{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:460px;margin:0 auto}
-  .editorial .consent{display:flex;gap:11px;align-items:flex-start;text-align:left;font-size:13.5px;line-height:1.5;color:#C9BFD0}
+  /* padding gives the nudge glow room to breathe; the matching negative margin keeps
+     the box occupying the same space so surrounding elements don't shift. */
+  .editorial .consent{display:flex;gap:11px;align-items:flex-start;text-align:left;font-size:13.5px;line-height:1.5;color:#C9BFD0;padding:5px;margin:-5px}
   .editorial .consent input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--glow);cursor:pointer}
   .editorial .consent a{color:var(--glow);text-decoration:underline}
   .editorial .join-or{display:flex;align-items:center;gap:14px;width:100%;color:var(--dk-6);font-size:12.5px;letter-spacing:.04em}
