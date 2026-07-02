@@ -34,10 +34,11 @@
   /* DIRECTION 1 — TWILIGHT EDITORIAL */
   .editorial{background:var(--dk-1);color:var(--iv-1);font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden}
   .editorial .wrap{max-width:1180px;margin:0 auto;padding:0 36px}
-  .editorial .nav{display:flex;align-items:center;justify-content:space-between;padding:15px 0;position:relative;z-index:5}
+  .editorial .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:15px 0;position:relative;z-index:5}
+  .editorial .nav-cta{justify-self:end}
   .editorial .logo{font-family:'Newsreader',serif;font-weight:700;font-size:23px;letter-spacing:.01em}
   .editorial .logo sup{font-size:.5em;font-weight:400;top:-.9em}
-  .editorial .navlinks{display:flex;gap:32px;font-size:14px;font-weight:600;color:var(--iv-2);text-shadow:0 1px 3px rgba(30,24,48,.45)}
+  .editorial .navlinks{display:flex;gap:32px;justify-content:center;font-size:14px;font-weight:600;color:var(--iv-2);text-shadow:0 1px 3px rgba(30,24,48,.45)}
   .editorial .navlinks a:hover{color:var(--iv-1)}
   .editorial .nav-cta{border:1px solid var(--dk-4);padding:10px 20px;border-radius:999px;font-size:13.5px;font-weight:600;transition:all .25s}
   .editorial .nav-cta:hover{background:var(--iv-1);color:var(--dk-1);border-color:var(--iv-1)}
@@ -382,7 +383,7 @@
     <nav class="nav">
       <div class="logo">SthreePower<sup>®</sup></div>
       <div class="navlinks">
-        <a href="#demand">In demand</a><a href="#courses">Courses</a><a href="#inside">Services</a><a href="#voices">Voices</a>
+        <a href="#demand">Jobs</a><a href="#resume">Resume</a><a href="#services">Services</a><a href="#certifications">Certifications</a><a href="#voices">Voices</a>
       </div>
       <a href="#join" class="nav-cta">Join our community</a>
     </nav>
@@ -432,9 +433,9 @@
   </div><!-- /.story -->
   <div class="sec-cta reveal"><a href="#join" class="btn-pri">Build all three, free</a></div>
 
-    <hr class="grule reveal" aria-hidden="true">
+    <hr class="grule reveal" aria-hidden="true" id="demand">
 
-    <section class="demand" id="demand">
+    <section class="demand">
       <div class="sec-head reveal" style="justify-content:center;text-align:center">
         <h2>Sthreepower is built for jobs that are <em>available.</em></h2>
       </div>
@@ -453,7 +454,7 @@
             <span class="logo-plate"><img class="wordmark wm-accenture" src="assets/logos/accenture.svg" alt="Accenture" loading="lazy"></span>
             <span class="logo-plate"><img class="wordmark wm-deloitte" src="assets/logos/deloitte.svg" alt="Deloitte" loading="lazy"></span>
           </div>
-          <div class="offer">We teach: <a href="#courses"><b>AI Basics &amp; ChatGPT</b></a>, <a href="#courses"><b>Prompt Engineering</b></a>, <a href="#courses"><b>Business Analysis with AI</b></a>, and <a href="#courses"><b>Working with AI Agents</b></a>.</div>
+          <div class="offer">We teach: <a href="#certifications"><b>AI Basics &amp; ChatGPT</b></a>, <a href="#certifications"><b>Prompt Engineering</b></a>, <a href="#certifications"><b>Business Analysis with AI</b></a>, and <a href="#certifications"><b>Working with AI Agents</b></a>.</div>
         </div>
 
         <div class="dcard reveal">
@@ -467,7 +468,7 @@
             <span class="logo-plate"><img class="wordmark wm-cognizant" src="assets/logos/cognizant.svg" alt="Cognizant" loading="lazy"></span>
             <span class="logo-plate"><img class="wordmark wm-ibm" src="assets/logos/ibm.svg" alt="IBM" loading="lazy"></span>
           </div>
-          <div class="offer">We teach: <a href="#courses"><b>Salesforce Administrator</b></a>, <a href="#courses"><b>Salesforce Business Analyst</b></a>, <a href="#courses"><b>Salesforce Platform Foundations</b></a>, and <a href="#courses"><b>Agentforce Specialist</b></a>.</div>
+          <div class="offer">We teach: <a href="#certifications"><b>Salesforce Administrator</b></a>, <a href="#certifications"><b>Salesforce Business Analyst</b></a>, <a href="#certifications"><b>Salesforce Platform Foundations</b></a>, and <a href="#certifications"><b>Agentforce Specialist</b></a>.</div>
         </div>
 
         <div class="dcard reveal">
@@ -481,7 +482,7 @@
             <span class="logo-plate"><img class="wordmark wm-jpmorgan" src="assets/logos/jpmorgan.svg" alt="JPMorgan Chase" loading="lazy"></span>
             <span class="logo-plate"><img class="wordmark wm-unitedhealth" src="assets/logos/unitedhealth.svg" alt="UnitedHealth Group" loading="lazy"></span>
           </div>
-          <div class="offer">We teach: <a href="#courses"><b>SQL Basics</b></a>, <a href="#courses"><b>Tableau Desktop Specialist</b></a>, <a href="#courses"><b>Machine Learning Foundations</b></a>, <a href="#courses"><b>Model Evals &amp; Quality</b></a>, <a href="#courses"><b>Informatica MDM SaaS &amp; CDGC Foundations</b></a>, and <a href="#courses"><b>Databricks Fundamentals</b></a>.</div>
+          <div class="offer">We teach: <a href="#certifications"><b>SQL Basics</b></a>, <a href="#certifications"><b>Tableau Desktop Specialist</b></a>, <a href="#certifications"><b>Machine Learning Foundations</b></a>, <a href="#certifications"><b>Model Evals &amp; Quality</b></a>, <a href="#certifications"><b>Informatica MDM SaaS &amp; CDGC Foundations</b></a>, and <a href="#certifications"><b>Databricks Fundamentals</b></a>.</div>
         </div>
 
         <div class="dcard reveal">
@@ -495,7 +496,7 @@
             <span class="logo-plate"><img class="wordmark wm-boeing" src="assets/logos/boeing.svg" alt="Boeing" loading="lazy"></span>
             <span class="logo-plate"><img class="wordmark wm-servicenow" src="assets/logos/servicenow.svg" alt="ServiceNow" loading="lazy"></span>
           </div>
-          <div class="offer">We teach: <a href="#courses"><b>Certified Scrum Master</b></a>, <a href="#courses"><b>Certified Scrum Product Owner</b></a>, <a href="#courses"><b>Kanban</b></a>, and <a href="#courses"><b>Scrum Fundamentals</b></a>.</div>
+          <div class="offer">We teach: <a href="#certifications"><b>Certified Scrum Master</b></a>, <a href="#certifications"><b>Certified Scrum Product Owner</b></a>, <a href="#certifications"><b>Kanban</b></a>, and <a href="#certifications"><b>Scrum Fundamentals</b></a>.</div>
         </div>
 
       </div>
@@ -509,13 +510,13 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Get certified today</a></div>
     </section>
 
-    <hr class="grule reveal" aria-hidden="true">
+    <hr class="grule reveal" aria-hidden="true" id="resume">
 
     <!-- Resume section mirrors the Ambition section exactly: it reuses .story /
          .manifesto / .pillars-wrap / .pillars / .pillar so the layout renders
          identically (two stacked cards on desktop, one unified tab-switch card on
          mobile). Only the copy and the scoped em color differ. -->
-    <section class="resume" id="resume">
+    <section class="resume">
       <div class="story">
       <section class="manifesto reveal">
         <p>A certificate proves you studied. A <em>digital resume</em> proves you can do the work.</p>
@@ -537,9 +538,9 @@
     <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start your resume today</a></div>
     </section>
 
-    <hr class="grule reveal" aria-hidden="true">
+    <hr class="grule reveal" aria-hidden="true" id="services">
 
-    <section class="services" id="inside">
+    <section class="services">
       <div class="sec-head reveal" style="justify-content:center;text-align:center">
         <h2>Benefits within the <em>community.</em></h2>
       </div>
@@ -570,9 +571,9 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Start building today</a></div>
     </section>
 
-    <hr class="grule reveal" aria-hidden="true">
+    <hr class="grule reveal" aria-hidden="true" id="certifications">
 
-    <section class="catalog" id="courses">
+    <section class="catalog">
       <div class="sec-head reveal" style="justify-content:center;text-align:center">
         <h2>Two paths open when you <em>join.</em></h2>
       </div>
@@ -636,9 +637,9 @@
       <div class="sec-cta reveal"><a href="#join" class="btn-pri">Join for free</a></div>
     </section>
 
-    <hr class="grule reveal" aria-hidden="true">
+    <hr class="grule reveal" aria-hidden="true" id="voices">
 
-    <section class="voices" id="voices">
+    <section class="voices">
       <div class="sec-head reveal" style="justify-content:center;text-align:center"><h2>Voices of <em>impact.</em></h2></div>
       <div class="caro" data-caro>
       <div class="vgrid">
