@@ -280,6 +280,7 @@
      to the height of the tallest short card so the cards read cleanly at equal
      height (2x2 on desktop, carousel slides on mobile). When capped, the visible
      text fades out at the bottom and a Read more link expands it. */
+  .editorial .vcard.clamp blockquote,.editorial .vcard.open blockquote{cursor:pointer}
   .editorial .vcard.clamp blockquote{overflow:hidden}
   .editorial .vcard.clamp:not(.open) blockquote{
     -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);
@@ -861,8 +862,11 @@
       if (!down) return;
       var start = down;
       down = null;
-      // A Read more tap must not also advance the carousel — leave it to the button.
+      // A Read more tap must not also advance the carousel — leave it to the
+      // button, or to the quote text of a clamped card (also a read-more toggle).
       if (e.target.closest && e.target.closest('.readmore')) return;
+      var qHit = e.target.closest && e.target.closest('.vcard blockquote');
+      if (qHit && qHit.closest('.vcard.clamp, .vcard.open')) return;
       var moved = Math.abs(e.clientX - start.x) > 8 || Math.abs(e.clientY - start.y) > 8;
       if (moved) return;                                   // it was a swipe
       if (track.scrollWidth <= track.clientWidth + 4) return; // not scrollable (desktop)
@@ -931,13 +935,18 @@
       btn.textContent = 'Read more';
       btn.setAttribute('aria-expanded', 'false');
       card.insertBefore(btn, who);
-      btn.addEventListener('click', function(e){
+      function toggle(e){
+        // Only a clamped (or already-open) card has more to reveal.
+        if (!card.classList.contains('clamp') && !card.classList.contains('open')) return;
         e.preventDefault();
         e.stopPropagation();
         var open = card.classList.toggle('open');
         btn.textContent = open ? 'Show less' : 'Read more';
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+      }
+      btn.addEventListener('click', toggle);
+      // Tapping the quote itself reads more / shows less, same as the button.
+      q.addEventListener('click', toggle);
     });
 
     function reset(){
