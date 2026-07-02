@@ -19,7 +19,11 @@
     --glow:#E3AB8C; --glow-2:#C98AA0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  /* iOS Safari tints the notch/status-bar backdrop with the CANVAS (root) background
+     color, not painted content. Set html to the mauve at the top of the hero gradient so
+     the notch matches it. body keeps --dk-1 for its own box, so the visible page is
+     unchanged (body's background stops propagating once html has an explicit one). */
+  html{scroll-behavior:smooth;background:#9D7488}
   body{background:var(--dk-1);color:var(--iv-1);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
