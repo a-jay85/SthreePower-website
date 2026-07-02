@@ -345,7 +345,7 @@
     .editorial .dgrid,.editorial .srv,.editorial .vgrid{
       display:flex;gap:14px;background:none;border:none;
       overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-      scrollbar-width:none;margin:0 -20px;padding:4px 7vw}
+      scrollbar-width:none;margin:0 -40px;padding:4px 7vw}
     .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
     .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
       flex:0 0 86vw;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
@@ -653,7 +653,7 @@
           Coming from a background where women weren't always encouraged to aim high, I felt deeply grateful to have found a community like this. I'm still figuring things out, but I know I'm doing it alongside the right people.”</blockquote><div class="who"><div class="av">L</div><div><b>Divya D.</b><span>Data Professional</span></div></div></div>
         <div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“SthreePower provided multiple opportunities for me to gain experience right as I decided to change career directions. They meaningfully helped me develop my skills and portfolio while also providing new job openings I could apply for. Since my work supported the community, my work felt truly meaningful.”</blockquote><div class="who"><div class="av">A</div><div><b>A-Jay N.</b><span>Navigating a career pivot</span></div></div></div><div class="vcard reveal"><div class="tix"><span>Member story</span><b>Current Member</b></div><blockquote>“I know Nalini personally.<br><br>Her belief in community is unshakable, and SthreePower runs on it.<br><br>Have her on your side and winning is only a matter of time.”</blockquote><div class="who"><div class="av">A</div><div><b>Namrata S.</b><span>Product Professional</span></div></div></div>
       </div>
-      <div class="caroctl" aria-hidden="true">
+      <div class="caroctl" aria-hidden="true" id="join">
         <button class="caro-arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
         <div class="caro-dots"><i class="on"></i><i></i><i></i><i></i></div>
         <button class="caro-arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -664,7 +664,7 @@
 
     <hr class="grule reveal" aria-hidden="true">
 
-  <section class="joincta" id="join">
+  <section class="joincta">
     <div class="wrap">
       <!-- Populated by JS from the ?joined / ?error query params after the OAuth round-trip. -->
       <div id="joinBanner" class="joined-banner" hidden></div>
