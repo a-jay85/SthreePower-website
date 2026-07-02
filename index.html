@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>SthreePower · Build the skills employers hire for.</title>
 <meta name="description" content="SthreePower is a global community where women build the certifications employers are hiring for right now (Salesforce, Scrum, SQL, Data), grow a real network, and build toward financial independence. Free to join." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,10 @@
   button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
   :focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px}
 
-  .stage{padding-top:0}
+  /* viewport-fit=cover lets the page run under the iOS notch; push everything back
+     down by the safe-area inset so element positions are unchanged, while the hero's
+     .sky gradient (which starts 200px above the hero) fills the notch itself. */
+  .stage{padding-top:env(safe-area-inset-top)}
   .concept{display:none}
   .concept.is-active{display:block;animation:fadeup .5s ease both}
   @keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
