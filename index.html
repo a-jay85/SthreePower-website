@@ -260,7 +260,7 @@
   .editorial .voices{padding:0}
   .editorial .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
   /* Ticket-style testimonials: compact, with a stub header and a perforated divider. */
-  .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column}
+  .editorial .vcard{border:1px solid var(--dk-3);border-radius:8px;padding:20px 22px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);display:flex;flex-direction:column;max-height:263px;overflow:hidden}
   .editorial .vcard .tix{display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dk-5);padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--dk-3)}
   .editorial .vcard .tix b{color:var(--glow);font-weight:700}
   .editorial .vcard blockquote{font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:16.5px;line-height:1.4;color:var(--iv-1)}
@@ -372,6 +372,7 @@
     .editorial .dgrid::-webkit-scrollbar,.editorial .srv::-webkit-scrollbar,.editorial .vgrid::-webkit-scrollbar{display:none}
     .editorial .dcard,.editorial .srv .cell,.editorial .vcard{
       flex:0 0 86vw;scroll-snap-align:center;border:1px solid var(--dk-3);border-radius:12px}
+    .editorial .vcard{max-height:400px}
     .editorial .dcard{padding:30px 26px}
     .editorial .srv .cell{padding:28px 24px}
 
