@@ -70,8 +70,7 @@
   .editorial .btn-google{display:inline-flex;align-items:center;gap:12px;padding:14px 26px}
   .editorial .btn-google svg{width:20px;height:20px;flex:none}
   .editorial .btn-google:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-  .editorial .btn-linkedin{display:none;}
-  .li-preview .editorial .btn-linkedin{display:inline-flex;align-items:center;gap:12px;padding:14px 26px;background:#0A66C2;box-shadow:0 12px 30px -10px rgba(10,102,194,.55),0 5px 12px -6px rgba(10,102,194,.35)}
+  .editorial .btn-linkedin{display:inline-flex;align-items:center;gap:12px;padding:14px 26px;background:#0A66C2;box-shadow:0 12px 30px -10px rgba(10,102,194,.55),0 5px 12px -6px rgba(10,102,194,.35)}
   .editorial .btn-linkedin:hover{box-shadow:0 22px 56px -8px rgba(10,102,194,.9),0 10px 24px -6px rgba(10,102,194,.65)}
   .editorial .btn-linkedin svg{width:20px;height:20px;flex:none}
   .editorial .btn-linkedin:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
@@ -1068,11 +1067,6 @@
   if (cb) {
     setLocked(!cb.checked);
     cb.addEventListener('change', function(){ setLocked(!cb.checked); });
-  }
-
-  // ?li=1 — preview flag: shows the LinkedIn button without deploying it to all users.
-  if (new URLSearchParams(location.search).get('li') === '1') {
-    document.documentElement.classList.add('li-preview');
   }
 
   // A click on either join button while consent is unticked: swallow it (click fires
