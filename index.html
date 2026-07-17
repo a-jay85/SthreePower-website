@@ -66,10 +66,15 @@
   .editorial .btn-sec{padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;color:var(--iv-1);border:1px solid var(--dk-4);transition:border-color .2s}
   .editorial .btn-sec:hover{border-color:var(--dk-6)}
 
-  /* Google sign-in button + consent join form */
+  /* Google / LinkedIn sign-in buttons + consent join form */
   .editorial .btn-google{display:inline-flex;align-items:center;gap:12px;padding:14px 26px}
   .editorial .btn-google svg{width:20px;height:20px;flex:none}
   .editorial .btn-google:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+  .editorial .btn-linkedin{display:none;}
+  .li-preview .editorial .btn-linkedin{display:inline-flex;align-items:center;gap:12px;padding:14px 26px;background:#0A66C2;box-shadow:0 12px 30px -10px rgba(10,102,194,.55),0 5px 12px -6px rgba(10,102,194,.35)}
+  .editorial .btn-linkedin:hover{box-shadow:0 22px 56px -8px rgba(10,102,194,.9),0 10px 24px -6px rgba(10,102,194,.65)}
+  .editorial .btn-linkedin svg{width:20px;height:20px;flex:none}
+  .editorial .btn-linkedin:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
   .editorial .join-form{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:460px;margin:0 auto}
   /* padding gives the nudge glow room to breathe; the matching negative margin keeps
      the box occupying the same space so surrounding elements don't shift. */
@@ -758,6 +763,10 @@
           <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
           Sign up with Google
         </button>
+        <button type="submit" id="linkedinBtn" class="btn-pri btn-linkedin locked" formaction="linkedin-login.php" formnovalidate aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Sign up with LinkedIn
+        </button>
         <div class="join-or"><span>or sign up with email</span></div>
         <!-- Honeypot: hidden from people, tempting to bots. Real submissions leave it empty. -->
         <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -1033,7 +1042,7 @@
   var cb = document.getElementById('consent');
   var emailBtn = document.getElementById('emailBtn');
   var consentLabel = document.querySelector('.join-form .consent');
-  var gateBtns = [document.getElementById('googleBtn'), emailBtn];
+  var gateBtns = [document.getElementById('googleBtn'), document.getElementById('linkedinBtn'), emailBtn];
 
   function setLocked(locked){
     gateBtns.forEach(function(b){
@@ -1059,6 +1068,11 @@
   if (cb) {
     setLocked(!cb.checked);
     cb.addEventListener('change', function(){ setLocked(!cb.checked); });
+  }
+
+  // ?li=1 — preview flag: shows the LinkedIn button without deploying it to all users.
+  if (new URLSearchParams(location.search).get('li') === '1') {
+    document.documentElement.classList.add('li-preview');
   }
 
   // A click on either join button while consent is unticked: swallow it (click fires
