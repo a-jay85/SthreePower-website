@@ -42,11 +42,14 @@ function sp_env(string $key): string {
     return (string) $val;
 }
 
-define('GOOGLE_CLIENT_ID',     sp_env('GOOGLE_CLIENT_ID'));
-define('GOOGLE_CLIENT_SECRET', sp_env('GOOGLE_CLIENT_SECRET'));
-define('GOOGLE_REDIRECT_URI',  sp_env('GOOGLE_REDIRECT_URI'));
-define('SHEET_WEBHOOK_URL',    sp_env('SHEET_WEBHOOK_URL'));
-define('SHEET_SHARED_SECRET',  sp_env('SHEET_SHARED_SECRET'));
+define('GOOGLE_CLIENT_ID',       sp_env('GOOGLE_CLIENT_ID'));
+define('GOOGLE_CLIENT_SECRET',   sp_env('GOOGLE_CLIENT_SECRET'));
+define('GOOGLE_REDIRECT_URI',    sp_env('GOOGLE_REDIRECT_URI'));
+define('LINKEDIN_CLIENT_ID',     sp_env('LINKEDIN_CLIENT_ID'));
+define('LINKEDIN_CLIENT_SECRET', sp_env('LINKEDIN_CLIENT_SECRET'));
+define('LINKEDIN_REDIRECT_URI',  sp_env('LINKEDIN_REDIRECT_URI'));
+define('SHEET_WEBHOOK_URL',      sp_env('SHEET_WEBHOOK_URL'));
+define('SHEET_SHARED_SECRET',    sp_env('SHEET_SHARED_SECRET'));
 
 // Where to send the user after the flow (success or handled error). Relative (no leading
 // slash) so it resolves against the directory the flow runs from — works whether the site
