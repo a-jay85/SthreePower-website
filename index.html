@@ -883,15 +883,26 @@
     if (!track) return;
     var prev = caro.querySelector('[data-prev]');
     var next = caro.querySelector('[data-next]');
-    var dots = Array.prototype.slice.call(caro.querySelectorAll('.caro-dots i'));
     var cards = track.children;
+    // Sync the dot count to the cards. The markup ships a static row so the dots
+    // are there without JS, but it drifts as cards are added — rebuild it here so
+    // one dot always means one card.
+    var dotbox = caro.querySelector('.caro-dots');
+    if (dotbox){
+      while (dotbox.children.length > cards.length) dotbox.removeChild(dotbox.lastChild);
+      while (dotbox.children.length < cards.length) dotbox.appendChild(document.createElement('i'));
+    }
+    var dots = Array.prototype.slice.call(caro.querySelectorAll('.caro-dots i'));
     function step(){
       return cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : track.clientWidth;
     }
     if (prev) prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
     if (next) next.addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
     track.addEventListener('scroll', function(){
+      // Clamp: iOS rubber-banding gives a negative scrollLeft, and rounding at the
+      // far edge can land one past the last dot — either way no dot would light.
       var i = Math.round(track.scrollLeft / step());
+      i = Math.max(0, Math.min(dots.length - 1, i));
       dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
     }, {passive:true});
 
